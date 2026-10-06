@@ -11,10 +11,13 @@
     'depends': [
         'base',
         'mail',
+        'event',
+        'purchase',
         'portal',
         'hr',
         'account',
         'project',
+        'ai_assistant'
     ],
     'post_init_hook': 'post_init_hook',
     'data': [
