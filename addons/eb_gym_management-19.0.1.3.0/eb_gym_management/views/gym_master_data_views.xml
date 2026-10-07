@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===================== EQUIPMENT CATEGORIES ===================== -->
+    <record id="view_gym_equipment_category_list" model="ir.ui.view">
+        <field name="name">gym.equipment.category.list</field>
+        <field name="model">gym.equipment.category</field>
+        <field name="arch" type="xml">
+            <list string="Equipment Categories">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="description"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_equipment_category_form" model="ir.ui.view">
+        <field name="name">gym.equipment.category.form</field>
+        <field name="model">gym.equipment.category</field>
+        <field name="arch" type="xml">
+            <form string="Equipment Category">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Category Name"/></h1>
+                    </div>
+                    <group>
+                        <field name="code"/>
+                        <field name="description" placeholder="Description..."/>
+                    </group>
+                    <notebook>
+                        <page string="Equipment">
+                            <field name="equipment_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="active" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gym_equipment_category" model="ir.actions.act_window">
+        <field name="name">Equipment Categories</field>
+        <field name="res_model">gym.equipment.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No equipment categories yet</p>
+            <p>Add equipment categories to classify the gym equipment used in exercises.</p>
+        </field>
+    </record>
+
+    <!-- ===================== EQUIPMENT ===================== -->
+    <record id="view_gym_equipment_list" model="ir.ui.view">
+        <field name="name">gym.equipment.list</field>
+        <field name="model">gym.equipment</field>
+        <field name="arch" type="xml">
+            <list string="Equipment" editable="bottom">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="description"/>
+                <field name="company_id" optional="show" groups="base.group_multi_company"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_equipment_search" model="ir.ui.view">
+        <field name="name">gym.equipment.search</field>
+        <field name="model">gym.equipment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="category_id"/>
+                <filter name="active" string="Active" domain="[('active','=',True)]"/>
+                <group>
+                    <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_equipment" model="ir.actions.act_window">
+        <field name="name">Equipment</field>
+        <field name="res_model">gym.equipment</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_gym_equipment_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No equipment yet</p>
+            <p>Add gym equipment items and assign them to categories.</p>
+        </field>
+    </record>
+
+    <!-- ===================== TRAINER SPECIALIZATIONS ===================== -->
+    <record id="view_gym_trainer_specialization_list" model="ir.ui.view">
+        <field name="name">gym.trainer.specialization.list</field>
+        <field name="model">gym.trainer.specialization</field>
+        <field name="arch" type="xml">
+            <list string="Trainer Specializations" editable="bottom">
+                <field name="name" string="Specialization"/>
+                <field name="description"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_gym_trainer_specialization" model="ir.actions.act_window">
+        <field name="name">Trainer Specializations</field>
+        <field name="res_model">gym.trainer.specialization</field>
+        <field name="view_mode">list</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No trainer specializations yet</p>
+            <p>Define specializations to assign to trainers based on their expertise.</p>
+        </field>
+    </record>
+
+    <!-- ===================== EXERCISE CATEGORIES ===================== -->
+    <record id="view_gym_exercise_category_list" model="ir.ui.view">
+        <field name="name">gym.exercise.category.list</field>
+        <field name="model">gym.exercise.category</field>
+        <field name="arch" type="xml">
+            <list string="Exercise Categories">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_exercise_category_form" model="ir.ui.view">
+        <field name="name">gym.exercise.category.form</field>
+        <field name="model">gym.exercise.category</field>
+        <field name="arch" type="xml">
+            <form string="Exercise Category">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Category Name"/></h1>
+                    </div>
+                    <group>
+                        <field name="description" placeholder="Description..."/>
+                    </group>
+                    <notebook>
+                        <page string="Exercises">
+                            <field name="exercise_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="muscle_group"/>
+                                    <field name="active" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gym_exercise_category" model="ir.actions.act_window">
+        <field name="name">Exercise Categories</field>
+        <field name="res_model">gym.exercise.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No exercise categories yet</p>
+            <p>Create categories like Cardio, Strength, or Flexibility to organise your exercises.</p>
+        </field>
+    </record>
+
+    <!-- ===================== EXERCISES ===================== -->
+    <record id="view_gym_exercise_list" model="ir.ui.view">
+        <field name="name">gym.exercise.list</field>
+        <field name="model">gym.exercise</field>
+        <field name="arch" type="xml">
+            <list string="Exercises" editable="bottom">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="muscle_group"/>
+                <field name="equipment_ids" widget="many2many_tags" optional="show"/>
+                <field name="company_id" optional="show" groups="base.group_multi_company"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_exercise_search" model="ir.ui.view">
+        <field name="name">gym.exercise.search</field>
+        <field name="model">gym.exercise</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="muscle_group"/>
+                <filter name="active" string="Active" domain="[('active','=',True)]"/>
+                <group>
+                    <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_exercise" model="ir.actions.act_window">
+        <field name="name">Exercises</field>
+        <field name="res_model">gym.exercise</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_gym_exercise_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No exercises yet</p>
+            <p>Add exercises to build your workout templates and member plans.</p>
+        </field>
+    </record>
+
+    <!-- ===================== FOOD CATEGORIES ===================== -->
+    <record id="view_gym_food_category_list" model="ir.ui.view">
+        <field name="name">gym.food.category.list</field>
+        <field name="model">gym.food.category</field>
+        <field name="arch" type="xml">
+            <list string="Food Categories">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_food_category_form" model="ir.ui.view">
+        <field name="name">gym.food.category.form</field>
+        <field name="model">gym.food.category</field>
+        <field name="arch" type="xml">
+            <form string="Food Category">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Category Name"/></h1>
+                    </div>
+                    <group>
+                        <field name="description" placeholder="Description..."/>
+                    </group>
+                    <notebook>
+                        <page string="Foods">
+                            <field name="food_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="calories_per_100g"/>
+                                    <field name="protein_g"/>
+                                    <field name="carbs_g"/>
+                                    <field name="fat_g"/>
+                                    <field name="active" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gym_food_category" model="ir.actions.act_window">
+        <field name="name">Food Categories</field>
+        <field name="res_model">gym.food.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No food categories yet</p>
+            <p>Create categories like Protein, Carbohydrate, or Fruit to organise your foods.</p>
+        </field>
+    </record>
+
+    <!-- ===================== FOODS ===================== -->
+    <record id="view_gym_food_list" model="ir.ui.view">
+        <field name="name">gym.food.list</field>
+        <field name="model">gym.food</field>
+        <field name="arch" type="xml">
+            <list string="Foods">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="calories_per_100g"/>
+                <field name="protein_g"/>
+                <field name="carbs_g"/>
+                <field name="fat_g"/>
+                <field name="company_id" optional="show" groups="base.group_multi_company"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_food_form" model="ir.ui.view">
+        <field name="name">gym.food.form</field>
+        <field name="model">gym.food</field>
+        <field name="arch" type="xml">
+            <form string="Food Item">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Food Name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="category_id"/>
+                            <field name="calories_per_100g"/>
+                        </group>
+                        <group>
+                            <field name="protein_g"/>
+                            <field name="carbs_g"/>
+                            <field name="fat_g"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_gym_food_search" model="ir.ui.view">
+        <field name="name">gym.food.search</field>
+        <field name="model">gym.food</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="category_id"/>
+                <filter name="active" string="Active" domain="[('active','=',True)]"/>
+                <group>
+                    <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_food" model="ir.actions.act_window">
+        <field name="name">Foods</field>
+        <field name="res_model">gym.food</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_gym_food_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No food items yet</p>
+            <p>Add food items with nutritional info to use in member diet plans.</p>
+        </field>
+    </record>
+
+</odoo>

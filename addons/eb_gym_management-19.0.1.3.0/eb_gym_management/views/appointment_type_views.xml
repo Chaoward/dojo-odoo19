@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_appointment_type_form_gym_inherit" model="ir.ui.view">
+        <field name="name">appointment.type.form.gym.inherit</field>
+        <field name="model">appointment.type</field>
+        <field name="inherit_id" ref="appointment.appointment_type_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="oe_button_box" name="button_box"/>
+            </xpath>
+            <xpath expr="//sheet//group[1]" position="after">
+                <group string="Gym Settings">
+                    <field name="is_gym_class"/>
+                    <field name="class_category" invisible="not is_gym_class" required="is_gym_class"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Class Types action -->
+    <record id="action_gym_class_types" model="ir.actions.act_window">
+        <field name="name">Class Types</field>
+        <field name="res_model">appointment.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('is_gym_class', '=', True)]</field>
+        <field name="context">{'default_is_gym_class': True}</field>
+    </record>
+
+</odoo>

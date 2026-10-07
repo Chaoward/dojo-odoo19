@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ==================== TRAINER SPECIALIZATIONS ==================== -->
+        <record id="demo_spec_weight_loss" model="gym.trainer.specialization">
+            <field name="name">Weight Loss Coaching</field>
+        </record>
+        <record id="demo_spec_strength" model="gym.trainer.specialization">
+            <field name="name">Strength &amp; Conditioning</field>
+        </record>
+        <record id="demo_spec_yoga" model="gym.trainer.specialization">
+            <field name="name">Yoga &amp; Flexibility</field>
+        </record>
+        <record id="demo_spec_crossfit" model="gym.trainer.specialization">
+            <field name="name">CrossFit</field>
+        </record>
+        <record id="demo_spec_rehab" model="gym.trainer.specialization">
+            <field name="name">Injury Rehabilitation</field>
+        </record>
+        <record id="demo_spec_sports_nutrition" model="gym.trainer.specialization">
+            <field name="name">Sports Nutrition</field>
+        </record>
+
+        <!-- ==================== EQUIPMENT ==================== -->
+        <record id="demo_equip_cat_cardio" model="gym.equipment.category">
+            <field name="name">Cardio Machines</field>
+            <field name="code">CARDIO</field>
+        </record>
+        <record id="demo_equip_cat_strength" model="gym.equipment.category">
+            <field name="name">Strength Machines</field>
+            <field name="code">STRENGTH</field>
+        </record>
+        <record id="demo_equip_cat_free_weights" model="gym.equipment.category">
+            <field name="name">Free Weights</field>
+            <field name="code">FREEWT</field>
+        </record>
+        <record id="demo_equip_cat_functional" model="gym.equipment.category">
+            <field name="name">Functional Training</field>
+            <field name="code">FUNCTIONAL</field>
+        </record>
+
+        <record id="demo_equip_treadmill" model="gym.equipment">
+            <field name="name">Treadmill</field>
+            <field name="category_id" ref="demo_equip_cat_cardio"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_elliptical" model="gym.equipment">
+            <field name="name">Elliptical Trainer</field>
+            <field name="category_id" ref="demo_equip_cat_cardio"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_bike" model="gym.equipment">
+            <field name="name">Stationary Bike</field>
+            <field name="category_id" ref="demo_equip_cat_cardio"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_leg_press" model="gym.equipment">
+            <field name="name">Leg Press Machine</field>
+            <field name="category_id" ref="demo_equip_cat_strength"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_chest_press" model="gym.equipment">
+            <field name="name">Chest Press Machine</field>
+            <field name="category_id" ref="demo_equip_cat_strength"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_lat_pulldown" model="gym.equipment">
+            <field name="name">Lat Pulldown Machine</field>
+            <field name="category_id" ref="demo_equip_cat_strength"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_dumbbells" model="gym.equipment">
+            <field name="name">Dumbbells Set</field>
+            <field name="category_id" ref="demo_equip_cat_free_weights"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_barbell" model="gym.equipment">
+            <field name="name">Barbell</field>
+            <field name="category_id" ref="demo_equip_cat_free_weights"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_kettlebell" model="gym.equipment">
+            <field name="name">Kettlebell</field>
+            <field name="category_id" ref="demo_equip_cat_free_weights"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_resistance_band" model="gym.equipment">
+            <field name="name">Resistance Bands</field>
+            <field name="category_id" ref="demo_equip_cat_functional"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_equip_trx" model="gym.equipment">
+            <field name="name">TRX Suspension Trainer</field>
+            <field name="category_id" ref="demo_equip_cat_functional"/>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- ==================== EXERCISES ==================== -->
+        <record id="demo_ex_cat_cardio" model="gym.exercise.category">
+            <field name="name">Cardio</field>
+        </record>
+        <record id="demo_ex_cat_strength" model="gym.exercise.category">
+            <field name="name">Strength Training</field>
+        </record>
+        <record id="demo_ex_cat_core" model="gym.exercise.category">
+            <field name="name">Core</field>
+        </record>
+        <record id="demo_ex_cat_flexibility" model="gym.exercise.category">
+            <field name="name">Flexibility</field>
+        </record>
+
+        <record id="demo_ex_running" model="gym.exercise">
+            <field name="name">Running</field>
+            <field name="category_id" ref="demo_ex_cat_cardio"/>
+            <field name="muscle_group">Full Body</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_treadmill')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_cycling" model="gym.exercise">
+            <field name="name">Cycling</field>
+            <field name="category_id" ref="demo_ex_cat_cardio"/>
+            <field name="muscle_group">Legs</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_bike')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_squats" model="gym.exercise">
+            <field name="name">Squats</field>
+            <field name="category_id" ref="demo_ex_cat_strength"/>
+            <field name="muscle_group">Legs / Glutes</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_barbell')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_bench_press" model="gym.exercise">
+            <field name="name">Bench Press</field>
+            <field name="category_id" ref="demo_ex_cat_strength"/>
+            <field name="muscle_group">Chest</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_barbell')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_lat_pulldown" model="gym.exercise">
+            <field name="name">Lat Pulldown</field>
+            <field name="category_id" ref="demo_ex_cat_strength"/>
+            <field name="muscle_group">Back</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_lat_pulldown')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_leg_press" model="gym.exercise">
+            <field name="name">Leg Press</field>
+            <field name="category_id" ref="demo_ex_cat_strength"/>
+            <field name="muscle_group">Legs</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_leg_press')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_plank" model="gym.exercise">
+            <field name="name">Plank</field>
+            <field name="category_id" ref="demo_ex_cat_core"/>
+            <field name="muscle_group">Core</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_russian_twist" model="gym.exercise">
+            <field name="name">Russian Twist</field>
+            <field name="category_id" ref="demo_ex_cat_core"/>
+            <field name="muscle_group">Core / Obliques</field>
+            <field name="equipment_ids" eval="[(6, 0, [ref('demo_equip_kettlebell')])]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_ex_yoga_stretch" model="gym.exercise">
+            <field name="name">Yoga Stretch Flow</field>
+            <field name="category_id" ref="demo_ex_cat_flexibility"/>
+            <field name="muscle_group">Full Body</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- ==================== FOOD ==================== -->
+        <record id="demo_food_cat_protein" model="gym.food.category">
+            <field name="name">Protein</field>
+        </record>
+        <record id="demo_food_cat_carbs" model="gym.food.category">
+            <field name="name">Carbohydrates</field>
+        </record>
+        <record id="demo_food_cat_veg" model="gym.food.category">
+            <field name="name">Vegetables</field>
+        </record>
+        <record id="demo_food_cat_fruit" model="gym.food.category">
+            <field name="name">Fruits</field>
+        </record>
+        <record id="demo_food_cat_dairy" model="gym.food.category">
+            <field name="name">Dairy</field>
+        </record>
+        <record id="demo_food_cat_fats" model="gym.food.category">
+            <field name="name">Healthy Fats</field>
+        </record>
+
+        <record id="demo_food_chicken_breast" model="gym.food">
+            <field name="name">Chicken Breast (grilled)</field>
+            <field name="category_id" ref="demo_food_cat_protein"/>
+            <field name="calories_per_100g">165</field>
+            <field name="protein_g">31</field>
+            <field name="carbs_g">0</field>
+            <field name="fat_g">3.6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_eggs" model="gym.food">
+            <field name="name">Eggs (boiled)</field>
+            <field name="category_id" ref="demo_food_cat_protein"/>
+            <field name="calories_per_100g">155</field>
+            <field name="protein_g">13</field>
+            <field name="carbs_g">1.1</field>
+            <field name="fat_g">11</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_paneer" model="gym.food">
+            <field name="name">Paneer (cottage cheese)</field>
+            <field name="category_id" ref="demo_food_cat_protein"/>
+            <field name="calories_per_100g">265</field>
+            <field name="protein_g">18</field>
+            <field name="carbs_g">6</field>
+            <field name="fat_g">20</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_brown_rice" model="gym.food">
+            <field name="name">Brown Rice (cooked)</field>
+            <field name="category_id" ref="demo_food_cat_carbs"/>
+            <field name="calories_per_100g">123</field>
+            <field name="protein_g">2.7</field>
+            <field name="carbs_g">26</field>
+            <field name="fat_g">0.8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_oats" model="gym.food">
+            <field name="name">Oats (rolled)</field>
+            <field name="category_id" ref="demo_food_cat_carbs"/>
+            <field name="calories_per_100g">389</field>
+            <field name="protein_g">17</field>
+            <field name="carbs_g">66</field>
+            <field name="fat_g">7</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_sweet_potato" model="gym.food">
+            <field name="name">Sweet Potato (boiled)</field>
+            <field name="category_id" ref="demo_food_cat_carbs"/>
+            <field name="calories_per_100g">86</field>
+            <field name="protein_g">1.6</field>
+            <field name="carbs_g">20</field>
+            <field name="fat_g">0.1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_broccoli" model="gym.food">
+            <field name="name">Broccoli (steamed)</field>
+            <field name="category_id" ref="demo_food_cat_veg"/>
+            <field name="calories_per_100g">34</field>
+            <field name="protein_g">2.8</field>
+            <field name="carbs_g">7</field>
+            <field name="fat_g">0.4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_spinach" model="gym.food">
+            <field name="name">Spinach (sauteed)</field>
+            <field name="category_id" ref="demo_food_cat_veg"/>
+            <field name="calories_per_100g">23</field>
+            <field name="protein_g">2.9</field>
+            <field name="carbs_g">3.6</field>
+            <field name="fat_g">0.4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_banana" model="gym.food">
+            <field name="name">Banana</field>
+            <field name="category_id" ref="demo_food_cat_fruit"/>
+            <field name="calories_per_100g">89</field>
+            <field name="protein_g">1.1</field>
+            <field name="carbs_g">23</field>
+            <field name="fat_g">0.3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_apple" model="gym.food">
+            <field name="name">Apple</field>
+            <field name="category_id" ref="demo_food_cat_fruit"/>
+            <field name="calories_per_100g">52</field>
+            <field name="protein_g">0.3</field>
+            <field name="carbs_g">14</field>
+            <field name="fat_g">0.2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_greek_yogurt" model="gym.food">
+            <field name="name">Greek Yogurt (plain)</field>
+            <field name="category_id" ref="demo_food_cat_dairy"/>
+            <field name="calories_per_100g">59</field>
+            <field name="protein_g">10</field>
+            <field name="carbs_g">3.6</field>
+            <field name="fat_g">0.4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="demo_food_almonds" model="gym.food">
+            <field name="name">Almonds</field>
+            <field name="category_id" ref="demo_food_cat_fats"/>
+            <field name="calories_per_100g">579</field>
+            <field name="protein_g">21</field>
+            <field name="carbs_g">22</field>
+            <field name="fat_g">50</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- ==================== WORKOUT TEMPLATES ==================== -->
+        <record id="demo_wt_weight_loss" model="gym.workout.template">
+            <field name="name">Weight Loss Starter</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">weight_loss</field>
+            <field name="duration_weeks">4</field>
+            <field name="description">A 4-week cardio-focused plan to kick-start fat loss for new members.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'sequence': 10, 'day_of_week': 'monday', 'exercise_id': ref('demo_ex_running'), 'equipment_id': ref('demo_equip_treadmill'), 'sets': 1, 'reps': '30 mins', 'rest_seconds': 0, 'notes': 'Moderate pace'}),
+                (0, 0, {'sequence': 20, 'day_of_week': 'wednesday', 'exercise_id': ref('demo_ex_cycling'), 'equipment_id': ref('demo_equip_bike'), 'sets': 1, 'reps': '25 mins', 'rest_seconds': 0}),
+                (0, 0, {'sequence': 30, 'day_of_week': 'friday', 'exercise_id': ref('demo_ex_plank'), 'sets': 3, 'reps': '45 sec', 'rest_seconds': 30}),
+            ]"/>
+        </record>
+
+        <record id="demo_wt_muscle_gain" model="gym.workout.template">
+            <field name="name">Muscle Gain Builder</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">muscle_gain</field>
+            <field name="duration_weeks">8</field>
+            <field name="description">An 8-week progressive overload program to build lean muscle mass.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'sequence': 10, 'day_of_week': 'monday', 'exercise_id': ref('demo_ex_squats'), 'equipment_id': ref('demo_equip_barbell'), 'sets': 4, 'reps': '8-10', 'rest_seconds': 90}),
+                (0, 0, {'sequence': 20, 'day_of_week': 'wednesday', 'exercise_id': ref('demo_ex_bench_press'), 'equipment_id': ref('demo_equip_barbell'), 'sets': 4, 'reps': '8-10', 'rest_seconds': 90}),
+                (0, 0, {'sequence': 30, 'day_of_week': 'friday', 'exercise_id': ref('demo_ex_lat_pulldown'), 'equipment_id': ref('demo_equip_lat_pulldown'), 'sets': 3, 'reps': '10-12', 'rest_seconds': 60}),
+                (0, 0, {'sequence': 40, 'day_of_week': 'friday', 'exercise_id': ref('demo_ex_leg_press'), 'equipment_id': ref('demo_equip_leg_press'), 'sets': 3, 'reps': '10-12', 'rest_seconds': 60}),
+            ]"/>
+        </record>
+
+        <record id="demo_wt_general_fitness" model="gym.workout.template">
+            <field name="name">General Fitness Plan</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">fitness</field>
+            <field name="duration_weeks">6</field>
+            <field name="description">A balanced 6-week mix of cardio and strength for overall fitness.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'sequence': 10, 'day_of_week': 'monday', 'exercise_id': ref('demo_ex_running'), 'equipment_id': ref('demo_equip_treadmill'), 'sets': 1, 'reps': '20 mins', 'rest_seconds': 0}),
+                (0, 0, {'sequence': 20, 'day_of_week': 'tuesday', 'exercise_id': ref('demo_ex_squats'), 'equipment_id': ref('demo_equip_barbell'), 'sets': 3, 'reps': '12', 'rest_seconds': 60}),
+                (0, 0, {'sequence': 30, 'day_of_week': 'thursday', 'exercise_id': ref('demo_ex_plank'), 'sets': 3, 'reps': '30 sec', 'rest_seconds': 30}),
+                (0, 0, {'sequence': 40, 'day_of_week': 'saturday', 'exercise_id': ref('demo_ex_cycling'), 'equipment_id': ref('demo_equip_bike'), 'sets': 1, 'reps': '20 mins', 'rest_seconds': 0}),
+            ]"/>
+        </record>
+
+        <record id="demo_wt_strength" model="gym.workout.template">
+            <field name="name">Strength &amp; Power</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">strength</field>
+            <field name="duration_weeks">8</field>
+            <field name="description">An 8-week heavy-compound strength program.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'sequence': 10, 'day_of_week': 'monday', 'exercise_id': ref('demo_ex_squats'), 'equipment_id': ref('demo_equip_barbell'), 'sets': 5, 'reps': '5', 'rest_seconds': 120}),
+                (0, 0, {'sequence': 20, 'day_of_week': 'wednesday', 'exercise_id': ref('demo_ex_bench_press'), 'equipment_id': ref('demo_equip_barbell'), 'sets': 5, 'reps': '5', 'rest_seconds': 120}),
+                (0, 0, {'sequence': 30, 'day_of_week': 'friday', 'exercise_id': ref('demo_ex_leg_press'), 'equipment_id': ref('demo_equip_leg_press'), 'sets': 4, 'reps': '8', 'rest_seconds': 90}),
+            ]"/>
+        </record>
+
+        <!-- ==================== DIET TEMPLATES ==================== -->
+        <record id="demo_dt_weight_loss" model="gym.diet.template">
+            <field name="name">Weight Loss Meal Plan</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">weight_loss</field>
+            <field name="description">A calorie-conscious meal plan built around lean protein and vegetables.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'meal_type': 'breakfast', 'food_id': ref('demo_food_oats'), 'quantity': 60, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'mid_morning', 'food_id': ref('demo_food_greek_yogurt'), 'quantity': 150, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'lunch', 'food_id': ref('demo_food_chicken_breast'), 'quantity': 150, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'lunch', 'food_id': ref('demo_food_broccoli'), 'quantity': 100, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'evening_snack', 'food_id': ref('demo_food_apple'), 'quantity': 1, 'uom': 'piece'}),
+                (0, 0, {'meal_type': 'dinner', 'food_id': ref('demo_food_spinach'), 'quantity': 100, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'dinner', 'food_id': ref('demo_food_sweet_potato'), 'quantity': 150, 'uom': 'g'}),
+            ]"/>
+        </record>
+
+        <record id="demo_dt_muscle_gain" model="gym.diet.template">
+            <field name="name">Muscle Gain Meal Plan</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">muscle_gain</field>
+            <field name="description">A higher-calorie, protein-rich meal plan to support muscle growth.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'meal_type': 'breakfast', 'food_id': ref('demo_food_eggs'), 'quantity': 3, 'uom': 'piece'}),
+                (0, 0, {'meal_type': 'breakfast', 'food_id': ref('demo_food_oats'), 'quantity': 80, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'mid_morning', 'food_id': ref('demo_food_banana'), 'quantity': 1, 'uom': 'piece'}),
+                (0, 0, {'meal_type': 'lunch', 'food_id': ref('demo_food_chicken_breast'), 'quantity': 200, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'lunch', 'food_id': ref('demo_food_brown_rice'), 'quantity': 150, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'evening_snack', 'food_id': ref('demo_food_almonds'), 'quantity': 30, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'dinner', 'food_id': ref('demo_food_paneer'), 'quantity': 150, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'dinner', 'food_id': ref('demo_food_sweet_potato'), 'quantity': 200, 'uom': 'g'}),
+            ]"/>
+        </record>
+
+        <record id="demo_dt_general_fitness" model="gym.diet.template">
+            <field name="name">General Fitness Meal Plan</field>
+            <field name="company_id" eval="False"/>
+            <field name="goal_type">fitness</field>
+            <field name="description">A balanced everyday meal plan for general wellbeing.</field>
+            <field name="line_ids" eval="[
+                (0, 0, {'meal_type': 'breakfast', 'food_id': ref('demo_food_eggs'), 'quantity': 2, 'uom': 'piece'}),
+                (0, 0, {'meal_type': 'lunch', 'food_id': ref('demo_food_chicken_breast'), 'quantity': 120, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'lunch', 'food_id': ref('demo_food_broccoli'), 'quantity': 100, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'dinner', 'food_id': ref('demo_food_spinach'), 'quantity': 100, 'uom': 'g'}),
+                (0, 0, {'meal_type': 'dinner', 'food_id': ref('demo_food_brown_rice'), 'quantity': 100, 'uom': 'g'}),
+            ]"/>
+        </record>
+
+        <!-- ==================== MEMBERSHIP PLANS ==================== -->
+        <record id="demo_plan_trial" model="product.template">
+            <field name="name">7-Day Trial Pass</field>
+            <field name="type">service</field>
+            <field name="list_price">19.0</field>
+            <field name="is_gym_membership_plan">True</field>
+            <field name="gym_plan_code">TRIAL7</field>
+            <field name="gym_duration_value">7</field>
+            <field name="gym_duration_uom">days</field>
+        </record>
+        <record id="demo_plan_monthly_basic" model="product.template">
+            <field name="name">Monthly Basic</field>
+            <field name="type">service</field>
+            <field name="list_price">49.0</field>
+            <field name="is_gym_membership_plan">True</field>
+            <field name="gym_plan_code">MB1</field>
+            <field name="gym_duration_value">1</field>
+            <field name="gym_duration_uom">months</field>
+            <field name="gym_benefits" type="html">
+                <ul><li>Full gym floor access</li><li>Locker facility</li></ul>
+            </field>
+        </record>
+        <record id="demo_plan_student_monthly" model="product.template">
+            <field name="name">Student Monthly</field>
+            <field name="type">service</field>
+            <field name="list_price">35.0</field>
+            <field name="is_gym_membership_plan">True</field>
+            <field name="gym_plan_code">SM1</field>
+            <field name="gym_duration_value">1</field>
+            <field name="gym_duration_uom">months</field>
+        </record>
+        <record id="demo_plan_quarterly_fitness" model="product.template">
+            <field name="name">Quarterly Fitness</field>
+            <field name="type">service</field>
+            <field name="list_price">139.0</field>
+            <field name="is_gym_membership_plan">True</field>
+            <field name="gym_plan_code">QF3</field>
+            <field name="gym_duration_value">3</field>
+            <field name="gym_duration_uom">months</field>
+            <field name="gym_includes_workout">True</field>
+            <field name="gym_benefits" type="html">
+                <ul><li>Full gym floor access</li><li>Personalised workout plan</li><li>Monthly progress check-in</li></ul>
+            </field>
+        </record>
+        <record id="demo_plan_half_yearly_premium" model="product.template">
+            <field name="name">Half-Yearly Premium</field>
+            <field name="type">service</field>
+            <field name="list_price">249.0</field>
+            <field name="is_gym_membership_plan">True</field>
+            <field name="gym_plan_code">HYP6</field>
+            <field name="gym_duration_value">6</field>
+            <field name="gym_duration_uom">months</field>
+            <field name="gym_includes_workout">True</field>
+            <field name="gym_includes_diet">True</field>
+            <field name="gym_benefits" type="html">
+                <ul><li>Full gym floor access</li><li>Personalised workout plan</li><li>Personalised diet plan</li><li>Health assessments included</li></ul>
+            </field>
+        </record>
+        <record id="demo_plan_annual_gold" model="product.template">
+            <field name="name">Annual Gold</field>
+            <field name="type">service</field>
+            <field name="list_price">449.0</field>
+            <field name="is_gym_membership_plan">True</field>
+            <field name="gym_plan_code">AG12</field>
+            <field name="gym_duration_value">12</field>
+            <field name="gym_duration_uom">months</field>
+            <field name="gym_includes_workout">True</field>
+            <field name="gym_includes_diet">True</field>
+            <field name="gym_benefits" type="html">
+                <ul><li>Full gym floor access, all branches</li><li>Personalised workout &amp; diet plans</li><li>Priority trainer scheduling</li><li>Quarterly health assessments</li></ul>
+            </field>
+        </record>
+
+        <!-- ==================== GYM STAFF ==================== -->
+        <!-- Additional gym staff kept as plain hr.employee records (no login) -
+             assign them via Settings > Users if you also want to test their
+             role-scoped access. -->
+        <record id="demo_emp_trainer1" model="hr.employee">
+            <field name="name">Marc Demo</field>
+            <field name="job_title">Senior Personal Trainer</field>
+            <field name="work_email">marc.demo@example.com</field>
+            <field name="specialization_ids" eval="[(6, 0, [ref('demo_spec_weight_loss'), ref('demo_spec_strength')])]"/>
+        </record>
+
+        <!-- Additional gym staff kept as plain hr.employee records (no login) -
+             assign them via Settings > Users if you also want to test their
+             role-scoped access. -->
+        <record id="demo_emp_trainer2" model="hr.employee">
+            <field name="name">Rohan Verma</field>
+            <field name="job_title">Personal Trainer</field>
+            <field name="work_email">rohan.verma@example.com</field>
+            <field name="specialization_ids" eval="[(6, 0, [ref('demo_spec_crossfit'), ref('demo_spec_rehab')])]"/>
+        </record>
+        <record id="demo_emp_nutritionist1" model="hr.employee">
+            <field name="name">Ananya Sharma</field>
+            <field name="job_title">Sports Nutritionist</field>
+            <field name="work_email">ananya.sharma@example.com</field>
+            <field name="specialization_ids" eval="[(6, 0, [ref('demo_spec_sports_nutrition')])]"/>
+        </record>
+        <record id="demo_emp_reception1" model="hr.employee">
+            <field name="name">Neha Kulkarni</field>
+            <field name="job_title">Front Desk Receptionist</field>
+            <field name="work_email">neha.kulkarni@example.com</field>
+        </record>
+        <record id="demo_emp_branch_manager1" model="hr.employee">
+            <field name="name">Vikram Singh</field>
+            <field name="job_title">Branch Manager</field>
+            <field name="work_email">vikram.singh@example.com</field>
+        </record>
+
+        <!-- ==================== MEMBERS ==================== -->
+        <record id="demo_member_rahul" model="res.partner">
+            <field name="name">Rahul Mehta</field>
+            <field name="is_member">True</field>
+            <field name="email">rahul.mehta@example.com</field>
+            <field name="phone">+91 98200 11001</field>
+            <field name="city">Mumbai</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_priya" model="res.partner">
+            <field name="name">Priya Nair</field>
+            <field name="is_member">True</field>
+            <field name="email">priya.nair@example.com</field>
+            <field name="phone">+91 98200 11002</field>
+            <field name="city">Mumbai</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_karan" model="res.partner">
+            <field name="name">Karan Kapoor</field>
+            <field name="is_member">True</field>
+            <field name="email">karan.kapoor@example.com</field>
+            <field name="phone">+91 98200 11003</field>
+            <field name="city">Pune</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_sneha" model="res.partner">
+            <field name="name">Sneha Reddy</field>
+            <field name="is_member">True</field>
+            <field name="email">sneha.reddy@example.com</field>
+            <field name="phone">+91 98200 11004</field>
+            <field name="city">Hyderabad</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_arjun" model="res.partner">
+            <field name="name">Arjun Malhotra</field>
+            <field name="is_member">True</field>
+            <field name="email">arjun.malhotra@example.com</field>
+            <field name="phone">+91 98200 11005</field>
+            <field name="city">Delhi</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_isha" model="res.partner">
+            <field name="name">Isha Kulkarni</field>
+            <field name="is_member">True</field>
+            <field name="email">isha.kulkarni@example.com</field>
+            <field name="phone">+91 98200 11006</field>
+            <field name="city">Pune</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_vivek" model="res.partner">
+            <field name="name">Vivek Choudhary</field>
+            <field name="is_member">True</field>
+            <field name="email">vivek.choudhary@example.com</field>
+            <field name="phone">+91 98200 11007</field>
+            <field name="city">Mumbai</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+        <record id="demo_member_meera" model="res.partner">
+            <field name="name">Meera Iyer</field>
+            <field name="is_member">True</field>
+            <field name="email">meera.iyer@example.com</field>
+            <field name="phone">+91 98200 11008</field>
+            <field name="city">Bengaluru</field>
+            <field name="country_id" ref="base.in"/>
+        </record>
+
+        <!-- ==================== MEMBERSHIPS ==================== -->
+        <record id="demo_membership_rahul" model="gym.membership">
+            <field name="partner_id" ref="demo_member_rahul"/>
+            <field name="plan_id" ref="demo_plan_annual_gold"/>
+            <field name="trainer_id" ref="demo_emp_trainer1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=60)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="demo_membership_priya" model="gym.membership">
+            <field name="partner_id" ref="demo_member_priya"/>
+            <field name="plan_id" ref="demo_plan_quarterly_fitness"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="demo_membership_karan" model="gym.membership">
+            <field name="partner_id" ref="demo_member_karan"/>
+            <field name="plan_id" ref="demo_plan_monthly_basic"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=90)).strftime('%Y-%m-%d')"/>
+            <field name="state">expired</field>
+        </record>
+        <record id="demo_membership_sneha" model="gym.membership">
+            <field name="partner_id" ref="demo_member_sneha"/>
+            <field name="plan_id" ref="demo_plan_half_yearly_premium"/>
+            <field name="trainer_id" ref="demo_emp_trainer1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="demo_membership_arjun" model="gym.membership">
+            <field name="partner_id" ref="demo_member_arjun"/>
+            <field name="plan_id" ref="demo_plan_monthly_basic"/>
+            <field name="start_date" eval="(DateTime.today()).strftime('%Y-%m-%d')"/>
+            <field name="state">draft</field>
+        </record>
+        <record id="demo_membership_isha" model="gym.membership">
+            <field name="partner_id" ref="demo_member_isha"/>
+            <field name="plan_id" ref="demo_plan_quarterly_fitness"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=40)).strftime('%Y-%m-%d')"/>
+            <field name="state">cancelled</field>
+        </record>
+        <record id="demo_membership_vivek" model="gym.membership">
+            <field name="partner_id" ref="demo_member_vivek"/>
+            <field name="plan_id" ref="demo_plan_annual_gold"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=150)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+            <field name="renewal_count">1</field>
+        </record>
+        <record id="demo_membership_meera" model="gym.membership">
+            <field name="partner_id" ref="demo_member_meera"/>
+            <field name="plan_id" ref="demo_plan_student_monthly"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+
+        <!-- ==================== HEALTH ASSESSMENTS ==================== -->
+        <record id="demo_ha_rahul" model="gym.health.assessment">
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="trainer_id" ref="demo_emp_trainer1"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="date" eval="(DateTime.today() - relativedelta(days=55)).strftime('%Y-%m-%d')"/>
+            <field name="goal">muscle_gain</field>
+            <field name="height_cm">175</field>
+            <field name="weight_kg">82</field>
+            <field name="body_fat_pct">22</field>
+            <field name="waist_cm">90</field>
+            <field name="chest_cm">102</field>
+            <field name="fitness_level">Intermediate</field>
+            <field name="workout_template_id" ref="demo_wt_muscle_gain"/>
+            <field name="diet_template_id" ref="demo_dt_muscle_gain"/>
+            <field name="next_assessment_date" eval="(DateTime.today() + relativedelta(days=35)).strftime('%Y-%m-%d')"/>
+            <field name="state">completed</field>
+        </record>
+        <record id="demo_ha_priya" model="gym.health.assessment">
+            <field name="membership_id" ref="demo_membership_priya"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="date" eval="(DateTime.today() - relativedelta(days=18)).strftime('%Y-%m-%d')"/>
+            <field name="goal">fitness</field>
+            <field name="height_cm">162</field>
+            <field name="weight_kg">58</field>
+            <field name="fitness_level">Beginner</field>
+            <field name="workout_template_id" ref="demo_wt_general_fitness"/>
+            <field name="state">completed</field>
+        </record>
+        <record id="demo_ha_sneha" model="gym.health.assessment">
+            <field name="membership_id" ref="demo_membership_sneha"/>
+            <field name="trainer_id" ref="demo_emp_trainer1"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="date" eval="(DateTime.today() - relativedelta(days=8)).strftime('%Y-%m-%d')"/>
+            <field name="goal">weight_loss</field>
+            <field name="height_cm">168</field>
+            <field name="weight_kg">74</field>
+            <field name="workout_template_id" ref="demo_wt_weight_loss"/>
+            <field name="diet_template_id" ref="demo_dt_weight_loss"/>
+            <field name="state">in_progress</field>
+        </record>
+        <record id="demo_ha_vivek_baseline" model="gym.health.assessment">
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="date" eval="(DateTime.today() - relativedelta(days=148)).strftime('%Y-%m-%d')"/>
+            <field name="goal">strength</field>
+            <field name="height_cm">178</field>
+            <field name="weight_kg">88</field>
+            <field name="fitness_level">Intermediate</field>
+            <field name="workout_template_id" ref="demo_wt_strength"/>
+            <field name="diet_template_id" ref="demo_dt_muscle_gain"/>
+            <field name="state">completed</field>
+        </record>
+        <record id="demo_ha_vivek_followup" model="gym.health.assessment">
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="date" eval="(DateTime.today() - relativedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="goal">strength</field>
+            <field name="height_cm">178</field>
+            <field name="weight_kg">91</field>
+            <field name="fitness_level">Advanced</field>
+            <field name="workout_template_id" ref="demo_wt_strength"/>
+            <field name="diet_template_id" ref="demo_dt_muscle_gain"/>
+            <field name="state">completed</field>
+        </record>
+        <record id="demo_ha_meera" model="gym.health.assessment">
+            <field name="membership_id" ref="demo_membership_meera"/>
+            <field name="date" eval="(DateTime.today() - relativedelta(days=4)).strftime('%Y-%m-%d')"/>
+            <field name="goal">fitness</field>
+            <field name="state">draft</field>
+        </record>
+
+        <!-- ==================== WORKOUT PLANS ==================== -->
+        <!-- Exercise Lines are auto-copied from the chosen Template by create(). -->
+        <record id="demo_wp_rahul" model="gym.workout.plan">
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="health_assessment_id" ref="demo_ha_rahul"/>
+            <field name="template_id" ref="demo_wt_muscle_gain"/>
+            <field name="trainer_id" ref="demo_emp_trainer1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=50)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="demo_wp_priya" model="gym.workout.plan">
+            <field name="membership_id" ref="demo_membership_priya"/>
+            <field name="health_assessment_id" ref="demo_ha_priya"/>
+            <field name="template_id" ref="demo_wt_general_fitness"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="demo_wp_sneha" model="gym.workout.plan">
+            <field name="membership_id" ref="demo_membership_sneha"/>
+            <field name="health_assessment_id" ref="demo_ha_sneha"/>
+            <field name="template_id" ref="demo_wt_weight_loss"/>
+            <field name="trainer_id" ref="demo_emp_trainer1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="state">draft</field>
+        </record>
+        <record id="demo_wp_vivek_v1" model="gym.workout.plan">
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="health_assessment_id" ref="demo_ha_vivek_baseline"/>
+            <field name="template_id" ref="demo_wt_strength"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=145)).strftime('%Y-%m-%d')"/>
+            <field name="state">completed</field>
+        </record>
+        <record id="demo_wp_vivek_v2" model="gym.workout.plan">
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="health_assessment_id" ref="demo_ha_vivek_followup"/>
+            <field name="template_id" ref="demo_wt_strength"/>
+            <field name="trainer_id" ref="demo_emp_trainer2"/>
+            <field name="previous_plan_id" ref="demo_wp_vivek_v1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=18)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+
+        <!-- ==================== DIET PLANS ==================== -->
+        <!-- Meal Lines are auto-copied from the chosen Template by create(). -->
+        <record id="demo_dp_rahul" model="gym.diet.plan">
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="health_assessment_id" ref="demo_ha_rahul"/>
+            <field name="template_id" ref="demo_dt_muscle_gain"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=50)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="demo_dp_sneha" model="gym.diet.plan">
+            <field name="membership_id" ref="demo_membership_sneha"/>
+            <field name="health_assessment_id" ref="demo_ha_sneha"/>
+            <field name="template_id" ref="demo_dt_weight_loss"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="state">draft</field>
+        </record>
+        <record id="demo_dp_vivek_v1" model="gym.diet.plan">
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="health_assessment_id" ref="demo_ha_vivek_baseline"/>
+            <field name="template_id" ref="demo_dt_muscle_gain"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=145)).strftime('%Y-%m-%d')"/>
+            <field name="state">completed</field>
+        </record>
+        <record id="demo_dp_vivek_v2" model="gym.diet.plan">
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="health_assessment_id" ref="demo_ha_vivek_followup"/>
+            <field name="template_id" ref="demo_dt_muscle_gain"/>
+            <field name="nutritionist_id" ref="demo_emp_nutritionist1"/>
+            <field name="previous_plan_id" ref="demo_dp_vivek_v1"/>
+            <field name="start_date" eval="(DateTime.today() - relativedelta(days=18)).strftime('%Y-%m-%d')"/>
+            <field name="state">active</field>
+        </record>
+
+        <!-- ==================== ATTENDANCE ==================== -->
+        <record id="demo_att_rahul_1" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_rahul"/>
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=12)).replace(hour=7, minute=10, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=12)).replace(hour=8, minute=25, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_rahul_2" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_rahul"/>
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=8)).replace(hour=7, minute=5, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=8)).replace(hour=8, minute=15, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_rahul_3" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_rahul"/>
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=3)).replace(hour=18, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=3)).replace(hour=19, minute=20, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_rahul_4" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_rahul"/>
+            <field name="membership_id" ref="demo_membership_rahul"/>
+            <field name="check_in" eval="DateTime.today().replace(hour=7, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_att_priya_1" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_priya"/>
+            <field name="membership_id" ref="demo_membership_priya"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=9)).replace(hour=17, minute=30, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=9)).replace(hour=18, minute=45, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_priya_2" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_priya"/>
+            <field name="membership_id" ref="demo_membership_priya"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=5)).replace(hour=18, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=5)).replace(hour=19, minute=10, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_priya_3" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_priya"/>
+            <field name="membership_id" ref="demo_membership_priya"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=2)).replace(hour=17, minute=45, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=2)).replace(hour=19, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_att_sneha_1" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_sneha"/>
+            <field name="membership_id" ref="demo_membership_sneha"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=6)).replace(hour=6, minute=30, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=6)).replace(hour=7, minute=40, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_sneha_2" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_sneha"/>
+            <field name="membership_id" ref="demo_membership_sneha"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=1)).replace(hour=6, minute=45, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=1)).replace(hour=7, minute=50, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_att_vivek_1" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_vivek"/>
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=14)).replace(hour=19, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=14)).replace(hour=20, minute=15, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_vivek_2" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_vivek"/>
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=7)).replace(hour=19, minute=15, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=7)).replace(hour=20, minute=30, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_vivek_3" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_vivek"/>
+            <field name="membership_id" ref="demo_membership_vivek"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=1)).replace(hour=19, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=1)).replace(hour=20, minute=10, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="demo_att_meera_1" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_meera"/>
+            <field name="membership_id" ref="demo_membership_meera"/>
+            <field name="check_in" eval="(DateTime.today() - relativedelta(days=4)).replace(hour=8, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="check_out" eval="(DateTime.today() - relativedelta(days=4)).replace(hour=9, minute=5, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        <record id="demo_att_meera_2" model="gym.attendance">
+            <field name="partner_id" ref="demo_member_meera"/>
+            <field name="membership_id" ref="demo_membership_meera"/>
+            <field name="check_in" eval="DateTime.today().replace(hour=8, minute=30, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+    </data>
+</odoo>

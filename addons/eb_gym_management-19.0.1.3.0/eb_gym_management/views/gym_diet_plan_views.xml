@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_gym_diet_plan_list" model="ir.ui.view">
+        <field name="name">gym.diet.plan.list</field>
+        <field name="model">gym.diet.plan</field>
+        <field name="arch" type="xml">
+            <list string="Diet Plans"
+                  decoration-success="state == 'active'"
+                  decoration-muted="state in ['completed','revised']" duplicate="0">
+                <field name="name"/>
+                <field name="membership_id"/>
+                <field name="template_id"/>
+                <field name="nutritionist_id"/>
+                <field name="start_date"/>
+                <field name="state" widget="badge"
+                       decoration-warning="state == 'draft'"
+                       decoration-success="state == 'active'"
+                       decoration-muted="state in ['completed','revised']"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_diet_plan_form" model="ir.ui.view">
+        <field name="name">gym.diet.plan.form</field>
+        <field name="model">gym.diet.plan</field>
+        <field name="arch" type="xml">
+            <form string="Diet Plan" duplicate="0">
+                <header>
+                    <button name="action_activate" string="Activate" type="object"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_complete" string="Mark Completed" type="object"
+                            invisible="state != 'active'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,active,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_previous" type="object"
+                                class="oe_stat_button" icon="fa-history"
+                                invisible="not previous_plan_id">
+                            <span class="o_stat_text">Previous Version</span>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="membership_id" readonly="state != 'draft'"/>
+                            <field name="health_assessment_id"
+                                   domain="[('membership_id', '=', membership_id)]"
+                                   readonly="state != 'draft'"/>
+                            <field name="template_id" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="nutritionist_id"/>
+                            <field name="start_date" readonly="state != 'draft'"/>
+                            <field name="company_id" readonly="1" groups="base.group_multi_company"/>
+                            <field name="previous_plan_id" readonly="1" invisible="not previous_plan_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Meal Lines">
+                            <field name="line_ids" readonly="state in ['completed','revised']">
+                                <list editable="bottom">
+                                    <field name="meal_type"/>
+                                    <field name="food_id"/>
+                                    <field name="quantity"/>
+                                    <field name="uom"/>
+                                    <field name="notes"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_gym_diet_plan_search" model="ir.ui.view">
+        <field name="name">gym.diet.plan.search</field>
+        <field name="model">gym.diet.plan</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                    <field name="state" select="multi" icon="fa-check-square-o" enable_counters="1"/>
+                </searchpanel>
+                <field name="name"/>
+                <field name="membership_id"/>
+                <field name="nutritionist_id"/>
+                <group>
+                    <filter name="group_nutritionist" string="Nutritionist" context="{'group_by': 'nutritionist_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_diet_plan" model="ir.actions.act_window">
+        <field name="name">Diet Plans</field>
+        <field name="res_model">gym.diet.plan</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_gym_diet_plan_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No diet plans yet</p>
+            <p>Create a diet plan for a member based on their health assessment and goals.</p>
+        </field>
+    </record>
+
+</odoo>

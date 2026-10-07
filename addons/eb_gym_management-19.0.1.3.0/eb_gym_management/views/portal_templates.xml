@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_breadcrumbs_gym" name="Portal layout: gym membership menu entries"
+              inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'gym_membership'" t-attf-class="breadcrumb-item #{'active' if not membership else ''}">
+                <a t-if="membership" t-attf-href="/my/memberships?{{ keep_query() }}">My Memberships</a>
+                <t t-else="">My Memberships</t>
+            </li>
+            <li t-if="membership" t-attf-class="breadcrumb-item #{'active' if not plan else ''}">
+                <a t-if="plan" t-attf-href="/my/memberships/#{membership.id}?{{ keep_query() }}">
+                    <t t-out="membership.name"/>
+                </a>
+                <t t-else=""><t t-out="membership.name"/></t>
+            </li>
+            <li t-if="plan" class="breadcrumb-item active">
+                <t t-out="plan.name"/>
+            </li>
+            <li t-if="page_name == 'gym_workout_plan'" class="breadcrumb-item active">My Workout Plans</li>
+            <li t-if="page_name == 'gym_diet_plan'" class="breadcrumb-item active">My Diet Plans</li>
+            <li t-if="page_name == 'gym_attendance'" class="breadcrumb-item active">Attendance</li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_gym" name="Portal My Home: Gym Membership" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[@id='portal_common_category']" position="after">
+            <div class="o_portal_category row g-2 mt-3" id="portal_gym_category">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/eb_gym_management/static/src/img/portal-membership.svg'"/>
+                    <t t-set="title">My Memberships</t>
+                    <t t-set="url" t-value="'/my/memberships'"/>
+                    <t t-set="text">Follow your gym membership, trainer and progress</t>
+                    <t t-set="placeholder_count" t-value="'membership_count'"/>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/eb_gym_management/static/src/img/portal-workout.svg'"/>
+                    <t t-set="title">My Workout Plans</t>
+                    <t t-set="url" t-value="'/my/workout-plans'"/>
+                    <t t-set="text">View your assigned workout plans and exercises</t>
+                    <t t-set="placeholder_count" t-value="'workout_plan_count'"/>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/eb_gym_management/static/src/img/portal-diet.svg'"/>
+                    <t t-set="title">My Diet Plans</t>
+                    <t t-set="url" t-value="'/my/diet-plans'"/>
+                    <t t-set="text">View your assigned diet plans and meals</t>
+                    <t t-set="placeholder_count" t-value="'diet_plan_count'"/>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/eb_gym_management/static/src/img/portal-attendance.svg'"/>
+                    <t t-set="title">Attendance</t>
+                    <t t-set="url" t-value="'/my/attendance'"/>
+                    <t t-set="text">Check in, check out and track your visit history</t>
+                    <t t-set="placeholder_count" t-value="'attendance_count'"/>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_memberships" name="My Memberships">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Memberships</t>
+            </t>
+            <div t-if="not memberships" class="alert alert-warning" role="alert">
+                You don't have any gym membership yet.
+            </div>
+            <t t-if="memberships" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Reference</th>
+                        <th>Plan</th>
+                        <th class="text-end">Start Date</th>
+                        <th class="text-end">End Date</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <t t-foreach="memberships" t-as="membership">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/memberships/#{membership.id}">
+                                <t t-out="membership.name"/>
+                            </a>
+                        </td>
+                        <td><t t-out="membership.plan_id.name"/></td>
+                        <td class="text-end"><span t-field="membership.start_date"/></td>
+                        <td class="text-end"><span t-field="membership.end_date"/></td>
+                        <td class="text-center">
+                            <t t-set="state_color" t-value="{'active': 'success', 'on_hold': 'info', 'draft': 'warning', 'expired': 'danger', 'cancelled': 'secondary'}.get(membership.state, 'secondary')"/>
+                            <t t-set="state_label" t-value="{'active': 'Active', 'on_hold': 'On Hold', 'draft': 'Draft', 'expired': 'Expired', 'cancelled': 'Cancelled'}.get(membership.state, membership.state)"/>
+                            <span t-attf-class="badge text-bg-#{state_color}"><t t-out="state_label"/></span>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <t t-call="portal.pager"/>
+        </t>
+    </template>
+
+    <template id="portal_my_workout_plans" name="My Workout Plans">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Workout Plans</t>
+            </t>
+            <div t-if="not workout_plans" class="alert alert-warning" role="alert">
+                You don't have any workout plan yet.
+            </div>
+            <t t-if="workout_plans" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Reference</th>
+                        <th>Membership</th>
+                        <th>Template</th>
+                        <th>Trainer</th>
+                        <th class="text-end">Start Date</th>
+                        <th class="text-end">End Date</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <t t-foreach="workout_plans" t-as="wplan">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/memberships/#{wplan.membership_id.id}/workout/#{wplan.id}">
+                                <t t-out="wplan.name"/>
+                            </a>
+                        </td>
+                        <td><t t-out="wplan.membership_id.name"/></td>
+                        <td><t t-out="wplan.template_id.name"/></td>
+                        <td><t t-out="wplan.trainer_id.name"/></td>
+                        <td class="text-end"><span t-field="wplan.start_date"/></td>
+                        <td class="text-end"><span t-field="wplan.end_date"/></td>
+                        <td class="text-center">
+                            <t t-set="state_color" t-value="{'active': 'success', 'draft': 'warning', 'completed': 'info', 'revised': 'secondary'}.get(wplan.state, 'secondary')"/>
+                            <span t-attf-class="badge text-bg-#{state_color}" t-field="wplan.state"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <t t-call="portal.pager"/>
+        </t>
+    </template>
+
+    <template id="portal_my_diet_plans" name="My Diet Plans">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Diet Plans</t>
+            </t>
+            <div t-if="not diet_plans" class="alert alert-warning" role="alert">
+                You don't have any diet plan yet.
+            </div>
+            <t t-if="diet_plans" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Reference</th>
+                        <th>Membership</th>
+                        <th>Template</th>
+                        <th>Nutritionist</th>
+                        <th class="text-end">Start Date</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <t t-foreach="diet_plans" t-as="dplan">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/memberships/#{dplan.membership_id.id}/diet/#{dplan.id}">
+                                <t t-out="dplan.name"/>
+                            </a>
+                        </td>
+                        <td><t t-out="dplan.membership_id.name"/></td>
+                        <td><t t-out="dplan.template_id.name"/></td>
+                        <td><t t-out="dplan.nutritionist_id.name"/></td>
+                        <td class="text-end"><span t-field="dplan.start_date"/></td>
+                        <td class="text-center">
+                            <t t-set="state_color" t-value="{'active': 'success', 'draft': 'warning', 'completed': 'info', 'revised': 'secondary'}.get(dplan.state, 'secondary')"/>
+                            <span t-attf-class="badge text-bg-#{state_color}" t-field="dplan.state"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <t t-call="portal.pager"/>
+        </t>
+    </template>
+
+    <template id="portal_my_attendance" name="My Attendance">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Attendance</t>
+            </t>
+
+            <t t-if="attendance_notice">
+                <t t-set="notice_map" t-value="{
+                    'checked_in': ('alert-success', 'You have successfully checked in. Enjoy your workout!'),
+                    'checked_out': ('alert-success', 'You have successfully checked out. See you next time!'),
+                    'already_in': ('alert-info', 'You are already checked in.'),
+                    'not_active': ('alert-warning', 'Your membership is not active. Please contact the gym to check in.'),
+                    'on_hold': ('alert-info', 'Your membership is on hold. Please contact the gym to resume before checking in.'),
+                    'not_checked_in': ('alert-warning', 'You are not currently checked in.'),
+                    'checkin_failed': ('alert-danger', 'We could not check you in. Please contact the gym.'),
+                    'checkout_failed': ('alert-danger', 'We could not check you out. Please contact the gym.'),
+                }"/>
+                <t t-set="notice_class" t-value="notice_map.get(attendance_notice, ('alert-info', ''))[0]"/>
+                <t t-set="notice_text" t-value="notice_map.get(attendance_notice, ('alert-info', ''))[1]"/>
+                <div t-if="notice_text" t-attf-class="alert #{notice_class}" role="alert">
+                    <t t-esc="notice_text"/>
+                </div>
+            </t>
+
+            <div class="card mb-4">
+                <div class="card-body d-flex align-items-center flex-wrap gap-3">
+                    <div t-if="not active_membership and on_hold_membership" class="alert alert-info mb-0" role="alert">
+                        Your membership is on hold. Please contact the gym to resume before checking in.
+                    </div>
+                    <div t-if="not active_membership and not on_hold_membership" class="alert alert-warning mb-0" role="alert">
+                        You don't have an active membership. Please contact the gym to check in.
+                    </div>
+                    <t t-if="active_membership">
+                        <form t-if="not open_attendance" t-attf-action="/my/memberships/#{active_membership.id}/checkin" method="post" class="d-inline">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="redirect" value="/my/attendance"/>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-sign-in me-1"/> Check In
+                            </button>
+                        </form>
+                        <form t-if="open_attendance" t-attf-action="/my/memberships/#{active_membership.id}/checkout" method="post" class="d-inline">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="redirect" value="/my/attendance"/>
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="fa fa-sign-out me-1"/> Check Out
+                            </button>
+                        </form>
+                        <span t-if="open_attendance" class="text-muted">
+                            Checked in at <span t-field="open_attendance.check_in"/>
+                        </span>
+                        <span t-if="not open_attendance" class="text-muted">
+                            You are currently checked out.
+                        </span>
+                    </t>
+                </div>
+            </div>
+
+            <div t-if="not attendances" class="alert alert-warning" role="alert">
+                You don't have any attendance recorded yet.
+            </div>
+            <t t-if="attendances" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Reference</th>
+                        <th>Membership</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th class="text-end">Duration (hrs)</th>
+                    </tr>
+                </thead>
+                <t t-foreach="attendances" t-as="att">
+                    <tr>
+                        <td><t t-out="att.name"/></td>
+                        <td><t t-out="att.membership_id.name"/></td>
+                        <td><span t-field="att.check_in"/></td>
+                        <td>
+                            <span t-if="att.check_out" t-field="att.check_out"/>
+                            <span t-if="not att.check_out" class="badge text-bg-warning">Checked In</span>
+                        </td>
+                        <td class="text-end"><t t-out="'%.2f' % att.duration"/></td>
+                    </tr>
+                </t>
+            </t>
+            <t t-call="portal.pager"/>
+        </t>
+    </template>
+
+    <template id="portal_membership_detail" name="My Membership">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="False"/>
+            <div class="row mt16 o_portal_sale_sidebar">
+                <div class="col-12">
+                    <t t-set="state_color" t-value="{'active': 'success', 'on_hold': 'info', 'draft': 'warning', 'expired': 'danger', 'cancelled': 'secondary'}.get(membership.state, 'secondary')"/>
+                    <t t-set="state_label" t-value="{'active': 'Active', 'on_hold': 'On Hold', 'draft': 'Draft', 'expired': 'Expired', 'cancelled': 'Cancelled'}.get(membership.state, membership.state)"/>
+                    <h2>
+                        <t t-out="membership.name"/>
+                        <span t-attf-class="badge text-bg-#{state_color} ms-2"><t t-out="state_label"/></span>
+                    </h2>
+                    <table class="table table-sm mb-4">
+                        <tr>
+                            <td class="fw-bold" style="width: 220px;">Plan</td>
+                            <td><t t-out="membership.plan_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Start Date</td>
+                            <td><span t-field="membership.start_date"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">End Date</td>
+                            <td><span t-field="membership.end_date"/></td>
+                        </tr>
+                        <tr t-if="membership.state == 'on_hold'">
+                            <td class="fw-bold">Hold Period</td>
+                            <td>
+                                <span t-field="membership.hold_start_date"/>
+                                <t t-if="membership.hold_end_date">
+                                    → <span t-field="membership.hold_end_date"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr t-if="membership.hold_days_used">
+                            <td class="fw-bold">Hold Days Used</td>
+                            <td><t t-out="membership.hold_days_used"/></td>
+                        </tr>
+                        <tr t-if="membership.trainer_id">
+                            <td class="fw-bold">Trainer</td>
+                            <td><t t-out="membership.trainer_id.name"/></td>
+                        </tr>
+                    </table>
+
+                    <t t-if="attendance_notice">
+                        <t t-set="notice_map" t-value="{
+                            'checked_in': ('alert-success', 'You have successfully checked in. Enjoy your workout!'),
+                            'checked_out': ('alert-success', 'You have successfully checked out. See you next time!'),
+                            'already_in': ('alert-info', 'You are already checked in.'),
+                            'not_active': ('alert-warning', 'Your membership is not active. Please contact the gym to check in.'),
+                    'on_hold': ('alert-info', 'Your membership is on hold. Please contact the gym to resume before checking in.'),
+                            'not_checked_in': ('alert-warning', 'You are not currently checked in.'),
+                            'checkin_failed': ('alert-danger', 'We could not check you in. Please contact the gym.'),
+                            'checkout_failed': ('alert-danger', 'We could not check you out. Please contact the gym.'),
+                        }"/>
+                        <t t-set="notice_class" t-value="notice_map.get(attendance_notice, ('alert-info', ''))[0]"/>
+                        <t t-set="notice_text" t-value="notice_map.get(attendance_notice, ('alert-info', ''))[1]"/>
+                        <div t-if="notice_text" t-attf-class="alert #{notice_class}" role="alert">
+                            <t t-esc="notice_text"/>
+                        </div>
+                    </t>
+
+                    <div class="mb-4" t-if="membership.state == 'on_hold'">
+                        <div class="alert alert-info mb-0" role="alert">
+                            Your membership is on hold. Check-in is disabled until the gym resumes your membership.
+                        </div>
+                    </div>
+
+                    <div class="mb-4" t-if="membership.state == 'active'">
+                        <form t-if="not open_attendance" t-attf-action="/my/memberships/#{membership.id}/checkin" method="post" class="d-inline">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-sign-in me-1"/> Check In
+                            </button>
+                        </form>
+                        <form t-if="open_attendance" t-attf-action="/my/memberships/#{membership.id}/checkout" method="post" class="d-inline">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="fa fa-sign-out me-1"/> Check Out
+                            </button>
+                        </form>
+                        <span t-if="open_attendance" class="text-muted ms-2">
+                            Checked in at <span t-field="open_attendance.check_in"/>
+                        </span>
+                    </div>
+
+                    <h4>Workout Plans</h4>
+                    <div t-if="not membership.workout_plan_ids" class="alert alert-info" role="alert">
+                        No workout plans yet.
+                    </div>
+                    <t t-if="membership.workout_plan_ids" t-call="portal.portal_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Reference</th>
+                                <th>Template</th>
+                                <th class="text-end">Start Date</th>
+                                <th class="text-end">End Date</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="membership.workout_plan_ids" t-as="wplan">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/memberships/#{membership.id}/workout/#{wplan.id}">
+                                        <t t-out="wplan.name"/>
+                                    </a>
+                                </td>
+                                <td><t t-out="wplan.template_id.name"/></td>
+                                <td class="text-end"><span t-field="wplan.start_date"/></td>
+                                <td class="text-end"><span t-field="wplan.end_date"/></td>
+                                <td class="text-center"><span class="badge text-bg-secondary" t-field="wplan.state"/></td>
+                            </tr>
+                        </t>
+                    </t>
+
+                    <h4 class="mt-4">Diet Plans</h4>
+                    <div t-if="not membership.diet_plan_ids" class="alert alert-info" role="alert">
+                        No diet plans yet.
+                    </div>
+                    <t t-if="membership.diet_plan_ids" t-call="portal.portal_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Reference</th>
+                                <th>Template</th>
+                                <th class="text-end">Start Date</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="membership.diet_plan_ids" t-as="dplan">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/memberships/#{membership.id}/diet/#{dplan.id}">
+                                        <t t-out="dplan.name"/>
+                                    </a>
+                                </td>
+                                <td><t t-out="dplan.template_id.name"/></td>
+                                <td class="text-end"><span t-field="dplan.start_date"/></td>
+                                <td class="text-center"><span class="badge text-bg-secondary" t-field="dplan.state"/></td>
+                            </tr>
+                        </t>
+                    </t>
+
+                    <h4 class="mt-4">Health Assessments</h4>
+                    <div t-if="not membership.health_assessment_ids" class="alert alert-info" role="alert">
+                        No health assessments yet.
+                    </div>
+                    <t t-if="membership.health_assessment_ids" t-call="portal.portal_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Reference</th>
+                                <th class="text-end">Date</th>
+                                <th class="text-end">Weight (kg)</th>
+                                <th class="text-end">BMI</th>
+                                <th>Goal</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="membership.health_assessment_ids" t-as="assessment">
+                            <tr>
+                                <td><t t-out="assessment.name"/></td>
+                                <td class="text-end"><span t-field="assessment.date"/></td>
+                                <td class="text-end"><t t-out="assessment.weight_kg"/></td>
+                                <td class="text-end"><t t-out="assessment.bmi"/></td>
+                                <td><span t-field="assessment.goal"/></td>
+                            </tr>
+                        </t>
+                    </t>
+
+                    <h4 class="mt-4">Recent Attendance</h4>
+                    <div t-if="not attendances" class="alert alert-info" role="alert">
+                        No attendance recorded yet.
+                    </div>
+                    <t t-if="attendances" t-call="portal.portal_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Check In</th>
+                                <th>Check Out</th>
+                                <th class="text-end">Duration (hrs)</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="attendances" t-as="att">
+                            <tr>
+                                <td><span t-field="att.check_in"/></td>
+                                <td><span t-field="att.check_out"/></td>
+                                <td class="text-end"><t t-out="'%.2f' % att.duration"/></td>
+                            </tr>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_workout_plan_detail" name="My Workout Plan">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="False"/>
+            <div class="row mt16">
+                <div class="col-12">
+                    <h2>
+                        <t t-out="plan.name"/>
+                        <span class="badge text-bg-secondary ms-2" t-field="plan.state"/>
+                    </h2>
+                    <table class="table table-sm mb-4">
+                        <tr>
+                            <td class="fw-bold" style="width: 220px;">Template</td>
+                            <td><t t-out="plan.template_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Trainer</td>
+                            <td><t t-out="plan.trainer_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Start Date</td>
+                            <td><span t-field="plan.start_date"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">End Date</td>
+                            <td><span t-field="plan.end_date"/></td>
+                        </tr>
+                    </table>
+
+                    <t t-foreach="days_order" t-as="day">
+                        <t t-if="lines_by_day[day]">
+                            <h5 class="text-capitalize mt-3"><t t-out="day"/></h5>
+                            <t t-call="portal.portal_table">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Exercise</th>
+                                        <th>Category</th>
+                                        <th class="text-end">Sets</th>
+                                        <th class="text-end">Reps</th>
+                                        <th class="text-end">Rest (sec)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="lines_by_day[day]" t-as="line">
+                                    <tr>
+                                        <td><t t-out="line.exercise_id.name"/></td>
+                                        <td><t t-out="line.exercise_category_id.name"/></td>
+                                        <td class="text-end"><t t-out="line.sets"/></td>
+                                        <td class="text-end"><t t-out="line.reps"/></td>
+                                        <td class="text-end"><t t-out="line.rest_seconds"/></td>
+                                        <td><t t-out="line.notes"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_diet_plan_detail" name="My Diet Plan">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="False"/>
+            <div class="row mt16">
+                <div class="col-12">
+                    <h2>
+                        <t t-out="plan.name"/>
+                        <span class="badge text-bg-secondary ms-2" t-field="plan.state"/>
+                    </h2>
+                    <table class="table table-sm mb-4">
+                        <tr>
+                            <td class="fw-bold" style="width: 220px;">Template</td>
+                            <td><t t-out="plan.template_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Nutritionist</td>
+                            <td><t t-out="plan.nutritionist_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Start Date</td>
+                            <td><span t-field="plan.start_date"/></td>
+                        </tr>
+                    </table>
+
+                    <t t-foreach="meals_order" t-as="meal">
+                        <t t-if="lines_by_meal[meal]">
+                            <h5 class="text-capitalize mt-3"><t t-out="meal.replace('_', ' ')"/></h5>
+                            <t t-call="portal.portal_table">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Food</th>
+                                        <th class="text-end">Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="lines_by_meal[meal]" t-as="line">
+                                    <tr>
+                                        <td><t t-out="line.food_id.name"/></td>
+                                        <td class="text-end"><t t-out="line.quantity"/></td>
+                                        <td><t t-out="line.uom"/></td>
+                                        <td><t t-out="line.notes"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

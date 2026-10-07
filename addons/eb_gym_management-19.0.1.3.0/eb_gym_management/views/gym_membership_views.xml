@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_gym_membership_list" model="ir.ui.view">
+        <field name="name">gym.membership.list</field>
+        <field name="model">gym.membership</field>
+        <field name="arch" type="xml">
+            <list string="Memberships" decoration-success="state == 'active'"                  decoration-info="state == 'on_hold'"
+                  decoration-danger="state == 'expired'" decoration-muted="state == 'cancelled'" duplicate="0">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="plan_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="trainer_id" optional="show"/>
+                <field name="renewal_count" optional="show"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'active'"
+                       decoration-info="state == 'on_hold'"
+                       decoration-warning="state == 'draft'"
+                       decoration-danger="state == 'expired'"
+                       decoration-muted="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_membership_form" model="ir.ui.view">
+        <field name="name">gym.membership.form</field>
+        <field name="model">gym.membership</field>
+        <field name="arch" type="xml">
+            <form string="Membership" duplicate="0">
+                <header>
+                    <button name="action_confirm_membership" string="Confirm &amp; Invoice"
+                            type="object" class="btn-primary"
+                            invisible="state != 'draft' or sale_order_id"
+                            groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_set_active" string="Activate"
+                            type="object" class="btn-success"
+                            invisible="(state != 'draft' and not pending_renewal_end_date) or payment_state not in ('paid', 'in_payment')"
+                            groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_create_health_assessment" string="Create Assessment"
+                            type="object" class="btn-primary"
+                            invisible="state != 'active'"
+                            groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_renew" string="Renew Membership"
+                            type="object" class="btn-primary"
+                            invisible="not is_renewal_due or pending_renewal_end_date"
+                            groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_hold_membership" string="Pause Membership"
+                            type="object" class="btn-warning"
+                            invisible="state != 'active' or not company_gym_allow_hold or hold_days_remaining &lt;= 0 or hold_scheduled"
+                            groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_resume_membership" string="Resume Membership"
+                            type="object" class="btn-success"
+                            invisible="state != 'on_hold' and not hold_scheduled"
+                            groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_cancel" string="Cancel"
+                            type="object" class="btn-secondary"
+                            invisible="state not in ['draft', 'active', 'on_hold']"
+                            confirm="Are you sure you want to cancel this membership?"
+                            groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_reset_draft" string="Reset to Draft"
+                            type="object"
+                            invisible="state != 'cancelled'"
+                            groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,active,on_hold,expired"/>
+                </header>
+                <sheet>
+                    <field name="company_gym_allow_hold" invisible="1"/>
+                    <field name="hold_days_remaining" invisible="1"/>
+                    <field name="hold_scheduled" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoices" type="object"
+                                class="oe_stat_button" icon="fa-money"
+                                invisible="invoice_count == 0">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                        <button name="action_view_health_assessments" type="object"
+                                class="oe_stat_button" icon="fa-heartbeat"
+                                groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                            <field name="health_assessment_count" widget="statinfo" string="Assessments"/>
+                        </button>
+                        <button name="action_view_workout_plans" type="object"
+                                class="oe_stat_button" icon="fa-fire"
+                                groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                            <field name="workout_plan_count" widget="statinfo" string="Workouts"/>
+                        </button>
+                        <button name="action_view_diet_plans" type="object"
+                                class="oe_stat_button" icon="fa-cutlery"
+                                groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                            <field name="diet_plan_count" widget="statinfo" string="Diet Plans"/>
+                        </button>
+                        <button name="action_view_attendance" type="object"
+                                class="oe_stat_button" icon="fa-calendar-check-o">
+                            <field name="attendance_count" widget="statinfo" string="Attendance"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="state != 'draft'"/>
+                            <field name="plan_id" readonly="state != 'draft'"/>
+                            <field name="plan_includes_workout" readonly="1" invisible="not plan_id" widget="boolean_toggle"/>
+                            <field name="plan_includes_diet" readonly="1" invisible="not plan_id" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="start_date" readonly="state != 'draft'"/>
+                            <field name="end_date"/>
+                            <field name="renewal_count" readonly="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Sales &amp; Billing">
+                        <field name="sale_order_id" readonly="1" invisible="not sale_order_id"/>
+                        <field name="payment_state" readonly="1" widget="badge"
+                               invisible="not sale_order_id"
+                               decoration-success="payment_state == 'paid'"
+                               decoration-warning="payment_state in ('in_payment', 'partial')"
+                               decoration-danger="payment_state == 'not_paid'"/>
+                        <field name="pending_renewal_plan_id" readonly="1" invisible="not pending_renewal_end_date"/>
+                        <field name="pending_renewal_end_date" readonly="1" invisible="not pending_renewal_end_date"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_gym_membership_kanban" model="ir.ui.view">
+        <field name="name">gym.membership.kanban</field>
+        <field name="model">gym.membership</field>
+        <field name="arch" type="xml">
+            <kanban class="o_gym_membership_kanban" default_group_by="state">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="plan_id"/>
+                <field name="end_date"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="partner_id"/></strong>
+                            <div><field name="plan_id"/></div>
+                            <div>Expires: <field name="end_date"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_gym_membership_search" model="ir.ui.view">
+        <field name="name">gym.membership.search</field>
+        <field name="model">gym.membership</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                    <field name="state" select="multi" icon="fa-check-square-o" enable_counters="1"/>
+                </searchpanel>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="plan_id"/>
+                <field name="trainer_id"/>
+                <filter name="expiring_soon" string="Expiring in 7 Days"
+                        domain="[('state','=','active'),('end_date','&lt;=', (context_today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                <group>
+                    <filter name="group_plan" string="Plan" context="{'group_by': 'plan_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_trainer" string="Trainer" context="{'group_by': 'trainer_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_membership" model="ir.actions.act_window">
+        <field name="name">Memberships</field>
+        <field name="res_model">gym.membership</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="view_gym_membership_search"/>
+        <field name="context">{'searchpanel_default_state': ['active']}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No memberships yet</p>
+            <p>Create a membership to enrol a member and track their plan, trainer, and activity.</p>
+        </field>
+    </record>
+
+    <!-- Membership Analysis (Reporting) -->
+    <record id="view_gym_membership_pivot" model="ir.ui.view">
+        <field name="name">gym.membership.pivot</field>
+        <field name="model">gym.membership</field>
+        <field name="arch" type="xml">
+            <pivot string="Membership Analysis">
+                <field name="plan_id" type="row"/>
+                <field name="state" type="col"/>
+                <field name="renewal_count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_gym_membership_graph" model="ir.ui.view">
+        <field name="name">gym.membership.graph</field>
+        <field name="model">gym.membership</field>
+        <field name="arch" type="xml">
+            <graph string="Membership Analysis" type="bar">
+                <field name="plan_id" type="row"/>
+                <field name="state" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_gym_membership_analysis" model="ir.actions.act_window">
+        <field name="name">Membership Analysis</field>
+        <field name="res_model">gym.membership</field>
+        <field name="view_mode">pivot,graph</field>
+    </record>
+
+</odoo>

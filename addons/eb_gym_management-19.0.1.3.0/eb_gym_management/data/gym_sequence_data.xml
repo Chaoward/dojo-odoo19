@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_gym_membership" model="ir.sequence">
+            <field name="name">Gym Membership</field>
+            <field name="code">gym.membership</field>
+            <field name="prefix">MEM/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_gym_health_assessment" model="ir.sequence">
+            <field name="name">Gym Health Assessment</field>
+            <field name="code">gym.health.assessment</field>
+            <field name="prefix">HA/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_gym_workout_plan" model="ir.sequence">
+            <field name="name">Gym Workout Plan</field>
+            <field name="code">gym.workout.plan</field>
+            <field name="prefix">WP/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_gym_diet_plan" model="ir.sequence">
+            <field name="name">Gym Diet Plan</field>
+            <field name="code">gym.diet.plan</field>
+            <field name="prefix">DP/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_gym_attendance" model="ir.sequence">
+            <field name="name">Gym Attendance</field>
+            <field name="code">gym.attendance</field>
+            <field name="prefix">ATT/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

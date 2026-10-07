@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.eb_gym_management</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Gym Management" string="Gym Management" name="eb_gym_management"
+                     groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                    <block title="Membership Hold / Pause" name="gym_membership_hold_setting_container">
+                        <setting string="Allow Membership Hold/Pause" company_dependent="1"
+                                 help="When enabled, staff can pause active memberships. Paused members cannot check in until the membership is resumed.">
+                            <field name="gym_allow_hold"/>
+                        </setting>
+                        <setting string="Max Hold Days (Allowance)" company_dependent="1"
+                                 invisible="not gym_allow_hold"
+                                 help="Maximum total days a membership can be paused across all hold periods.">
+                            <field name="gym_max_hold_days"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_gym_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'eb_gym_management', 'bin_size': False}</field>
+    </record>
+
+</odoo>

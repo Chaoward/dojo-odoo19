@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_gym_membership_renew_wizard_form" model="ir.ui.view">
+        <field name="name">gym.membership.renew.wizard.form</field>
+        <field name="model">gym.membership.renew.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Renew Membership">
+                <group>
+                    <field name="membership_id" readonly="1"/>
+                    <field name="plan_id"/>
+                    <field name="new_end_date"/>
+                </group>
+                <div class="alert alert-info" role="alert">
+                    The renewal invoice must be paid before the new end date is applied.
+                </div>
+                <footer>
+                    <button name="action_confirm_renewal" string="Confirm Renewal" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

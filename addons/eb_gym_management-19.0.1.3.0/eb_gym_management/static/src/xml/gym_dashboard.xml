@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="eb_gym_management.GymDashboard">
+        <div class="o_gym_dashboard o_action_manager">
+            <!-- Header -->
+            <div class="o_gym_dashboard_header">
+                <div class="o_header_brand">
+                    <div class="o_header_icon"><i class="fa fa-heartbeat"/></div>
+                    <div class="o_header_titles">
+                        <h1 class="o_gym_title" t-esc="this._t('Gym Overview')"/>
+                        <div class="o_gym_subtitle" t-esc="this._t('Memberships, billing and attendance at a glance')"/>
+                    </div>
+                </div>
+                <div class="o_range_segmented">
+                    <t t-foreach="this.getRangeOptions()" t-as="opt" t-key="opt.key">
+                        <button type="button" t-attf-class="range_btn {{ state.dateRange === opt.key ? 'active' : '' }}" t-on-click="() => this.setRange(opt.key)" t-esc="opt.label"/>
+                    </t>
+                </div>
+            </div>
+
+            <!-- Tab bar -->
+            <div class="o_gym_tabbar">
+                <button type="button" t-attf-class="tab_btn {{ state.activeTab === 'members' ? 'active' : '' }}" t-on-click="() => this.switchTab('members')">
+                    <i class="fa fa-users"/>
+                    <span t-esc="this._t('Members &amp; Billing')"/>
+                </button>
+                <button type="button" t-attf-class="tab_btn {{ state.activeTab === 'operations' ? 'active' : '' }}" t-on-click="() => this.switchTab('operations')">
+                    <i class="fa fa-calendar-check-o"/>
+                    <span t-esc="this._t('Attendance &amp; Staff')"/>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="o_gym_dashboard_content_area">
+
+                <!-- TAB 1: MEMBERS & BILLING -->
+                <t t-if="state.activeTab === 'members'">
+                    <div class="dashboard_view">
+                        <div class="kpi_summary_row kpi_summary_row_6col">
+                            <div class="kpi_box accent_brand" t-on-click="() => this.openAction('res.partner', this._t('Members'), [['is_member','=',true]])">
+                                <div class="kpi_icon_bg"><i class="fa fa-users"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.total_members or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Total Members')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_good" t-on-click="() => this.openAction('gym.membership', this._t('Active Memberships'), [['state','=','active']])">
+                                <div class="kpi_icon_bg icon_good"><i class="fa fa-id-card"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_good"><t t-esc="state.data.active_memberships or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Active Memberships')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_brand" t-on-click="() => this.openAction('gym.membership', this._t('New Members'), [['create_date','&gt;=', this.getMonthStartIso()]])">
+                                <div class="kpi_icon_bg"><i class="fa fa-user-plus"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.new_members_this_month or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('New This Month')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_critical" t-on-click="() => this.openExpiringSoon()">
+                                <div class="kpi_icon_bg icon_critical"><i class="fa fa-exclamation-triangle"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_critical"><t t-esc="state.data.expiring_soon or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Expiring in 7 Days')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_warning" t-on-click="() => this.openPendingPayments()">
+                                <div class="kpi_icon_bg icon_warning"><i class="fa fa-credit-card"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_warning"><t t-esc="state.data.pending_payments or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Pending Payments')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_good" t-on-click="() => this.openRevenueInvoices()">
+                                <div class="kpi_icon_bg icon_good"><i class="fa fa-money"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_good" t-esc="this.formatCurrency(state.data.revenue_this_month)"/>
+                                    <div class="kpi_lab" t-esc="this._t('Revenue This Month')"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4">
+                            <div class="o_gym_col_8">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('New Memberships Trend')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.monthly_new_members and state.data.monthly_new_members.length">
+                                            <div class="chart_box_lg" t-ref="monthlyMembersChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-line-chart"/></div>
+                                                <div class="empty_text" t-esc="this._t('No membership activity yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_4">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Membership Status')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.status_distribution and state.data.status_distribution.length">
+                                            <div class="chart_box_lg" t-ref="statusChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-pie-chart"/></div>
+                                                <div class="empty_text" t-esc="this._t('No membership data')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4">
+                            <div class="o_gym_col_8">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Revenue Trend')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.revenue_trend and state.data.revenue_trend.length">
+                                            <div class="chart_box_lg" t-ref="revenueChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-money"/></div>
+                                                <div class="empty_text" t-esc="this._t('No revenue recorded yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_4">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Payment Status')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.payment_distribution and state.data.payment_distribution.length">
+                                            <div class="chart_box_lg" t-ref="paymentChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-file-text-o"/></div>
+                                                <div class="empty_text" t-esc="this._t('No payment data')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4">
+                            <div class="o_gym_col_5">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Plan Popularity')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.plan_popularity and state.data.plan_popularity.length">
+                                            <div class="chart_box_md" t-ref="planChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-tags"/></div>
+                                                <div class="empty_text" t-esc="this._t('No plans sold yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_7">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header o_card_header_row">
+                                        <span t-esc="this._t('Upcoming Expirations')"/>
+                                        <button t-if="this.hasMoreUpcoming()" type="button" class="o_view_all_btn" t-on-click="() => this.openAction('gym.membership', this._t('Expiring Memberships'), [['state','=','active'],['end_date','!=',false]])">
+                                            <t t-esc="this._t('View All')"/>
+                                        </button>
+                                    </div>
+                                    <div class="card_body p-0">
+                                        <t t-if="this.getUpcomingRecords().length">
+                                            <table class="gym_custom_table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th t-esc="this._t('Member')"/>
+                                                        <th t-esc="this._t('Plan')"/>
+                                                        <th t-esc="this._t('Expires')"/>
+                                                        <th t-esc="this._t('Days Left')"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="this.getUpcomingRecords()" t-as="m" t-key="m.id">
+                                                        <tr class="clickable_row" t-on-click="() => this.openRecord('gym.membership', m.id)">
+                                                            <td><div class="name_cell"><t t-esc="m.member"/></div></td>
+                                                            <td><t t-esc="m.plan"/></td>
+                                                            <td><t t-esc="m.end_date"/></td>
+                                                            <td>
+                                                                <div t-attf-class="urgency_bar {{ m.days_left &lt; 3 ? 'high' : 'medium' }}">
+                                                                    <t t-esc="m.days_left"/> <t t-esc="this._t('days')"/>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-check-circle"/></div>
+                                                <div class="empty_text" t-esc="this._t('No upcoming expirations')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_section_title mt-4">
+                            <i class="fa fa-heartbeat"/>
+                            <span t-esc="this._t('Member Care Pipeline')"/>
+                        </div>
+
+                        <div class="kpi_summary_row mt-2">
+                            <div class="kpi_box accent_warning" t-on-click="() => this.openAction('gym.health.assessment', this._t('Pending Assessments'), [['state','in',['draft','assigned']]])">
+                                <div class="kpi_icon_bg icon_warning"><i class="fa fa-stethoscope"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_warning"><t t-esc="state.data.pending_assessments or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Pending Assessments')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_good" t-on-click="() => this.openAction('gym.workout.plan', this._t('Active Workout Plans'), [['state','=','active']])">
+                                <div class="kpi_icon_bg icon_good"><i class="fa fa-fire"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_good"><t t-esc="state.data.active_workout_plans or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Active Workout Plans')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_brand" t-on-click="() => this.openAction('gym.diet.plan', this._t('Active Diet Plans'), [['state','=','active']])">
+                                <div class="kpi_icon_bg"><i class="fa fa-cutlery"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.active_diet_plans or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Active Diet Plans')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_critical">
+                                <div class="kpi_icon_bg icon_critical"><i class="fa fa-hourglass-half"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_critical"><t t-esc="state.data.members_awaiting_plan_count or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Members Awaiting a Plan')"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4 mb-4">
+                            <div class="o_gym_col_5">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Assessment Pipeline')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.assessment_pipeline and state.data.assessment_pipeline.length">
+                                            <div class="chart_box_md" t-ref="assessmentChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-stethoscope"/></div>
+                                                <div class="empty_text" t-esc="this._t('No health assessments yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_7">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header o_card_header_row">
+                                        <span t-esc="this._t('Members Awaiting a Plan')"/>
+                                        <button t-if="this.hasMoreAwaitingPlan()" type="button" class="o_view_all_btn" t-on-click="() => this.openAction('gym.membership', this._t('Members Awaiting a Plan'), [['state','=','active'],'|',['plan_includes_workout','=',true],['plan_includes_diet','=',true]])">
+                                            <t t-esc="this._t('View All')"/>
+                                        </button>
+                                    </div>
+                                    <div class="card_body p-0">
+                                        <t t-if="this.getAwaitingPlanRecords().length">
+                                            <table class="gym_custom_table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th t-esc="this._t('Member')"/>
+                                                        <th t-esc="this._t('Plan')"/>
+                                                        <th t-esc="this._t('Missing')"/>
+                                                        <th t-esc="this._t('Since')"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="this.getAwaitingPlanRecords()" t-as="m" t-key="m.id">
+                                                        <tr class="clickable_row" t-on-click="() => this.openRecord('gym.membership', m.id)">
+                                                            <td><div class="name_cell"><t t-esc="m.member"/></div></td>
+                                                            <td><t t-esc="m.plan"/></td>
+                                                            <td><div class="urgency_bar medium"><t t-esc="m.missing"/></div></td>
+                                                            <td><t t-esc="m.since"/></td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-check-circle"/></div>
+                                                <div class="empty_text" t-esc="this._t('Every member has their plan set up')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- TAB 2: ATTENDANCE & STAFF -->
+                <t t-else="">
+                    <div class="dashboard_view">
+                        <div class="kpi_summary_row">
+                            <div class="kpi_box accent_brand" t-on-click="() => this.openAction('gym.attendance', this._t('Today Check-ins'), [['check_in','&gt;=', new Date().toISOString().slice(0,10)]])">
+                                <div class="kpi_icon_bg"><i class="fa fa-sign-in"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.today_checkins or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Check-ins Today')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_good" t-on-click="() => this.openAction('gym.attendance', this._t('Currently In Gym'), [['check_out','=',false]])">
+                                <div class="kpi_icon_bg icon_good"><i class="fa fa-user"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_good"><t t-esc="state.data.currently_in_gym or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Currently In Gym')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_brand">
+                                <div class="kpi_icon_bg"><i class="fa fa-hourglass-half"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.avg_session_duration or 0"/> <small t-esc="this._t('hrs')"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Avg Session')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_warning" t-on-click="() => this.openAction('hr.employee', this._t('Trainers'), [['is_trainer','=',true]])">
+                                <div class="kpi_icon_bg icon_warning"><i class="fa fa-heartbeat"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_warning"><t t-esc="state.data.active_trainers or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Active Trainers')"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4">
+                            <div class="o_gym_col_8">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Attendance Trend')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.attendance_trend and state.data.attendance_trend.length">
+                                            <div class="chart_box_lg" t-ref="dailyAttendanceChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-calendar-o"/></div>
+                                                <div class="empty_text" t-esc="this._t('No attendance recorded yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_4">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Peak Hours')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.hourly_attendance and state.data.hourly_attendance.length">
+                                            <div class="chart_box_lg" t-ref="hourlyChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-clock-o"/></div>
+                                                <div class="empty_text" t-esc="this._t('No data yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4">
+                            <div class="o_gym_col_5">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Top Trainers (Active Members)')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.top_trainers and state.data.top_trainers.length">
+                                            <div class="chart_box_md" t-ref="trainerChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-trophy"/></div>
+                                                <div class="empty_text" t-esc="this._t('No trainer assignments yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_7">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header o_card_header_row">
+                                        <span t-esc="this._t('Checked-In Now')"/>
+                                        <button t-if="this.hasMoreCheckedIn()" type="button" class="o_view_all_btn" t-on-click="() => this.openAction('gym.attendance', this._t('Checked-In Now'), [['check_out','=',false]])">
+                                            <t t-esc="this._t('View All')"/>
+                                        </button>
+                                    </div>
+                                    <div class="card_body p-0">
+                                        <t t-if="this.getCheckedInRecords().length">
+                                            <table class="gym_custom_table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th t-esc="this._t('Member')"/>
+                                                        <th t-esc="this._t('Trainer')"/>
+                                                        <th t-esc="this._t('Checked In')"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="this.getCheckedInRecords()" t-as="a" t-key="a.id">
+                                                        <tr class="clickable_row" t-on-click="() => this.openRecord('gym.attendance', a.id)">
+                                                            <td><div class="name_cell"><t t-esc="a.member"/></div></td>
+                                                            <td><t t-esc="a.trainer or '-'"/></td>
+                                                            <td><t t-esc="a.check_in"/></td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-sign-out"/></div>
+                                                <div class="empty_text" t-esc="this._t('Nobody checked in right now')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_section_title mt-4">
+                            <i class="fa fa-id-badge"/>
+                            <span t-esc="this._t('Staff Operations')"/>
+                        </div>
+
+                        <div class="kpi_summary_row mt-2">
+                            <div class="kpi_box accent_good" t-on-click="() => this.openAction('hr.attendance', this._t('Staff On Duty Now'), [['check_out','=',false]])">
+                                <div class="kpi_icon_bg icon_good"><i class="fa fa-user-circle"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_good"><t t-esc="state.data.staff_on_duty_now or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Staff On Duty Now')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_brand" t-on-click="() => this.openAction('hr.attendance', this._t('Staff Check-ins Today'), [['check_in','&gt;=', new Date().toISOString().slice(0,10)]])">
+                                <div class="kpi_icon_bg"><i class="fa fa-sign-in"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.staff_checkins_today or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Staff Check-ins Today')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_brand">
+                                <div class="kpi_icon_bg"><i class="fa fa-hourglass-half"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val"><t t-esc="state.data.avg_staff_session_duration or 0"/> <small t-esc="this._t('hrs')"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Avg Staff Hours')"/>
+                                </div>
+                            </div>
+                            <div class="kpi_box accent_warning" t-on-click="() => this.openAction('hr.employee', this._t('Nutritionists'), [['is_nutritionist','=',true]])">
+                                <div class="kpi_icon_bg icon_warning"><i class="fa fa-cutlery"/></div>
+                                <div class="kpi_data">
+                                    <div class="kpi_val val_warning"><t t-esc="state.data.active_nutritionists or 0"/></div>
+                                    <div class="kpi_lab" t-esc="this._t('Active Nutritionists')"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o_gym_row mt-4 mb-4">
+                            <div class="o_gym_col_8">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Staff Attendance Trend')"/>
+                                    <div class="card_body">
+                                        <t t-if="state.data.staff_attendance_trend and state.data.staff_attendance_trend.length">
+                                            <div class="chart_box_lg" t-ref="staffAttendanceChart"/>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-calendar-o"/></div>
+                                                <div class="empty_text" t-esc="this._t('No staff attendance recorded yet')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_gym_col_4">
+                                <div class="o_gym_card h-100">
+                                    <div class="card_header" t-esc="this._t('Staff On Duty Now')"/>
+                                    <div class="card_body p-0">
+                                        <t t-if="this.getOnDutyStaffRecords().length">
+                                            <table class="gym_custom_table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th t-esc="this._t('Employee')"/>
+                                                        <th t-esc="this._t('Role')"/>
+                                                        <th t-esc="this._t('Since')"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="this.getOnDutyStaffRecords()" t-as="s" t-key="s.id">
+                                                        <tr class="clickable_row" t-on-click="() => this.openRecord('hr.attendance', s.id)">
+                                                            <td><div class="name_cell"><t t-esc="s.employee"/></div></td>
+                                                            <td><t t-esc="s.role"/></td>
+                                                            <td><t t-esc="s.check_in"/></td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="o_gym_empty_state">
+                                                <div class="empty_icon"><i class="fa fa-sign-out"/></div>
+                                                <div class="empty_text" t-esc="this._t('No staff on duty right now')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

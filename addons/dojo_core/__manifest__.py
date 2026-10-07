@@ -1,6 +1,6 @@
 {
     'name': 'Dojang Core',
-    'version': 'saas~19.2.4.0.0',
+    "version": "20.0.1.0.0",
     'category': 'Dojo',
     'summary': 'Core martial arts school management: members, classes, attendance, belt progression, instructor dashboard',
     'author': 'Dojo Team',
@@ -17,13 +17,15 @@
         'hr',
         'account',
         'project',
-        'ai_assistant'
+        'crm',
+        'mass_mailing',
+        'sales_team'
     ],
     'post_init_hook': 'post_init_hook',
     'data': [
         # Security (load first)
         'security/dojo_security.xml',
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
         # Data
         'data/sequences.xml',
         'data/dojo_class_recurrence_cron.xml',

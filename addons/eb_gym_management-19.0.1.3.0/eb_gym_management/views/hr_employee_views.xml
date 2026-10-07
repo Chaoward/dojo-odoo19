@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_employee_form_gym_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.gym.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="priority">120</field>
+        <field name="arch" type="xml">
+
+            <div name="button_box" position="inside">
+                <button name="action_view_memberships" type="object"
+                        class="oe_stat_button" icon="fa-id-card"
+                        invisible="not is_trainer">
+                    <field name="membership_count" widget="statinfo" string="Memberships"/>
+                </button>
+                <button name="action_view_health_assessments" type="object"
+                        class="oe_stat_button" icon="fa-heartbeat"
+                        invisible="not is_trainer and not is_nutritionist">
+                    <field name="health_assessment_count" widget="statinfo" string="Assessments"/>
+                </button>
+                <button name="action_view_workout_plans" type="object"
+                        class="oe_stat_button" icon="fa-fire"
+                        invisible="not is_trainer"
+                        groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                    <field name="workout_plan_count" widget="statinfo" string="Workout Plans"/>
+                </button>
+                <button name="action_view_diet_plans" type="object"
+                        class="oe_stat_button" icon="fa-cutlery"
+                        invisible="not is_nutritionist"
+                        groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                    <field name="diet_plan_count" widget="statinfo" string="Diet Plans"/>
+                </button>
+            </div>
+
+            <xpath expr="//button[@name='action_open_last_month_attendances']" position="replace">
+                <button name="action_view_staff_attendances"
+                        class="oe_stat_button"
+                        icon="fa-calendar-check-o"
+                        type="object"
+                        invisible="not id"
+                        help="Staff attendance records for this employee">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="staff_attendance_count"/>
+                        </span>
+                        <span class="o_stat_text">
+                            Attendances
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+
+            <!-- Hide irrelevant tabs -->
+            <page name="personal_information" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </page>
+            <page name="payroll_information" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </page>
+            <page name="hr_settings" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </page>
+            <field name="hr_icon_display" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <!-- Add Gym Info tab -->
+            <page name="resume" position="after">
+                <page string="Gym Info" name="gym_info">
+                    <group>
+                        <group string="Gym Roles">
+                            <field name="is_receptionist" readonly="1"/>
+                            <field name="is_trainer" readonly="1"/>
+                            <field name="is_nutritionist" readonly="1"/>
+                            <field name="is_branch_manager" readonly="1"/>
+                            <div class="text-muted" colspan="2">
+                                Granted from the linked user's Access Rights (Settings &gt; Users).
+                            </div>
+                        </group>
+                        <group>
+                            <field name="specialization_ids" widget="many2many_tags" invisible="not is_trainer"/>
+                        </group>
+                    </group>
+                </page>
+            </page>
+
+        </field>
+    </record>
+
+    <record id="view_gym_staff_search" model="ir.ui.view">
+        <field name="name">gym.staff.search</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="specialization_ids"/>
+                <filter name="receptionists" string="Receptionists" domain="[('is_receptionist','=',True)]"/>
+                <filter name="trainers" string="Trainers" domain="[('is_trainer','=',True)]"/>
+                <filter name="nutritionists" string="Nutritionists" domain="[('is_nutritionist','=',True)]"/>
+                <filter name="branch_managers" string="Branch Managers" domain="[('is_branch_manager','=',True)]"/>
+                <group>
+                    <filter name="group_department" string="Department" context="{'group_by': 'department_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_trainers" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="search_view_id" ref="view_gym_staff_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No employees found</p>
+            <p>Create an employee record here, then link it to a user to grant gym access rights.</p>
+        </field>
+    </record>
+
+    <record id="action_gym_nutritionists" model="ir.actions.act_window">
+        <field name="name">Nutritionists</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('is_nutritionist', '=', True)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No nutritionists found</p>
+            <p>Link an employee to a user, then grant the Nutritionist role from the user's Access Rights.</p>
+        </field>
+    </record>
+
+    <!-- NOTE: No separate view override is needed to make the employee form
+         read-only for Receptionists. Odoo 19 automatically renders forms in
+         read-only mode when the model ACL denies perm_write / perm_create /
+         perm_unlink — which is already the case for group_gym_reception in
+         ir.model.access.csv (perm_write=0, perm_create=0, perm_unlink=0). -->
+
+    <!-- Dedicated window action for Receptionist: no create/edit/delete in list or form -->
+    <record id="action_gym_employees_reception" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="search_view_id" ref="view_gym_staff_search"/>
+        <field name="context">{'create': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No employees found</p>
+            <p>Employee records visible to receptionists are limited to gym staff.</p>
+        </field>
+    </record>
+
+</odoo>

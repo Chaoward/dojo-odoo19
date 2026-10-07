@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Security Groups (outside noupdate so they are always updated).
+         No privilege_id/category on purpose: a group without a privilege
+         renders as a real independent checkbox under Access Rights >
+         Extra Rights, instead of being forced into Odoo's native
+         privilege dropdown (which only allows one choice per privilege).
+         Names are prefixed "Gym" since, without a category, they'd
+         otherwise show unqualified among other apps' same-named groups. -->
+    <record id="group_gym_reception" model="res.groups">
+        <field name="name">Gym Receptionist</field>
+        <field name="sequence">10</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="group_gym_trainer" model="res.groups">
+        <field name="name">Gym Trainer</field>
+        <field name="sequence">20</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="group_gym_nutritionist" model="res.groups">
+        <field name="name">Gym Nutritionist</field>
+        <field name="sequence">30</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="group_gym_branch_manager" model="res.groups">
+        <field name="name">Gym Branch Manager</field>
+        <field name="sequence">35</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="group_gym_manager" model="res.groups">
+        <field name="name">Gym Administrator</field>
+        <field name="sequence">40</field>
+        <field name="implied_ids" eval="[(4, ref('group_gym_branch_manager'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <data noupdate="1">
+
+        <!-- ==================== MULTI-BRANCH (COMPANY) RULES ====================
+             Standard Odoo multi-company pattern: branches are child res.company
+             records, and each rule below is global (no <field name="groups">, so
+             it ANDs with every other rule on the model for every user). Access
+             breadth is controlled purely by which companies are in a user's
+             res.users.company_ids - not by functional group - so a Gym
+             Administrator sees every branch simply by having every branch
+             company allowed, exactly like any other Odoo multi-company setup. -->
+
+        <!-- Transactional records: each one belongs to exactly one branch,
+             mirroring the sale_order_comp_rule / stock_picking_rule pattern. -->
+        <record id="rule_gym_membership_company" model="ir.rule">
+            <field name="name">Membership: multi-branch</field>
+            <field name="model_id" ref="model_gym_membership"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_health_assessment_company" model="ir.rule">
+            <field name="name">Health Assessment: multi-branch</field>
+            <field name="model_id" ref="model_gym_health_assessment"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_workout_plan_company" model="ir.rule">
+            <field name="name">Workout Plan: multi-branch</field>
+            <field name="model_id" ref="model_gym_workout_plan"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_workout_plan_line_company" model="ir.rule">
+            <field name="name">Workout Plan Line: multi-branch</field>
+            <field name="model_id" ref="model_gym_workout_plan_line"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_diet_plan_company" model="ir.rule">
+            <field name="name">Diet Plan: multi-branch</field>
+            <field name="model_id" ref="model_gym_diet_plan"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_diet_plan_line_company" model="ir.rule">
+            <field name="name">Diet Plan Line: multi-branch</field>
+            <field name="model_id" ref="model_gym_diet_plan_line"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_attendance_company" model="ir.rule">
+            <field name="name">Attendance: multi-branch</field>
+            <field name="model_id" ref="model_gym_attendance"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <!-- Shared/optional catalog data: company_id is blank-able (a record
+             can be shared HQ-wide) or scoped to one branch, mirroring the
+             product_template_comp_rule pattern - a blank company, or one that
+             is an ancestor of the active branches, stays visible everywhere. -->
+        <record id="rule_gym_equipment_company" model="ir.rule">
+            <field name="name">Equipment: multi-branch</field>
+            <field name="model_id" ref="model_gym_equipment"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_exercise_company" model="ir.rule">
+            <field name="name">Exercise: multi-branch</field>
+            <field name="model_id" ref="model_gym_exercise"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_food_company" model="ir.rule">
+            <field name="name">Food: multi-branch</field>
+            <field name="model_id" ref="model_gym_food"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_workout_template_company" model="ir.rule">
+            <field name="name">Workout Template: multi-branch</field>
+            <field name="model_id" ref="model_gym_workout_template"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_workout_template_line_company" model="ir.rule">
+            <field name="name">Workout Template Line: multi-branch</field>
+            <field name="model_id" ref="model_gym_workout_template_line"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_diet_template_company" model="ir.rule">
+            <field name="name">Diet Template: multi-branch</field>
+            <field name="model_id" ref="model_gym_diet_template"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <record id="rule_gym_diet_template_line_company" model="ir.rule">
+            <field name="name">Diet Template Line: multi-branch</field>
+            <field name="model_id" ref="model_gym_diet_template_line"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]</field>
+        </record>
+
+        <!-- Members (res.partner) deliberately keep an unscoped company_id
+             (see model docstring) so the same person can hold memberships at
+             several branches - so branch visibility is derived from their
+             actual membership(s)' company instead of their own company_id.
+             A member with zero memberships yet stays visible to their
+             creator (second OR clause) rather than disappearing on save. -->
+        <record id="rule_res_partner_gym_member_branch" model="ir.rule">
+            <field name="name">Member: multi-branch</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('is_member', '=', False), '|', ('membership_ids', '=', False), ('membership_ids.company_id', 'in', company_ids)]</field>
+        </record>
+
+        <!-- Trainer/Nutritionist: read-only oversight of their own clients'
+             attendance (adherence tracking), mirroring the "own records"
+             pattern already used for health assessments/workout/diet plans. -->
+        <record id="rule_gym_attendance_trainer" model="ir.rule">
+            <field name="name">Attendance: Trainer sees own clients' records</field>
+            <field name="model_id" ref="model_gym_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('membership_id.trainer_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_attendance_nutritionist" model="ir.rule">
+            <field name="name">Attendance: Nutritionist sees own clients' records</field>
+            <field name="model_id" ref="model_gym_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('membership_id.health_assessment_ids.nutritionist_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Staff Attendance now rides on Odoo's standard hr.attendance model
+             (hr_attendance already ships its own global multi-company rule
+             scoping to employee_id.company_id, so no duplicate is needed
+             here) - only the gym-specific "own records vs. all records"
+             scoping below is added. -->
+        <record id="rule_gym_staff_attendance_manager" model="ir.rule">
+            <field name="name">Staff Attendance: Gym Administrator sees all records</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_gym_staff_attendance_reception" model="ir.rule">
+            <field name="name">Staff Attendance: Reception sees own records</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_reception'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('employee_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Reception additionally gets read-only visibility of every gym staff
+             member's attendance (front-desk needs to check who is checked in),
+             OR'd with the "own records" rule above for the read operation only -
+             write/create/unlink stay limited to their own check-in via that rule. -->
+        <record id="rule_gym_staff_attendance_reception_read_all" model="ir.rule">
+            <field name="name">Staff Attendance: Reception sees all branch records (read-only)</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_reception'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_staff_attendance_trainer" model="ir.rule">
+            <field name="name">Staff Attendance: Trainer sees own records</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('employee_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_staff_attendance_nutritionist" model="ir.rule">
+            <field name="name">Staff Attendance: Nutritionist sees own records</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('employee_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Checking out writes hr.attendance.check_out, which makes core hr_attendance
+             recompute hr.attendance.overtime.line as the current user (not sudo'd) - so
+             without ACL/rule access there, any check-out by a non-"Attendance Officer"
+             gym user (trainer/nutritionist here) fails with an AccessError on that model.
+             Scoped to their own employee's lines only, mirroring the attendance rule above. -->
+        <record id="rule_hr_attendance_overtime_line_gym_own" model="ir.rule">
+            <field name="name">Staff Overtime Line: Trainer/Nutritionist scoped to own records</field>
+            <field name="model_id" ref="hr_attendance.model_hr_attendance_overtime_line"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer')), (4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('employee_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Sales Order / Invoice: gym staff only ever need to see records
+             tied to a gym membership plan, never the company's unrelated
+             sales/accounting data - core already applies its own
+             multi-company rule to both models, so only the "is this
+             gym-related" narrowing is needed here. Read-only: creating and
+             posting these goes through action_confirm_membership()/the
+             renewal wizard (sudo'd for exactly this), not manual editing. -->
+        <record id="rule_sale_order_gym_staff" model="ir.rule">
+            <field name="name">Sales Order: Gym staff sees membership orders only</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="groups" eval="[(4, ref('group_gym_reception')), (4, ref('group_gym_trainer')), (4, ref('group_gym_nutritionist')), (4, ref('group_gym_branch_manager')), (4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('order_line.product_id.product_tmpl_id.is_gym_membership_plan', '=', True)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_account_move_gym_staff" model="ir.rule">
+            <field name="name">Invoice: Gym staff sees membership invoices only</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="groups" eval="[(4, ref('group_gym_reception')), (4, ref('group_gym_trainer')), (4, ref('group_gym_nutritionist')), (4, ref('group_gym_branch_manager')), (4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('invoice_line_ids.product_id.product_tmpl_id.is_gym_membership_plan', '=', True)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Record Rules -->
+        <!-- Trainer can only see own health assessments / workout plans -->
+        <record id="rule_gym_health_assessment_trainer" model="ir.rule">
+            <field name="name">Health Assessment: Trainer sees own records</field>
+            <field name="model_id" ref="model_gym_health_assessment"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('trainer_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_gym_workout_plan_trainer" model="ir.rule">
+            <field name="name">Workout Plan: Trainer sees own records</field>
+            <field name="model_id" ref="model_gym_workout_plan"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('trainer_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_gym_diet_plan_nutritionist" model="ir.rule">
+            <field name="name">Diet Plan: Nutritionist sees own records</field>
+            <field name="model_id" ref="model_gym_diet_plan"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('nutritionist_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Nutritionist can only see health assessments they are assigned to as nutritionist -->
+        <record id="rule_gym_health_assessment_nutritionist" model="ir.rule">
+            <field name="name">Health Assessment: Nutritionist sees own records</field>
+            <field name="model_id" ref="model_gym_health_assessment"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('nutritionist_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Nutritionist gets read-only visibility of the workout plan linked to an
+             assessment they are assigned to (needed for the assessment's smart button /
+             counts to work), without exposing workout plans from other assessments. -->
+        <record id="rule_gym_workout_plan_nutritionist" model="ir.rule">
+            <field name="name">Workout Plan: Nutritionist sees related records</field>
+            <field name="model_id" ref="model_gym_workout_plan"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('health_assessment_id.nutritionist_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Trainer gets read-only visibility of the diet plan linked to an assessment
+             they are assigned to, mirroring the nutritionist's workout plan visibility. -->
+        <record id="rule_gym_diet_plan_trainer" model="ir.rule">
+            <field name="name">Diet Plan: Trainer sees related records</field>
+            <field name="model_id" ref="model_gym_diet_plan"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('health_assessment_id.trainer_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Trainer: read-only access to memberships they are assigned to
+             (either directly via trainer_id, or via a workout plan they own). -->
+        <record id="rule_gym_membership_trainer" model="ir.rule">
+            <field name="name">Membership: Trainer sees own assigned records</field>
+            <field name="model_id" ref="model_gym_membership"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('trainer_id.user_id', '=', user.id), ('workout_plan_ids.trainer_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Nutritionist: read-only access to memberships linked to their diet plans. -->
+        <record id="rule_gym_membership_nutritionist" model="ir.rule">
+            <field name="name">Membership: Nutritionist sees own assigned records</field>
+            <field name="model_id" ref="model_gym_membership"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('diet_plan_ids.nutritionist_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Trainer: read-only access to the member (res.partner) linked to their assigned memberships. -->
+        <record id="rule_res_partner_gym_member_trainer" model="ir.rule">
+            <field name="name">Member: Trainer sees own assigned members</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('is_member', '=', False), '|', ('membership_ids.trainer_id.user_id', '=', user.id), ('membership_ids.workout_plan_ids.trainer_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Nutritionist: read-only access to the member (res.partner) linked to their diet plans. -->
+        <record id="rule_res_partner_gym_member_nutritionist" model="ir.rule">
+            <field name="name">Member: Nutritionist sees own assigned members</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="groups" eval="[(4, ref('group_gym_nutritionist'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', ('is_member', '=', False), ('membership_ids.diet_plan_ids.nutritionist_id.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Manager sees/creates/edits all records, overriding the trainer/nutritionist
+             "own records only" rules above (group_gym_manager implies those groups,
+             so without this override managers would be restricted to their own records too). -->
+        <record id="rule_gym_health_assessment_manager" model="ir.rule">
+            <field name="name">Health Assessment: Manager sees all records</field>
+            <field name="model_id" ref="model_gym_health_assessment"/>
+            <field name="groups" eval="[(4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_gym_workout_plan_manager" model="ir.rule">
+            <field name="name">Workout Plan: Manager sees all records</field>
+            <field name="model_id" ref="model_gym_workout_plan"/>
+            <field name="groups" eval="[(4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_gym_diet_plan_manager" model="ir.rule">
+            <field name="name">Diet Plan: Manager sees all records</field>
+            <field name="model_id" ref="model_gym_diet_plan"/>
+            <field name="groups" eval="[(4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Gym groups may only see employees linked to a gym role user (trainer/
+             nutritionist/reception), not the full HR employee directory. Manager gets
+             the same "gym staff only" scope here (rather than a broader override like
+             the rules above) since browsing the whole company's HR data is out of scope
+             for this module even for gym managers; it still gets write/create per its ACL.
+             Odoo system administrators are exempt so the built-in Administrator user can
+             manage every employee record without being trapped by this module's scope. -->
+        <record id="rule_hr_employee_gym_staff" model="ir.rule">
+            <field name="name">Employee: Trainer/Nutritionist/Reception see gym staff only</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('group_gym_trainer')), (4, ref('group_gym_nutritionist')), (4, ref('group_gym_reception'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', '|', ('is_receptionist', '=', True), ('is_trainer', '=', True), ('is_nutritionist', '=', True)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- The ACL row for reception (access_hr_employee_gym_reception) already sets
+             write/create/unlink to 0, but group_gym_reception implies hr.group_hr_user,
+             whose own ACL (hr's access_hr_employee_user) grants full CRUD on hr.employee -
+             and Odoo ACL checks OR every matching group's access together, so that implied
+             "Officer" access silently wins over this module's read-only intent. A domain
+             that never matches any record is the standard way to force a real denial: this
+             rule applies (perm_*=True) to write/create/unlink, but since [(0, '=', 1)] is
+             always false, no record - existing or newly created - ever satisfies it, so
+             those operations are always rejected for reception regardless of the ACL bit. -->
+        <record id="rule_hr_employee_gym_reception_readonly" model="ir.rule">
+            <field name="name">Employee: Reception is read-only (blocks write inherited from hr.group_hr_user)</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('group_gym_reception'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [(0, '=', 1)]</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_hr_employee_gym_branch_manager" model="ir.rule">
+            <field name="name">Employee: Branch Manager sees gym staff only</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('group_gym_branch_manager'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or ['|', '|', ('is_receptionist', '=', True), ('is_trainer', '=', True), ('is_nutritionist', '=', True)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_hr_employee_gym_manager" model="ir.rule">
+            <field name="name">Employee: Manager sees all records</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('group_gym_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_hr_employee_system" model="ir.rule">
+            <field name="name">Employee: System sees all records</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Portal: members can only ever read data tied to their own membership(s) -->
+        <record id="rule_gym_membership_portal" model="ir.rule">
+            <field name="name">Membership: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_membership"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_health_assessment_portal" model="ir.rule">
+            <field name="name">Health Assessment: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_health_assessment"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('membership_id.partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_workout_plan_portal" model="ir.rule">
+            <field name="name">Workout Plan: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_workout_plan"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('membership_id.partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_workout_plan_line_portal" model="ir.rule">
+            <field name="name">Workout Plan Line: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_workout_plan_line"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('plan_id.membership_id.partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_diet_plan_portal" model="ir.rule">
+            <field name="name">Diet Plan: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_diet_plan"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('membership_id.partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_diet_plan_line_portal" model="ir.rule">
+            <field name="name">Diet Plan Line: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_diet_plan_line"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('plan_id.membership_id.partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_gym_attendance_portal" model="ir.rule">
+            <field name="name">Attendance: Portal member sees own records</field>
+            <field name="model_id" ref="model_gym_attendance"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">user._is_admin() and [(1, '=', 1)] or [('partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

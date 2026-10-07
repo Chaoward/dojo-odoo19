@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The gym role groups (Receptionist/Trainer/Nutritionist/Branch Manager/
+         Administrator) deliberately have no privilege_id (see gym_security.xml),
+         so several roles can be granted to the same user at once instead of being
+         forced into Odoo's one-choice-per-privilege dropdown. The trade-off: groups
+         without a privilege only render under Access Rights > Extra Rights, and the
+         web client only shows that section in Developer Mode. This adds a
+         permanently visible "Gym Roles" section, backed by writable mirror fields
+         on res.users, so roles can be granted without needing developer mode. -->
+    <record id="view_users_form_gym_roles" model="ir.ui.view">
+        <field name="name">res.users.form.gym.roles</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <field name="group_ids" position="before">
+                <group string="Gym Roles" name="gym_roles" invisible="share">
+                    <field name="is_gym_receptionist"/>
+                    <field name="is_gym_trainer"/>
+                    <field name="is_gym_nutritionist"/>
+                    <field name="is_gym_branch_manager"/>
+                    <field name="is_gym_administrator"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+</odoo>

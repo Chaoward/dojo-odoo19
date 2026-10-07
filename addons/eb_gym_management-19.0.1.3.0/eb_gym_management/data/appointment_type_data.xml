@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="appointment_type_yoga" model="appointment.type">
+            <field name="name">Yoga Class</field>
+            <field name="is_gym_class" eval="True"/>
+            <field name="class_category">yoga</field>
+        </record>
+
+        <record id="appointment_type_hiit" model="appointment.type">
+            <field name="name">HIIT Class</field>
+            <field name="is_gym_class" eval="True"/>
+            <field name="class_category">hiit</field>
+        </record>
+
+        <record id="appointment_type_zumba" model="appointment.type">
+            <field name="name">Zumba Class</field>
+            <field name="is_gym_class" eval="True"/>
+            <field name="class_category">zumba</field>
+        </record>
+
+    </data>
+</odoo>

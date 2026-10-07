@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==================== ROOT ==================== -->
+    <menuitem id="menu_gym_root"
+              name="Gym Management"
+              sequence="110"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              web_icon="eb_gym_management,static/description/icon.png"/>
+
+    <!-- ==================== DASHBOARD ==================== -->
+    <menuitem id="menu_gym_dashboard"
+              name="Dashboard"
+              parent="menu_gym_root"
+              sequence="10"
+              groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_dashboard"/>
+
+    <!-- ==================== MEMBERS ==================== -->
+    <menuitem id="menu_gym_members_root"
+              name="Members"
+              parent="menu_gym_root"
+              sequence="20"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+
+    <menuitem id="menu_gym_members"
+              name="Members"
+              parent="menu_gym_members_root"
+              sequence="10"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_members"/>
+
+    <menuitem id="menu_gym_memberships"
+              name="Memberships"
+              parent="menu_gym_members_root"
+              sequence="20"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_membership"/>
+
+    <menuitem id="menu_gym_attendance"
+              name="Attendance"
+              parent="menu_gym_members_root"
+              sequence="30"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_attendance"/>
+
+    <!-- ==================== FITNESS ==================== -->
+    <!-- Trainer-only role: Fitness section visible. Nutritionist-only: hidden.
+         Both roles: trainer group membership makes it visible. -->
+    <menuitem id="menu_gym_fitness"
+              name="Fitness"
+              parent="menu_gym_root"
+              sequence="30"
+              groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+
+    <menuitem id="menu_gym_health_assessment"
+              name="Health Assessments"
+              parent="menu_gym_fitness"
+              sequence="10"
+              groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_health_assessment"/>
+
+    <menuitem id="menu_gym_workout_plan"
+              name="Workout Plans"
+              parent="menu_gym_fitness"
+              sequence="20"
+              groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_workout_plan"/>
+
+    <!-- ==================== DIET ==================== -->
+    <!-- Nutritionist-only role: Diet section visible. Trainer-only: hidden.
+         Both roles: nutritionist group membership makes it visible. -->
+    <menuitem id="menu_gym_nutrition"
+              name="Diet"
+              parent="menu_gym_root"
+              sequence="40"
+              groups="eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+
+    <menuitem id="menu_gym_diet_plan"
+              name="Diet Plans"
+              parent="menu_gym_nutrition"
+              sequence="10"
+              groups="eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_diet_plan"/>
+
+    <!-- ==================== STAFF ==================== -->
+    <!-- Trainer and Nutritionist only get Check In/Check Out + their own Attendance
+         (added below); they still cannot see the Employees directory. -->
+    <menuitem id="menu_gym_staff_root"
+              name="Staff"
+              parent="menu_gym_root"
+              sequence="50"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+
+    <!-- Employees menu: managers/branch managers get the full editable action -->
+    <menuitem id="menu_gym_staff_employees"
+              name="Employees"
+              parent="menu_gym_staff_root"
+              sequence="5"
+              groups="eb_gym_management.group_gym_manager,eb_gym_management.group_gym_branch_manager"
+              action="action_gym_trainers"/>
+
+    <!-- Employees menu: receptionist gets a read-only view of employee records -->
+    <menuitem id="menu_gym_staff_employees_reception"
+              name="Employees"
+              parent="menu_gym_staff_root"
+              sequence="5"
+              groups="eb_gym_management.group_gym_reception"
+              action="action_gym_employees_reception"/>
+
+    <menuitem id="menu_gym_staff_checkin_checkout"
+              name="Check In / Check Out"
+              parent="menu_gym_staff_root"
+              sequence="10"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_staff_checkin_checkout"/>
+
+    <menuitem id="menu_gym_staff_attendance"
+              name="Attendance"
+              parent="menu_gym_staff_root"
+              sequence="20"
+              groups="eb_gym_management.group_gym_reception,eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"
+              action="action_gym_staff_attendance"/>
+
+    <!-- ==================== REPORTING ==================== -->
+    <menuitem id="menu_gym_reporting"
+              name="Reporting"
+              parent="menu_gym_root"
+              sequence="90"
+              groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+
+    <menuitem id="menu_gym_report_membership"
+              name="Membership Analysis"
+              parent="menu_gym_reporting"
+              sequence="10"
+              action="action_gym_membership_analysis"/>
+
+    <menuitem id="menu_gym_report_attendance"
+              name="Attendance Analysis"
+              parent="menu_gym_reporting"
+              sequence="20"
+              action="action_gym_attendance_analysis"/>
+
+    <menuitem id="menu_gym_report_trainer"
+              name="Trainer Performance"
+              parent="menu_gym_reporting"
+              sequence="30"
+              action="action_gym_trainer_performance"/>
+
+    <!-- ==================== CONFIGURATION ==================== -->
+    <menuitem id="menu_gym_config"
+              name="Configuration"
+              parent="menu_gym_root"
+              sequence="100"
+              groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+
+    <!-- Configuration > Settings -->
+    <menuitem id="menu_gym_config_settings"
+              name="Settings"
+              parent="menu_gym_config"
+              sequence="5"
+              action="action_gym_config_settings"/>
+
+    <!-- Configuration > Membership -->
+    <menuitem id="menu_gym_config_membership"
+              name="Membership"
+              parent="menu_gym_config"
+              sequence="10"/>
+
+    <menuitem id="menu_gym_config_plans"
+              name="Membership Plans"
+              parent="menu_gym_config_membership"
+              sequence="10"
+              action="action_gym_membership_plan"/>
+
+    <!-- Configuration > Fitness -->
+    <menuitem id="menu_gym_config_fitness"
+              name="Fitness"
+              parent="menu_gym_config"
+              sequence="20"/>
+
+    <menuitem id="menu_gym_config_workout_templates"
+              name="Workout Templates"
+              parent="menu_gym_config_fitness"
+              sequence="10"
+              action="action_gym_workout_template"/>
+
+    <menuitem id="menu_gym_config_exercise_categories"
+              name="Exercise Categories"
+              parent="menu_gym_config_fitness"
+              sequence="20"
+              action="action_gym_exercise_category"/>
+
+    <menuitem id="menu_gym_config_exercises"
+              name="Exercises"
+              parent="menu_gym_config_fitness"
+              sequence="30"
+              action="action_gym_exercise"/>
+
+    <!-- Configuration > Nutrition -->
+    <menuitem id="menu_gym_config_nutrition"
+              name="Nutrition"
+              parent="menu_gym_config"
+              sequence="30"/>
+
+    <menuitem id="menu_gym_config_diet_templates"
+              name="Diet Templates"
+              parent="menu_gym_config_nutrition"
+              sequence="10"
+              action="action_gym_diet_template"/>
+
+    <menuitem id="menu_gym_config_food_categories"
+              name="Food Categories"
+              parent="menu_gym_config_nutrition"
+              sequence="20"
+              action="action_gym_food_category"/>
+
+    <menuitem id="menu_gym_config_foods"
+              name="Foods"
+              parent="menu_gym_config_nutrition"
+              sequence="30"
+              action="action_gym_food"/>
+
+    <!-- Configuration > Equipment -->
+    <menuitem id="menu_gym_config_equipment_section"
+              name="Equipment"
+              parent="menu_gym_config"
+              sequence="40"/>
+
+    <menuitem id="menu_gym_config_equipment"
+              name="Equipment Categories"
+              parent="menu_gym_config_equipment_section"
+              sequence="10"
+              action="action_gym_equipment_category"/>
+
+    <menuitem id="menu_gym_config_equipment_items"
+              name="Equipment"
+              parent="menu_gym_config_equipment_section"
+              sequence="20"
+              action="action_gym_equipment"/>
+
+    <!-- Configuration > Staff -->
+    <menuitem id="menu_gym_config_staff"
+              name="Staff"
+              parent="menu_gym_config"
+              sequence="50"/>
+
+    <menuitem id="menu_gym_config_specializations"
+              name="Trainer Specializations"
+              parent="menu_gym_config_staff"
+              sequence="10"
+              action="action_gym_trainer_specialization"/>
+
+</odoo>

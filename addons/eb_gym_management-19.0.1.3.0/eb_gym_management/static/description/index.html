@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"
+            crossorigin="anonymous"></script>
+</head>
+
+<body
+        style="margin:0; padding:0; background-color:#ffffff; color:#1f2937; --bs-primary:#714B67; --bs-primary-rgb:113,75,103; --bs-link-color:#714B67; --bs-link-hover-color:#5f3f58;">
+
+<link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@700;900&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+<style>
+    .oe_container h1,
+    .oe_container h2,
+    .oe_container h3,
+    .oe_container h4,
+    .oe_container h5,
+    .oe_container h6,
+    .oe_container .fw-semibold,
+    .oe_container .fw-bold {
+        color: #714B67 !important;
+    }
+
+    .hand-title {
+        color: #714B67;
+        font-family: 'Caveat', Georgia, serif;
+        font-weight: 900;
+        line-height: 1.05;
+    }
+
+    .hero-title {
+        font-size: 5.5rem;
+        margin-top: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-marker-title {
+        font-size: 4rem;
+        margin-bottom: 14px;
+    }
+
+    .marker-word {
+        position: relative;
+        display: inline-block;
+        isolation: isolate;
+        padding: 0 0.12em 0.04em;
+        line-height: 0.95;
+        white-space: nowrap;
+    }
+
+    .marker-word::before {
+        content: "";
+        position: absolute;
+        left: -0.08em;
+        right: -0.08em;
+        bottom: 0.12em;
+        height: 0.38em;
+        background-image: var(--marker-image);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        transform: rotate(var(--marker-rotate, -1.8deg));
+        transform-origin: center;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    @media (max-width: 767.98px) {
+        .hero-title {
+            font-size: 4rem;
+        }
+
+        .section-marker-title {
+            font-size: 3rem;
+        }
+
+        .marker-word::before {
+            bottom: 0.1em;
+            height: 0.34em;
+        }
+    }
+
+    /* 8 Synchronized Modules Styles */
+    .card-ohi-white {
+        padding: 24px;
+        background: #ffffff;
+        border-radius: 12px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card-ohi-white:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(113, 75, 103, 0.08);
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #f7eef4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .direction-badge-both,
+    .direction-badge-hto {
+        display: inline-block;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 20px;
+        line-height: 1;
+        margin-top: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .direction-badge-both {
+        background-color: #e6f4ea;
+        color: #1e7e34;
+    }
+
+    .direction-badge-hto {
+        background-color: #e8f0fe;
+        color: #1a73e8;
+    }
+
+    .unique-marker-highlight {
+        position: relative;
+        display: inline-block;
+        padding: 0 0.15em;
+        background-image: url('https://apps.odoo.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_01.svg');
+        background-position: center 80%;
+        background-repeat: no-repeat;
+        background-size: 100% 75%;
+        white-space: nowrap;
+    }
+
+    #tab_config .row.g-3.align-items-center {
+        align-items: stretch !important;
+    }
+
+    #tab_config .row.g-3.align-items-center>[class*="col-lg-"] {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    #tab_config .row.g-3.align-items-center>.col-lg-7 {
+        margin-bottom: 4px;
+    }
+
+    #tab_config .row.g-3.align-items-center>.col-lg-5 {
+        padding-top: 4px;
+    }
+
+    #tab_config .row.g-3.align-items-center>.col-lg-5 img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: none !important;
+        object-fit: contain;
+        background: #fff;
+    }
+
+    #tab_config .row.g-3.align-items-center .text-muted.small {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+</style>
+
+<section class="oe_container" style="padding:20px 0 8px 0;">
+    <div class="container">
+        <div class="text-center">
+            <h1
+                    style="font-weight:900; font-family:'Caveat', Georgia, serif; font-size:5.5rem; line-height:1.1; margin-top:10px; margin-bottom:1.5rem; color:#714B67;">
+                Gym <span
+                    style="display:inline-block; padding:0 6px; background-image:url('https://apps.odoo.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_05.svg'); background-position:center 60%; background-repeat:no-repeat; background-size:contain; white-space:nowrap;">Management</span>
+                <span style="color:#714B67;"> System</span>
+                <br>
+            </h1>
+            <p class="text-muted" style="font-size:15px; line-height:1.9; margin:0 auto 34px auto;">
+                Manage your complete gym operations with an end-to-end Gym Management System built for
+                member enrollment, health assessments, workout & diet planning, attendance tracking, and
+                renewal billing in one integrated Odoo platform. Seamlessly handle <strong>membership plans
+                and automated invoicing</strong> across <strong>multiple branches</strong>, assign
+                <strong>dedicated trainers and nutritionists</strong> to every member, and generate
+                <strong>personalised workout &amp; diet plans</strong> straight from a health assessment.
+                The module also supports <strong>daily attendance tracking</strong>,
+                <strong>automated renewal reminders</strong>, a <strong>real-time analytics
+                dashboard</strong>, and a <strong>member self-service portal</strong>, helping your team
+                run the gym smoothly from sign-up to renewal.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="padding:0px 0 24px 0;">
+    <div class="container">
+        <div class="text-center">
+            <img src="banner.png" alt="Gym Management System Banner" class="img-fluid shadow-sm"
+                 style="width:100%; border-radius:12px;">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="padding:28px 0 12px 0;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:26px;">
+            <h2 class="fw-bold"
+                style="color:#714B67; font-weight:900; margin-bottom:14px; font-size:4rem; font-family:'Caveat', Georgia, serif; line-height:1.1;">
+                <span style="color:#714B67;">Key</span> <span
+                    style="display:inline-block; padding:0 8px; background-image:url('https://apps.odoo.com/openerp_website/static/src/img/highlights/green_highlight_bold_05.svg'); background-position:center 75%; background-repeat:no-repeat; background-size:100% 70%; white-space:nowrap;">Features</span>
+            </h2>
+            <p style="margin-bottom:0; color:#714B67;">Everything you need to manage member enrollment,
+                health assessments, workout &amp; diet planning, attendance, and renewal billing end to end</p>
+        </div>
+        <div class="row g-3">
+
+            <!-- Row 1: 3 equal cards -->
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Membership
+                            Management
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8; ">Create configurable membership plans and
+                        enroll members with automatic sequence numbering and full renewal history.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Health Assessments
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Record BMI, body measurements, and fitness
+                        goals for every member, then assign a trainer and/or nutritionist to follow up.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Workout Plans &amp;
+                            Templates
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Build reusable weekly workout templates by
+                        fitness goal, then generate a personalised plan straight from a health assessment.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 3 equal cards -->
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Diet &amp;
+                            Nutrition Plans
+                        </div>
+                        <img src="new_feature.png" alt="New Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Create meal-by-meal diet templates backed by
+                        a food &amp; calorie database, and generate personalised nutrition plans for members.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Attendance Tracking
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Check members in and out, track session
+                        duration automatically, and flag anyone still checked in after 12 hours.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Automated Billing
+                            &amp; Renewal
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Confirm memberships into Sales Orders and
+                        Invoices automatically, and renew expiring memberships in one click with a dedicated wizard.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: 3 equal cards -->
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Analytics Dashboard
+                        </div>
+                        <img src="new_feature.png" alt="New Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8; ">Real-time KPIs for active memberships,
+                        revenue, attendance trends, and staff workload in one interactive dashboard.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Member Self-Service
+                            Portal
+                        </div>
+                        <img src="new_feature.png" alt="New Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Members log in to view their membership,
+                        workout &amp; diet plans, and attendance history online.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Trainer &amp;
+                            Nutritionist Assignment
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Assign dedicated trainers and nutritionists
+                        to each member and track their workload from the Employee record.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: 3 equal cards -->
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Role-Based Security
+                            &amp; Multi-Branch
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Dedicated Receptionist, Trainer,
+                        Nutritionist, Branch Manager, and Administrator roles, with data scoped per branch (company).
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Automated Reminders
+                        </div>
+                        <img src="hot_feature.png" alt="Hot Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">Daily scheduled actions automatically expire
+                        memberships past their end date and remind members before their membership expires.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="border rounded-4 h-100"
+                     style="padding:20px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="d-flex align-items-center" style="margin-bottom:10px; gap:12px;">
+                        <div class="fw-bold" style="color:#714B67; font-size:15px; line-height:1.3;">Staff Attendance
+                            &amp; Check-In
+                        </div>
+                        <img src="new_feature.png" alt="New Feature" class="img-fluid flex-shrink-0"
+                             style="height:34px; width:auto;">
+                    </div>
+                    <div class="text-muted small" style="line-height:1.8;">One-click Check In / Check Out wizard for
+                        receptionists, trainers, and nutritionists, with a dedicated Staff Attendance screen for admins.
+                    </div>
+                </div>
+            </div>
+            <!-- Multi-Language Support -->
+            <div class="col-12">
+                <div class="border rounded-4"
+                     style="padding:32px 28px; background:#ffffff; border-color:#e5d8e0 !important; box-shadow:0 2px 10px rgba(113,75,103,0.07);">
+                    <div class="text-center" style="margin-bottom:24px;">
+                        <h1
+                                style="font-weight:900; font-family:'Caveat', Georgia, serif; font-size:5.5rem; line-height:1.1; margin-top:10px; margin-bottom:1.5rem; color:#714B67;">
+                            Multi-<span class="unique-marker-highlight"
+                                        style="transform:rotate(-1.2deg);">Language</span>
+                            System
+                        </h1>
+                        <p style="font-size:16px; color:#444; margin-bottom:6px;">The app supports the following
+                            translated languages.</p>
+                        <p class="text-muted" style="font-size:13px; margin-bottom:10px;">We use Google Translator
+                            to
+                            provide multi-language support. Some translations may differ slightly.</p>
+                        <p style="font-size:14px; color:#333; margin-bottom:4px; font-weight:600;">To add new
+                            language
+                            contact us at:</p>
+                        <a href="mailto:info@echobitzit.com"
+                           style="color:#714B67; font-size:14px; font-weight:600; text-decoration:none;">info@echobitzit.com</a>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇦🇪</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">Arabic</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇩🇪</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">German</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇳🇱</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">Dutch</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇪🇸</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">Spanish</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇫🇷</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">French</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇮🇹</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">Italian</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇷🇴</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">Romanian</div>
+                        </div>
+                        <div class="border rounded-3 text-center"
+                             style="padding:16px 20px; background:#faf4f8; border-color:#e5d8e0 !important; min-width:100px;">
+                            <div style="font-size:36px; line-height:1; margin-bottom:8px;">🇨🇳</div>
+                            <div class="fw-semibold" style="font-size:13px; color:#714B67;">Chinese</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container" style="padding:28px 0 12px 0;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:26px;">
+            <h2 class="fw-bold"
+                style="color:#714B67; font-weight:900; margin-bottom:14px; font-size:4rem; font-family:'Caveat', Georgia, serif; line-height:1.1;">
+                <span style="color:#714B67;">Feature</span> <span
+                    style="display:inline-block; padding:0 8px; background-image:url('https://apps.odoo.com/openerp_website/static/src/img/highlights/red_highlight_bold_05.svg'); background-position:center 75%; background-repeat:no-repeat; background-size:100% 70%; white-space:nowrap;">Deep</span>
+                Dive
+            </h2>
+            <p style="margin-bottom:0; color:#714B67;">Explore every capability of our Gym Management System
+                in detail</p>
+        </div>
+        <div class="border rounded-4 shadow-sm bg-white" style="padding:28px;">
+            <ul class="nav nav-tabs flex-wrap justify-content-center" id="featureTabs" role="tablist"
+                style="margin-bottom:0; padding:0; border-bottom:1px solid #d7c0d1; --bs-nav-link-color:#714B67; --bs-nav-link-hover-color:#714B67; --bs-nav-tabs-border-color:#d7c0d1; --bs-nav-tabs-link-hover-border-color:#d7c0d1 #d7c0d1 #d7c0d1; --bs-nav-tabs-link-active-color:#714B67; --bs-nav-tabs-link-active-bg:#f3ebf1; --bs-nav-tabs-link-active-border-color:#d7c0d1 #d7c0d1 #f3ebf1; display:flex; gap:0;">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active fw-semibold" data-bs-toggle="tab" href="#tab_config" role="tab"
+                       style="font-size:12px; padding:10px 14px; white-space:nowrap; color:#714B67 !important; text-decoration:none;">
+                        Configuration
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#tab_release_notes" role="tab"
+                       style="font-size:12px; padding:10px 14px; white-space:nowrap; color:#714B67 !important; text-decoration:none;">
+                        Release Notes
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#tab_logs_faq" role="tab"
+                       style="font-size:12px; padding:10px 14px; white-space:nowrap; color:#714B67 !important; text-decoration:none;">
+                        FAQ
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content" style="padding-top:24px;">
+                <!-- TAB 0: Configuration -->
+                <div class="tab-pane fade show active" id="tab_config" role="tabpanel">
+                    <div class="row g-4">
+
+                        <!-- 01 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">01</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Module Installation</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Install
+                                the Gym Management module from Odoo Apps. Once activated, a dedicated Gym Management
+                                menu appears with Dashboard, Members, Fitness, Diet, Staff, Reporting, and
+                                Configuration.</p>
+                            <div style="margin-top:8px;"><img src="gym_01.png"
+                                                         alt="Odoo Apps screen – activating the Gym Management module"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 02 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">02</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Assign Gym User Roles</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Go to
+                                Settings &gt; Users and open the Access Rights tab. Enable the relevant Gym Role
+                                checkbox — Receptionist, Trainer, Nutritionist, Branch Manager, or Administrator — to
+                                control what each user can see and do in the app.</p>
+                            <div style="margin-top:8px;"><img src="gym_02.png"
+                                                         alt="User Access Rights form – Gym Roles checkboxes for Receptionist, Trainer, Nutritionist, Branch Manager, and Administrator"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 03 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">03</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Membership Plan Configuration</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Turn any
+                                product into a Membership Plan from its Membership Plan tab: set the plan code and
+                                duration, toggle whether it includes a workout and/or diet plan, and list the member
+                                benefits.</p>
+                            <div style="margin-top:8px;"><img src="gym_03.png"
+                                                         alt="Product form – Membership Plan tab with duration, included services, and benefits"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 04 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">04</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Workout Templates</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Build
+                                reusable weekly workout templates per fitness goal. Each template's Exercise Lines
+                                define the day of week, exercise, category, equipment, sets, reps, and rest time.</p>
+                            <div style="margin-top:8px;"><img src="gym_04.png"
+                                                         alt="Workout Template form – weekly exercise lines with sets, reps, and equipment"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 05 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">05</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Exercise Categories &amp; Configuration Menu</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">The
+                                Configuration menu groups every master data list — Membership Plans, Workout Templates,
+                                Exercise Categories, Exercises, Diet Templates, Food Categories, Foods, Equipment
+                                Categories, Equipment, and Trainer Specializations — for quick setup.</p>
+                            <div style="margin-top:8px;"><img src="gym_05.png"
+                                                         alt="Configuration menu expanded – Exercise Categories form showing linked exercises"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 06 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">06</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Exercise Catalog</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Maintain
+                                the Exercise catalog with each exercise's category, targeted muscle group, and required
+                                equipment. These exercises populate the workout template lines.</p>
+                            <div style="margin-top:8px;"><img src="gym_06.png"
+                                                         alt="Exercises list – exercise name, category, muscle group, and equipment columns"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 07 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">07</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Diet Templates</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Create
+                                meal-by-meal Diet Templates per fitness goal. Each template's Meal Lines define the meal
+                                type, food item, quantity, and unit, sourced from the food catalog.</p>
+                            <div style="margin-top:8px;"><img src="gym_07.png"
+                                                         alt="Diet Template form – meal lines with food items and quantities"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 08 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">08</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Food Categories</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Organize
+                                the food catalog into categories such as Carbohydrates, Protein, or Vegetables. Each
+                                category groups foods with their calorie and macronutrient values for easy reuse in diet
+                                templates.</p>
+                            <div style="margin-top:8px;"><img src="gym_08.png"
+                                                         alt="Food Categories form – Carbohydrates category with linked food items and nutrition values"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 09 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">09</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Food Catalog</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Maintain
+                                the Foods catalog with calories, protein, carbohydrates, and fat per item. These
+                                nutritional values feed automatically into diet templates and member diet plans.</p>
+                            <div style="margin-top:8px;"><img src="gym_09.png"
+                                                         alt="Foods list – food items with calories, protein, carbs, and fat per serving"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 10 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">10</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Equipment Categories</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Group gym
+                                equipment into categories like Cardio Machines, Strength Machines, or Free Weights so it
+                                can be referenced consistently across exercises and workout templates.</p>
+                            <div style="margin-top:8px;"><img src="gym_010.png"
+                                                         alt="Equipment Categories form – Cardio Machines category with linked equipment"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 11 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">11</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Equipment Catalog</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Maintain
+                                the full Equipment catalog, assigning each machine or accessory to its category so it's
+                                ready to attach to exercises and workout plans.</p>
+                            <div style="margin-top:8px;"><img src="gym_011.png"
+                                                         alt="Equipment list – equipment name and category columns"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 12 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">12</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Trainer Specializations</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Define
+                                Trainer Specializations such as CrossFit, Strength &amp; Conditioning, or Weight Loss
+                                Coaching to categorize trainers by their area of expertise.</p>
+                            <div style="margin-top:8px;"><img src="gym_012.png"
+                                                         alt="Trainer Specializations list – CrossFit, Injury Rehabilitation, Sports Nutrition, and other specializations"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 13 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">13</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Staff Gym Role Assignment</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">On each
+                                Employee record's Gym Info tab, the Receptionist, Trainer, Nutritionist, and Branch
+                                Manager flags are read directly from that employee's linked user Access Rights, keeping
+                                staff roles in sync.</p>
+                            <div style="margin-top:8px;"><img src="gym_013.png"
+                                                         alt="Employee form – Gym Info tab showing Trainer, Nutritionist, and Branch Manager role flags"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 14 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">14</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Staff Check In / Check Out</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Staff use
+                                the Check In / Check Out wizard under Staff to log their own working hours in one click,
+                                built on top of Odoo's native hr.attendance model.</p>
+                            <div style="margin-top:8px;"><img src="gym_014.png"
+                                                         alt="Check In / Check Out wizard – one-click attendance logging for gym staff"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 15 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">15</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Staff Attendance Overview</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">The Staff
+                                Attendance list under Staff shows every employee's check-in and check-out times and
+                                worked hours, so admins can review attendance across all staff.</p>
+                            <div style="margin-top:8px;"><img src="gym_015.png"
+                                                         alt="Staff Attendance list – employee check-in, check-out, and worked hours"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 16 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">16</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Member Registration &amp; Portal Access</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Mark a
+                                Contact as a Gym Member on its Gym Info tab, then click Create Portal User to give the
+                                member login access to the self-service portal.</p>
+                            <div style="margin-top:8px;"><img src="gym_016.png"
+                                                         alt="Member contact form – Gym Info tab with Create Portal User button and membership reference"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 17 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">17</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Creating &amp; Confirming a Membership</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Create a
+                                Membership by selecting the member, plan, and start/end dates, then click Confirm &amp;
+                                Invoice to generate the Sales Order and Invoice and move the membership toward
+                                Active.</p>
+                            <div style="margin-top:8px;"><img src="gym_017.png"
+                                                         alt="Membership form – Draft status with Confirm and Invoice action"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 18 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">18</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Membership Activation &amp; Welcome Email</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Once the
+                                invoice is paid, the membership automatically activates and a welcome email is sent to
+                                the member. From here, click Create Assessment to schedule their initial health
+                                assessment.</p>
+                            <div style="margin-top:8px;"><img src="gym_018.png"
+                                                         alt="Active membership record – paid invoice, welcome email, and Create Assessment button"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 19 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">19</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Health Assessment – Body Measurements</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Record the
+                                member's height, weight, BMI, body fat percentage, and other body measurements, then
+                                assign a Trainer and/or Nutritionist and click Assign &amp; Notify to alert them.</p>
+                            <div style="margin-top:8px;"><img src="gym_019.png"
+                                                         alt="Health Assessment form – body measurements with Trainer and Nutritionist assignment"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 20 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">20</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Generating Workout &amp; Diet Plans</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">From the
+                                in-progress assessment, pick a workout template under Workout Recommendation and a diet
+                                template under Diet Recommendation, then click Create Workout Plan or Create Diet Plan
+                                to generate the member's personalised schedule.</p>
+                            <div style="margin-top:8px;"><img src="gym_020.png"
+                                                         alt="Health Assessment – Workout and Diet Recommendation tabs with plan generation buttons"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 21 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">21</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Activating the Workout Plan</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">The
+                                generated Workout Plan lists exercises by day of week with sets, reps, and rest time.
+                                Click Activate to publish it and move its status from Draft to Active.</p>
+                            <div style="margin-top:8px;"><img src="gym_021.png"
+                                                         alt="Workout Plan form – weekly exercise lines with Activate action"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 22 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">22</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Member Portal – My Account</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Members
+                                log into the customer portal to reach My Account, with quick links to their Memberships,
+                                Workout Plans, Diet Plans, and Attendance.</p>
+                            <div style="margin-top:8px;"><img src="gym_022.png"
+                                                         alt="Portal My Account page – Memberships, Workout Plans, Diet Plans, and Attendance tiles"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 23 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">23</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Member Portal – Membership Details</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Inside My
+                                Memberships, a member can see their plan status and dates, linked Workout Plans, Diet
+                                Plans, and Health Assessments, plus their recent attendance — and check in directly from
+                                the page.</p>
+                            <div style="margin-top:8px;"><img src="gym_023.png"
+                                                         alt="Portal membership detail page – workout plan, diet plan, health assessment, and Check In button"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 24 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">24</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Member Portal – Self Check-In / Check-Out</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">From the
+                                portal Attendance page, members check themselves in and out and see their complete visit
+                                history with check-in/out timestamps.</p>
+                            <div style="margin-top:8px;"><img src="gym_024.png"
+                                                         alt="Portal Attendance page – Check Out button and visit history with timestamps"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 25 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">25</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Admin Attendance Overview</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">The
+                                Members &gt; Attendance list gives admins a consolidated view of every member's
+                                check-in/check-out records and linked workout plan.</p>
+                            <div style="margin-top:8px;"><img src="gym_025.png"
+                                                         alt="Member Attendance list – check-in, check-out, duration, and linked workout plan"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 26 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">26</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Branch Manager Role &amp; Multi-Branch Access</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">Assign the
+                                Gym Branch Manager role to a user and set their Companies and Default Company to scope
+                                their access to a specific branch.</p>
+                            <div style="margin-top:8px;"><img src="gym_026.png"
+                                                         alt="User Access Rights form – Gym Branch Manager role with branch company assignment"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 27 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">27</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Branch-Scoped Dashboard</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">When a
+                                Branch Manager logs in, the top-right company selector defaults to their assigned
+                                branch, and the Gym Overview dashboard shows figures for that branch only.</p>
+                            <div style="margin-top:8px;"><img src="gym_027.png"
+                                                         alt="Gym Overview dashboard – branch company selector defaulting to the assigned branch"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 28 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">28</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Switching Between Branches</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">
+                                Administrators with access to multiple branches can switch between them from the same
+                                top-right company menu to view consolidated or branch-specific gym data.</p>
+                            <div style="margin-top:8px;"><img src="gym_028.png"
+                                                         alt="Company switcher menu – toggling between My Company and branch companies"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 29 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">29</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Analytics Dashboard – Members &amp; Billing</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">The
+                                Members &amp; Billing dashboard tab shows real-time KPIs for total and active members,
+                                new signups, expiring memberships, pending payments, and revenue, alongside membership
+                                and payment status charts.</p>
+                            <div style="margin-top:8px;"><img src="gym_029.png"
+                                                         alt="Gym Overview dashboard – Members and Billing tab with KPIs and membership/payment charts"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                        <!-- 30 -->
+                        <div class="col-12">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="text-center flex-shrink-0"
+                                     style="width:32px; height:32px; border-radius:50%; background-color:#714B67; color:#ffffff; font-size:13px; font-weight:700; line-height:32px;">30</div>
+                                <p class="mb-0 fw-bold"
+                                   style="color:#714B67; font-size:15px; line-height:1.55; padding-top:4px; margin-left:10px;">Analytics Dashboard – Attendance &amp; Staff</p>
+                            </div>
+                            <p class="text-muted"
+                               style="font-size:14px; margin-bottom:12px; margin-left:42px; line-height:1.6;">The
+                                Attendance &amp; Staff dashboard tab tracks check-ins, members currently in the gym,
+                                average session length, peak hours, top trainers, and staff attendance in one
+                                interactive view.</p>
+                            <div style="margin-top:8px;"><img src="gym_030.png"
+                                                         alt="Gym Overview dashboard – Attendance and Staff tab with check-in trends, peak hours, and staff activity"
+                                                         class="img-fluid rounded-3 shadow-sm"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB: Release Notes -->
+                <div class="tab-pane fade" id="tab_release_notes" role="tabpanel">
+                    <div class="row g-4 align-items-start">
+                        <div class="col-lg-12">
+                            <h4 class="fw-bold" style="color:#714B67; margin-bottom:16px;">Release Notes &amp;
+                                Version
+                                History</h4>
+                            <div class="border rounded-3"
+                                 style="padding:18px; border-color:#d8c4d3 !important; background:#faf4f8; max-height:480px; overflow-y:auto;">
+                                <hr style="border-color:#d8c4d3; opacity:0.6; margin: 16px 0;">
+                                <!-- 19.0.1.3.0 -->
+                                <div>
+                                    <div class="fw-bold mb-2" style="color:#714B67; font-size:15px;">Version
+                                        19.0.1.3.0
+                                        — Current Release
+                                    </div>
+                                    <ul class="text-muted small mb-0" style="line-height:2.0;">
+                                        <li><strong>Pause/Hold Membership:</strong> put an active membership on
+                                            hold for a chosen date range with a dedicated wizard, capped by a
+                                            configurable max hold days allowance per branch, with the expiry
+                                            date auto-extended by the hold duration.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <hr style="border-color:#d8c4d3; opacity:0.6; margin: 16px 0;">
+                                <!-- 19.0.1.2.0 -->
+                                <div>
+                                    <div class="fw-bold mb-2" style="color:#714B67; font-size:15px;">Version
+                                        19.0.1.2.0
+                                    </div>
+                                    <ul class="text-muted small mb-0" style="line-height:2.0;">
+                                        <li><strong>Membership Lifecycle:</strong> configurable membership plans,
+                                            confirm-to-invoice billing, auto-activation on payment, and a
+                                            one-click renewal wizard.
+                                        </li>
+                                        <li><strong>Health, Workout &amp; Diet:</strong> health assessments with
+                                            BMI/body measurements, plus template-driven workout and diet plan
+                                            generation.
+                                        </li>
+                                        <li><strong>Attendance:</strong> member check-in/check-out with automatic
+                                            duration tracking, and staff attendance on top of <code>hr.attendance</code>.
+                                        </li>
+                                        <li><strong>Security &amp; Multi-Branch:</strong> dedicated Receptionist,
+                                            Trainer, Nutritionist, Branch Manager, and Administrator roles scoped
+                                            per branch (company).
+                                        </li>
+                                        <li><strong>Automation:</strong> daily cron jobs for membership
+                                            auto-expiry and renewal reminders, with mail templates for key
+                                            milestones.
+                                        </li>
+                                        <li><strong>Portal &amp; Dashboard:</strong> member self-service portal
+                                            and a real-time analytics dashboard built with ECharts.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: FAQ -->
+                <div class="tab-pane fade" id="tab_logs_faq" role="tabpanel">
+                    <h5 class="fw-bold" style="color:#714B67; margin-bottom:20px;">Frequently Asked Questions</h5>
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <div class="border rounded-3 h-100"
+                                 style="padding:20px 22px; background:#ffffff; border-color:#d8c4d3 !important;">
+                                <div class="fw-semibold" style="color:#714B67; font-size:14px; margin-bottom:8px;">
+                                    How do I enroll a new member?
+                                </div>
+                                <div class="text-muted small" style="line-height:1.85;">Mark a Contact as a Gym
+                                    Member, create a Membership choosing a plan and an optional Trainer, then
+                                    confirm it to generate the Sales Order and Invoice automatically.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="border rounded-3 h-100"
+                                 style="padding:20px 22px; background:#ffffff; border-color:#d8c4d3 !important;">
+                                <div class="fw-semibold" style="color:#714B67; font-size:14px; margin-bottom:8px;">
+                                    Can members view their workout and diet plans online?
+                                </div>
+                                <div class="text-muted small" style="line-height:1.85;">Yes. Members can log in
+                                    to the portal to see their membership, workout plan, diet plan, and
+                                    attendance history at any time.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="border rounded-3 h-100"
+                                 style="padding:20px 22px; background:#ffffff; border-color:#d8c4d3 !important;">
+                                <div class="fw-semibold" style="color:#714B67; font-size:14px; margin-bottom:8px;">
+                                    How is attendance tracked?
+                                </div>
+                                <div class="text-muted small" style="line-height:1.85;">Reception checks members
+                                    in and out against their active membership, and session duration is
+                                    computed automatically once they check out.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="border rounded-3 h-100"
+                                 style="padding:20px 22px; background:#ffffff; border-color:#d8c4d3 !important;">
+                                <div class="fw-semibold" style="color:#714B67; font-size:14px; margin-bottom:8px;">
+                                    Can I assign different trainers and nutritionists per member?
+                                </div>
+                                <div class="text-muted small" style="line-height:1.85;">Yes. Each membership can
+                                    have its own assigned Trainer, and each health assessment can have its own
+                                    Trainer and/or Nutritionist for workout and diet follow-up.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="border rounded-3 h-100"
+                                 style="padding:20px 22px; background:#ffffff; border-color:#d8c4d3 !important;">
+                                <div class="fw-semibold" style="color:#714B67; font-size:14px; margin-bottom:8px;">
+                                    Does the module support multiple gym branches?
+                                </div>
+                                <div class="text-muted small" style="line-height:1.85;">Yes. Branches are modeled
+                                    as companies, and record rules scope memberships, plans, and attendance to
+                                    the right branch for each user.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="border rounded-3 h-100"
+                                 style="padding:20px 22px; background:#ffffff; border-color:#d8c4d3 !important;">
+                                <div class="fw-semibold" style="color:#714B67; font-size:14px; margin-bottom:8px;">
+                                    Does the module include an analytics dashboard?
+                                </div>
+                                <div class="text-muted small" style="line-height:1.85;">Yes. The dashboard shows
+                                    real-time KPIs for active memberships, revenue, attendance trends, and staff
+                                    workload, all in one interactive view.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="oe_container" style="padding:18px 0 10px 0;">
+    <div class="container">
+        <div class="border rounded-4 shadow-sm overflow-hidden"
+             style="width:100%; background-image:linear-gradient(135deg,#f7eef4 0%,#ffffff 55%,#f3e8ef 100%) !important; border-color:#d8c4d3 !important;">
+
+            <!-- Text block on top -->
+            <div style="padding:34px 32px 24px 32px; text-align:center;">
+
+                <!-- Heading - center aligned -->
+                <h2 class="fw-bold"
+                    style="color:#714B67; font-weight:900; margin-bottom:12px; font-size:3.8rem; font-family:'Caveat', Georgia, serif; line-height:1.08;">
+                    Scan and <span
+                        style="display:inline-block; padding:0 6px; background-image:url('https://apps.odoo.com/openerp_website/static/src/img/highlights/blue_highlight_bold_03.svg'); background-position:center 60%; background-repeat:no-repeat; background-size:contain; white-space:nowrap;">Connect</span>
+                    with echoBitz
+                </h2>
+
+                <!-- Description - center aligned -->
+                <p
+                        style="margin:0 auto 14px auto; color:#714B67; font-size:15px; line-height:1.85; max-width:600px;">
+                    Book a meeting, start a WhatsApp conversation, or reach us by email from one simple visual card.
+                    It is the fastest way to move from curiosity to a live Gym Management discussion.
+                </p>
+
+                <!-- Badges - center aligned -->
+                <div class="d-flex justify-content-center w-100 mx-auto" style="flex-wrap:wrap; gap:8px 4px;">
+                        <span class="mx-2"
+                              style="display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:#ffffff; border:1px solid #e0cfdb; color:#714B67; font-size:13px; font-weight:600;">
+                            Meeting
+                        </span>
+                    <span class="mx-2"
+                          style="display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:#ffffff; border:1px solid #e0cfdb; color:#714B67; font-size:13px; font-weight:600;">
+                            WhatsApp
+                        </span>
+                    <span class="mx-2"
+                          style="display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:#ffffff; border:1px solid #e0cfdb; color:#714B67; font-size:13px; font-weight:600;">
+                            Email
+                        </span>
+                </div>
+
+            </div>
+
+            <!-- Full-width image below -->
+            <div style="width:100%;">
+                <img src="eb_qr.png" alt="echoBitz QR contact options"
+                     style="width:100%; display:block; border-radius:0 0 16px 16px;">
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="oe_container" style="padding:28px 0 12px 0;">
+    <div class="container" style="display: flex; justify-content: center; align-items: center;">
+        <div class="oe_row shadow-sm px-4 py-5"
+             style="width:100% !important; border-radius: 16px; background-image:linear-gradient(180deg,#faf4f8 0%,#ffffff 100%) !important; border:1px solid #d8c4d3;">
+            <div class="row mt-4 text-center">
+                <div class="themed-grid-col zn-1 m-3 px-5">
+                    <h2 class="fw-bold"
+                        style="font-size:4rem; margin-bottom:20px; font-weight:900; text-align:center; color:#714B67; font-family:'Caveat', Georgia, serif; line-height:1.1;">
+                        Our Services</h2>
+                    <div
+                            style="width: 25%; height: 4px; background-color: #714B67; margin: 0 auto 20px auto; border-radius: 2px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4 px-5 mt-3">
+                <!-- Odoo Integration -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                         style="background-color:#ffffff; border:1px solid #eadde6 !important; border-radius:12px;">
+                        <div class="card-body" style="padding:24px;">
+                            <div class="d-inline-flex justify-content-center align-items-center mb-3"
+                                 style="width:50px; height:50px; background:#f3e8ef; border-radius:12px;">
+                                <i class="fa fa-plug fa-lg" style="color:#714B67;">&#8203;</i>
+                            </div>
+                            <h5 class="card-title fw-bold"
+                                style="font-size: 18px; text-transform:capitalize; font-family:Montserrat; margin-bottom: 12px; color:#714B67;">
+                                Odoo Integration</h5>
+                            <p class="card-text text-muted"
+                               style="font-family:Roboto; font-size:14px; line-height:1.7;">Seamlessly
+                                integrate Odoo with third-party
+                                apps, platforms, and tools for better workflow.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Odoo Implementation -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                         style="background-color:#ffffff; border:1px solid #eadde6 !important; border-radius:12px;">
+                        <div class="card-body" style="padding:24px;">
+                            <div class="d-inline-flex justify-content-center align-items-center mb-3"
+                                 style="width:50px; height:50px; background:#f3e8ef; border-radius:12px;">
+                                <i class="fa fa-cogs fa-lg" style="color:#714B67;">&#8203;</i>
+                            </div>
+                            <h5 class="card-title fw-bold"
+                                style="font-size: 18px; text-transform:capitalize; font-family:Montserrat; margin-bottom: 12px; color:#714B67;">
+                                Odoo Implementation</h5>
+                            <p class="card-text text-muted"
+                               style="font-family:Roboto; font-size:14px; line-height:1.7;">We plan,
+                                configure, and deploy Odoo
+                                tailored to your business processes.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Customization -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                         style="background-color:#ffffff; border:1px solid #eadde6 !important; border-radius:12px;">
+                        <div class="card-body" style="padding:24px;">
+                            <div class="d-inline-flex justify-content-center align-items-center mb-3"
+                                 style="width:50px; height:50px; background:#f3e8ef; border-radius:12px;">
+                                <i class="fa fa-pencil fa-lg" style="color:#714B67;">&#8203;</i>
+                            </div>
+                            <h5 class="card-title fw-bold"
+                                style="font-size: 18px; text-transform:capitalize; font-family:Montserrat; margin-bottom: 12px; color:#714B67;">
+                                Customization</h5>
+                            <p class="card-text text-muted"
+                               style="font-family:Roboto; font-size:14px; line-height:1.7;">Get modules
+                                and workflows customized to
+                                meet your exact needs in Odoo.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Community Apps -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                         style="background-color:#ffffff; border:1px solid #eadde6 !important; border-radius:12px;">
+                        <div class="card-body" style="padding:24px;">
+                            <div class="d-inline-flex justify-content-center align-items-center mb-3"
+                                 style="width:50px; height:50px; background:#f3e8ef; border-radius:12px;">
+                                <i class="fa fa-cube fa-lg" style="color:#714B67;">&#8203;</i>
+                            </div>
+                            <h5 class="card-title fw-bold"
+                                style="font-size: 18px; text-transform:capitalize; font-family:Montserrat; margin-bottom: 12px; color:#714B67;">
+                                Community Apps</h5>
+                            <p class="card-text text-muted"
+                               style="font-family:Roboto; font-size:14px; line-height:1.7;">Access or
+                                develop robust community apps to
+                                enhance your Odoo functionality.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Development Outsourcing -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                         style="background-color:#ffffff; border:1px solid #eadde6 !important; border-radius:12px;">
+                        <div class="card-body" style="padding:24px;">
+                            <div class="d-inline-flex justify-content-center align-items-center mb-3"
+                                 style="width:50px; height:50px; background:#f3e8ef; border-radius:12px;">
+                                <i class="fa fa-users fa-lg" style="color:#714B67;">&#8203;</i>
+                            </div>
+                            <h5 class="card-title fw-bold"
+                                style="font-size: 18px; text-transform:capitalize; font-family:Montserrat; margin-bottom: 12px; color:#714B67;">
+                                Development Outsourcing</h5>
+                            <p class="card-text text-muted"
+                               style="font-family:Roboto; font-size:14px; line-height:1.7;">Hire dedicated
+                                Odoo developers to build
+                                solutions efficiently and cost-effectively.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Support & Maintenance -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                         style="background-color:#ffffff; border:1px solid #eadde6 !important; border-radius:12px;">
+                        <div class="card-body" style="padding:24px;">
+                            <div class="d-inline-flex justify-content-center align-items-center mb-3"
+                                 style="width:50px; height:50px; background:#f3e8ef; border-radius:12px;">
+                                <i class="fa fa-life-ring fa-lg" style="color:#714B67;">&#8203;</i>
+                            </div>
+                            <h5 class="card-title fw-bold"
+                                style="font-size: 18px; text-transform:capitalize; font-family:Montserrat; margin-bottom: 12px; color:#714B67;">
+                                Support & Maintenance</h5>
+                            <p class="card-text text-muted"
+                               style="font-family:Roboto; font-size:14px; line-height:1.7;">Enjoy peace of
+                                mind with our reliable
+                                support, updates, and bug fixing services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="padding:28px 0 12px 0;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:26px;">
+            <h2 class="fw-bold"
+                style="color:#714B67; font-weight:900; margin-bottom:8px; font-size:4rem; font-family:'Caveat', Georgia, serif; line-height:1.1;">
+                Discover More Solutions</h2>
+            <p style="margin-bottom:0; color:#714B67;">Explore our other Odoo integration apps</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded-3 overflow-hidden h-100 bg-white">
+                    <a href="https://apps.odoo.com/apps/modules/19.0/eb_loan_management" target="_blank"
+                       style="display:block;">
+                        <img src="loan_ management.png" class="img-fluid w-100" alt="Loan Management"
+                             style="height:200px; object-fit:cover;">
+                    </a>
+                    <div style="padding:18px;">
+                        <div class="fw-semibold" style="color:#714B67; margin-bottom:8px;">Advanced Loan Management
+                        </div>
+                        <p class="text-muted small" style="min-height:54px;">End-to-end loan and finance management for
+                            personal and business lending operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded-3 overflow-hidden h-100 bg-white">
+                    <a href="https://apps.odoo.com/apps/modules/19.0/eb_garage_management" target="_blank"
+                       style="display:block;">
+                        <img src="Garage_Management_System.png" class="img-fluid w-100"
+                             alt="Advanced Property Sale & Rental Management" style="height:200px; object-fit:cover;">
+                    </a>
+                    <div style="padding:18px;">
+                        <div class="fw-semibold" style="color:#714B67; margin-bottom:8px;">Advanced Car Repair | Garage
+                            Management System
+                        </div>
+                        <p class="text-muted small" style="min-height:54px;"> Comprehensive Garage Management System to
+                            manage vehicle repairs, job cards,
+                            inspections, service packages, spare parts, and customer portals in real time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded-3 overflow-hidden h-100 bg-white">
+                    <a href="https://apps.odoo.com/apps/modules/19.0/eb_freight_management" target="_blank"
+                       style="display:block;">
+                        <img src="Freight_Management_System.png" class="img-fluid w-100" alt="Odoo Zendesk Integration"
+                             style="height:200px; object-fit:cover;">
+                    </a>
+                    <div style="padding:18px;">
+                        <div class="fw-semibold" style="color:#714B67; margin-bottom:8px;">Advanced Freight Management
+                            System
+                        </div>
+                        <p class="text-muted small" style="min-height:54px;"> Optimize your global logistics with Odoo
+                            Freight Management System to manage
+                            air, ocean, and land shipments, generate bills of lading, track cargo
+                            in real-time, and streamline freight operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded-3 overflow-hidden h-100 bg-white">
+                    <a href="https://apps.odoo.com/apps/modules/19.0/eb_auction_management" target="_blank"
+                       style="display:block;">
+                        <img src="Auction_Management_System.png" class="img-fluid w-100"
+                             alt="Auction Management System" style="height:200px; object-fit:cover;">
+                    </a>
+                    <div style="padding:18px;">
+                        <div class="fw-semibold" style="color:#714B67; margin-bottom:8px;">Auction Management System
+                        </div>
+                        <p class="text-muted small" style="min-height:54px;"> Optimize your online auctions with Odoo
+                            Auction Management System to run
+                            English and Sealed Bid formats, manage lots and bidders, automate auction
+                            closing, and generate buyer premium invoices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded-3 overflow-hidden h-100 bg-white">
+                    <a href=https://apps.odoo.com/apps/modules/19.0/eb_donor_management"
+                       target="_blank" style="display:block;">
+                        <img src="Donor_Management_System.png" class="img-fluid w-100"
+                             alt="Donor Management System" style="height:200px; object-fit:cover;">
+                    </a>
+                    <div style="padding:18px;">
+                        <div class="fw-semibold" style="color:#714B67; margin-bottom:8px;">Advanced Donor Management
+                            System
+                        </div>
+                        <p class="text-muted small" style="min-height:54px;">Manage your fundraising with Odoo Donor
+                            Management System to run
+                            fundraising programmes and campaigns, record donations and pledges,
+                            issue receipts, and engage donors through a self-service portal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded-3 overflow-hidden h-100 bg-white">
+                    <a href="https://apps.odoo.com/apps/modules/19.0/eb_tender_management" target="_blank"
+                       style="display:block;">
+                        <img src="Tender_Management_System.png" class="img-fluid w-100" alt="Tender Management System"
+                             style="height:200px; object-fit:cover;">
+                    </a>
+                    <div style="padding:18px;">
+                        <div class="fw-semibold" style="color:#714B67; margin-bottom:8px;">Advanced Tender Management
+                            System
+                        </div>
+                        <p class="text-muted small" style="min-height:54px;">Streamline procurement with Odoo Tender
+                            Management. Automate e-tendering,
+                            vendor registration, bid submission, evaluation, and contract awards
+                            in real time via a dedicated supplier portal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" style="margin-top:24px;">
+            <a href="https://apps.odoo.com/apps/modules?author=echoBitz IT Solutions Pvt. Ltd." target="_blank"
+               class="btn" style="background-color:#ffffff; color:#714B67; border:1px solid #714B67;">View All
+                Modules
+                Apps on Odoo App Store</a>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="padding:28px 0 32px 0;">
+    <div class="container">
+        <div class="border rounded-4 text-center" style="padding:34px 24px; background-color:#faf4f8;">
+            <h3 class="fw-bold" style="color:#714B67; margin-bottom:10px;">Ready to streamline your gym
+                operations with our Gym Management System?</h3>
+            <p class="text-muted" style="max-width:720px; margin:0 auto 20px auto; line-height:1.8;">
+                Install our <strong>Gym Management</strong> module and start managing memberships, health
+                assessments, workout &amp; diet plans, attendance, and renewals efficiently,
+                all within Odoo with no external middleware or manual spreadsheet tracking required.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="mailto:info@echobitzit.com" class="btn"
+                   style="background-color:#714B67; border:1px solid #714B67; color:#ffffff;">Get Support</a>
+                <a href="https://calendly.com/echobitzit-info/45min?back=1" target="_blank" class="btn"
+                   style="background-color:#ffffff; color:#714B67; border:1px solid #714B67;">Schedule a Demo</a>
+                <a href="https://www.echobitzit.com" target="_blank" class="btn"
+                   style="background-color:#ffffff; color:#714B67; border:1px solid #714B67;">Visit Our Website</a>
+            </div>
+            <div class="text-muted small" style="margin-top:18px;">Odoo Certified Partner
+                | info@echobitzit.com | www.echobitzit.com
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

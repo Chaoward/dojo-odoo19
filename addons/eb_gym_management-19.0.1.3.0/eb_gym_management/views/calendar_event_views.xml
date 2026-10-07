@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_calendar_event_form_gym_inherit" model="ir.ui.view">
+        <field name="name">calendar.event.form.gym.inherit</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//group[last()]" position="after">
+                <group string="Gym Info">
+                    <field name="membership_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Class Schedule action -->
+    <record id="action_gym_class_schedule" model="ir.actions.act_window">
+        <field name="name">Class Schedule</field>
+        <field name="res_model">calendar.event</field>
+        <field name="view_mode">calendar,list,form</field>
+    </record>
+
+</odoo>

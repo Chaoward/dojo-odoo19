@@ -1,0 +1,15 @@
+.o_gym_staff_attendance_card {
+    background:
+        radial-gradient(circle at top right, rgba(89, 70, 178, 0.08), transparent 35%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+    box-shadow: 0 24px 60px rgba(30, 41, 59, 0.08);
+
+    h2 {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .o_field_widget {
+        font-weight: 600;
+    }
+}

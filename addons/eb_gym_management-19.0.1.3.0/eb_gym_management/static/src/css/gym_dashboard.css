@@ -1,0 +1,599 @@
+.o_gym_dashboard {
+  --surface: #fcfcfb;
+  --plane: #f9f9f7;
+  --ink-primary: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --gridline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border-hairline: rgba(11, 11, 11, 0.1);
+
+  /* Gym brand accent — validated categorical "blue" slot (athletic/performance
+       tone, steps away from the warm orange/serious status hue so it never
+       reads as a food-app palette). */
+  --brand: #2a78d6;
+  --brand-ink: #184f95;
+  --brand-wash: rgba(42, 120, 214, 0.1);
+
+  /* Status roles (fixed, from the validated status palette — never repurposed). */
+  --good: #0ca30c;
+  --good-text: #006300;
+  --good-wash: rgba(12, 163, 12, 0.1);
+  --warning: #fab219;
+  --warning-text: #8a5a00;
+  --warning-wash: rgba(250, 178, 25, 0.16);
+  --critical: #d03b3b;
+  --critical-text: #b02e2e;
+  --critical-wash: rgba(208, 59, 59, 0.12);
+
+  background-color: var(--plane);
+  color: var(--ink-primary);
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+/* ==================== Header ==================== */
+.o_gym_dashboard_header {
+  background: var(--surface);
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border-hairline);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.o_header_brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.o_header_icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--brand-ink);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.o_header_titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.o_gym_title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink-primary);
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+.o_gym_subtitle {
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.o_range_segmented {
+  display: flex;
+  background: var(--plane);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.range_btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-secondary);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.range_btn.active {
+  background: var(--brand-ink);
+  color: #ffffff;
+}
+.range_btn:not(.active):hover {
+  background: var(--border-hairline);
+}
+
+/* ==================== Tab bar ==================== */
+.o_gym_tabbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-hairline);
+  display: flex;
+  gap: 4px;
+  padding: 0 32px;
+}
+
+.tab_btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.tab_btn i {
+  font-size: 14px;
+}
+
+.tab_btn.active {
+  color: var(--ink-primary);
+  border-bottom-color: var(--brand);
+}
+.tab_btn:not(.active):hover {
+  color: var(--ink-secondary);
+  background: var(--plane);
+}
+
+/* ==================== Content ==================== */
+.o_gym_dashboard_content_area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px 36px;
+}
+
+.dashboard_view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1400px) {
+  .kpi_summary_row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1024px) {
+  .o_gym_row {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .o_gym_col_8,
+  .o_gym_col_5,
+  .o_gym_col_7,
+  .o_gym_col_4,
+  .o_gym_col_12 {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+  }
+  .chart_box_lg,
+  .chart_box_md {
+    height: 260px;
+  }
+}
+@media (max-width: 900px) {
+  .o_gym_dashboard_header {
+    padding: 16px 20px;
+  }
+  .o_header_brand {
+    flex: 1 1 100%;
+  }
+  .o_range_segmented {
+    flex: 1 1 100%;
+  }
+  .range_btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .kpi_summary_row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .o_gym_dashboard_header {
+    padding: 14px 16px;
+  }
+  .o_gym_tabbar {
+    padding: 0 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab_btn {
+    white-space: nowrap;
+  }
+  .o_gym_dashboard_content_area {
+    padding: 14px 16px 24px;
+  }
+  .o_gym_row {
+    gap: 14px;
+  }
+  .o_gym_row.mt-4 {
+    margin-top: 14px !important;
+  }
+  .card_body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .gym_custom_table {
+    min-width: 520px;
+  }
+  .chart_box_lg,
+  .chart_box_md {
+    height: 240px;
+  }
+}
+@media (max-width: 480px) {
+  .o_header_icon {
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+  .o_gym_title {
+    font-size: 19px;
+  }
+  .o_gym_subtitle {
+    display: none;
+  }
+  .kpi_box {
+    padding: 14px 16px;
+    gap: 12px;
+    border-radius: 14px;
+  }
+  .kpi_icon_bg {
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+  }
+  .kpi_val {
+    font-size: 21px;
+  }
+  .kpi_lab {
+    font-size: 11px;
+  }
+  .card_header {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .card_body {
+    padding: 12px 14px;
+  }
+  .chart_box_lg,
+  .chart_box_md {
+    height: 220px;
+  }
+  .o_view_all_btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ==================== Section titles ==================== */
+.o_section_title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--ink-primary);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--gridline);
+}
+.o_section_title i {
+  color: var(--brand-ink);
+  font-size: 15px;
+}
+
+/* ==================== KPI cards ==================== */
+.kpi_summary_row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.kpi_summary_row.kpi_summary_row_6col {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kpi_box {
+  background: var(--surface);
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border-hairline);
+  border-top: 3px solid var(--brand);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.kpi_box.accent_good {
+  border-top-color: var(--good);
+}
+.kpi_box.accent_warning {
+  border-top-color: var(--warning);
+}
+.kpi_box.accent_critical {
+  border-top-color: var(--critical);
+}
+.kpi_box:hover {
+  background: var(--plane);
+}
+
+.kpi_icon_bg {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--brand-wash);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  color: var(--brand-ink);
+  flex-shrink: 0;
+}
+.kpi_icon_bg.icon_good {
+  background: var(--good-wash);
+  color: var(--good-text);
+}
+.kpi_icon_bg.icon_warning {
+  background: var(--warning-wash);
+  color: var(--warning-text);
+}
+.kpi_icon_bg.icon_critical {
+  background: var(--critical-wash);
+  color: var(--critical-text);
+}
+
+.kpi_val {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--ink-primary);
+  line-height: 1;
+  white-space: nowrap;
+}
+.kpi_val.val_good {
+  color: var(--good-text);
+}
+.kpi_val.val_warning {
+  color: var(--warning-text);
+}
+.kpi_val.val_critical {
+  color: var(--critical-text);
+}
+.kpi_lab {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  font-weight: 700;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* Slightly tighter sizing so all 6 KPI cards fit in a single row without crowding */
+.kpi_summary_row_6col .kpi_box {
+  padding: 18px;
+  gap: 12px;
+}
+.kpi_summary_row_6col .kpi_icon_bg {
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+}
+.kpi_summary_row_6col .kpi_val {
+  font-size: 22px;
+}
+.kpi_summary_row_6col .kpi_lab {
+  font-size: 11px;
+  white-space: normal;
+}
+
+@media (max-width: 1600px) {
+  .kpi_summary_row.kpi_summary_row_6col {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .kpi_summary_row.kpi_summary_row_6col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 420px) {
+  .kpi_summary_row.kpi_summary_row_6col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== Cards / Charts ==================== */
+.o_gym_row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.o_gym_row.mt-4 {
+  margin-top: 20px !important;
+}
+.o_gym_col_8 {
+  flex: 0 0 calc(66.66% - 10px);
+  width: 66.66%;
+}
+.o_gym_col_5 {
+  flex: 0 0 calc(41.66% - 10px);
+  width: 41.66%;
+}
+.o_gym_col_7 {
+  flex: 0 0 calc(58.33% - 10px);
+  width: 58.33%;
+}
+.o_gym_col_4 {
+  flex: 0 0 calc(33.33% - 10px);
+  width: 33.33%;
+}
+.o_gym_col_12 {
+  flex: 1;
+  width: 100%;
+}
+.o_gym_col_8,
+.o_gym_col_5,
+.o_gym_col_7,
+.o_gym_col_4,
+.o_gym_col_12 {
+  display: flex;
+  min-width: 0;
+}
+
+.o_gym_card {
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--border-hairline);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.card_header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gridline);
+  font-weight: 700;
+  color: var(--ink-secondary);
+  font-size: 13.5px;
+}
+.o_card_header_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card_body {
+  padding: 16px 18px;
+  min-height: 0;
+}
+
+.o_view_all_btn {
+  border: 1px solid var(--border-hairline);
+  background: transparent;
+  color: var(--brand-ink);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.o_view_all_btn:hover {
+  background: var(--brand-wash);
+}
+
+.chart_box_lg {
+  height: 280px;
+  width: 100%;
+}
+.chart_box_md {
+  height: 260px;
+  width: 100%;
+}
+
+/* ==================== Tables ==================== */
+.gym_custom_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.gym_custom_table thead th {
+  background: var(--plane);
+  border: none;
+  padding: 12px 18px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+.gym_custom_table tbody td {
+  padding: 11px 18px;
+  border-top: 1px solid var(--gridline);
+  vertical-align: middle;
+  color: var(--ink-secondary);
+  font-size: 13px;
+}
+.gym_custom_table tbody tr.clickable_row {
+  cursor: pointer;
+}
+.gym_custom_table tbody tr.clickable_row:hover {
+  background: var(--plane);
+}
+
+.name_cell {
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.urgency_bar {
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  display: inline-block;
+}
+.urgency_bar.high {
+  background: var(--critical-wash);
+  color: var(--critical-text);
+}
+.urgency_bar.medium {
+  background: var(--brand-wash);
+  color: var(--brand-ink);
+}
+
+/* ==================== Empty states ==================== */
+.o_gym_empty_state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 190px;
+  padding: 30px 20px;
+  color: var(--ink-muted);
+  text-align: center;
+}
+.o_gym_empty_state .empty_icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--plane);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--baseline);
+  margin-bottom: 12px;
+}
+.o_gym_empty_state .empty_text {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+}

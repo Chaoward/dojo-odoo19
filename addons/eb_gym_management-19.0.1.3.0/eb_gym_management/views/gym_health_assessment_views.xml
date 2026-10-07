@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_gym_health_assessment_list" model="ir.ui.view">
+        <field name="name">gym.health.assessment.list</field>
+        <field name="model">gym.health.assessment</field>
+        <field name="arch" type="xml">
+            <list string="Health Assessments"
+                  decoration-success="state == 'completed'" duplicate="0">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="membership_id"/>
+                <field name="trainer_id" optional="show"/>
+                <field name="nutritionist_id" optional="show"/>
+                <field name="date"/>
+                <field name="weight_kg"/>
+                <field name="bmi"/>
+                <field name="goal"/>
+                <field name="is_baseline"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'completed'"
+                       decoration-info="state == 'in_progress'"
+                       decoration-warning="state == 'assigned'"
+                       decoration-muted="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gym_health_assessment_form" model="ir.ui.view">
+        <field name="name">gym.health.assessment.form</field>
+        <field name="model">gym.health.assessment</field>
+        <field name="arch" type="xml">
+            <form string="Health Assessment" duplicate="0">
+                <header>
+                    <button name="action_assign_notify" string="Assign &amp; Notify" type="object"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_complete" string="Complete" type="object"
+                            class="btn-primary" invisible="state != 'in_progress'"/>
+                    <button name="action_reset_draft" string="Reset to Draft" type="object"
+                            invisible="state != 'completed'"
+                            groups="eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_create_workout_plan" string="Create Workout Plan"
+                            type="object" class="btn-primary"
+                            invisible="not workout_template_id"
+                            groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <button name="action_create_diet_plan" string="Create Diet Plan"
+                            type="object" class="btn-primary"
+                            invisible="not diet_template_id"
+                            groups="eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,assigned,in_progress,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_workout_plans" type="object"
+                                class="oe_stat_button" icon="fa-fire"
+                                groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                            <field name="workout_plan_count" widget="statinfo" string="Workout Plans"/>
+                        </button>
+                        <button name="action_view_diet_plans" type="object"
+                                class="oe_stat_button" icon="fa-cutlery"
+                                groups="eb_gym_management.group_gym_trainer,eb_gym_management.group_gym_nutritionist,eb_gym_management.group_gym_branch_manager,eb_gym_management.group_gym_manager">
+                            <field name="diet_plan_count" widget="statinfo" string="Diet Plans"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <!-- Medical conditions warning banner -->
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not medical_conditions">
+                        <strong>Medical Conditions / Notes:</strong>
+                        <field name="medical_conditions" readonly="1" nolabel="1"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="membership_id" readonly="state != 'draft'"/>
+                            <field name="company_id" readonly="1" groups="base.group_multi_company"/>
+                            <field name="plan_includes_workout" invisible="1"/>
+                            <field name="plan_includes_diet" invisible="1"/>
+                            <field name="trainer_id" readonly="state != 'draft'"/>
+                            <field name="nutritionist_id" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="goal" readonly="state != 'draft'"/>
+                            <field name="next_assessment_date" readonly="state == 'completed'"/>
+                            <field name="is_baseline" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Body Measurements" name="body_measurements">
+                            <group>
+                                <group>
+                                    <field name="height_cm" readonly="state == 'completed'"/>
+                                    <field name="weight_kg" readonly="state == 'completed'"/>
+                                    <field name="bmi" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="body_fat_pct" readonly="state == 'completed'"/>
+                                    <field name="waist_cm" readonly="state == 'completed'"/>
+                                    <field name="chest_cm" readonly="state == 'completed'"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Health Screening" name="health_screening">
+                            <group>
+                                <field name="medical_conditions" nolabel="1" colspan="2"
+                                       placeholder="Note any medical conditions or contraindications..."
+                                       readonly="state == 'completed'"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="injuries" readonly="state == 'completed'"/>
+                                    <field name="medication" readonly="state == 'completed'"/>
+                                </group>
+                                <group>
+                                    <field name="medical_restrictions" readonly="state == 'completed'"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Fitness Evaluation" name="fitness_evaluation">
+                            <group>
+                                <group>
+                                    <field name="fitness_level" readonly="state == 'completed'"/>
+                                    <field name="strength_level" readonly="state == 'completed'"/>
+                                </group>
+                                <group>
+                                    <field name="cardio_level" readonly="state == 'completed'"/>
+                                    <field name="flexibility" readonly="state == 'completed'"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Workout Recommendation" name="workout_recommendation">
+                            <group>
+                                <field name="workout_template_id" readonly="state == 'completed'"/>
+                            </group>
+                        </page>
+                        <page string="Diet Recommendation" name="diet_recommendation">
+                            <group>
+                                <field name="diet_template_id" readonly="state == 'completed'"/>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes" nolabel="1" readonly="state == 'completed'"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_gym_health_assessment_search" model="ir.ui.view">
+        <field name="name">gym.health.assessment.search</field>
+        <field name="model">gym.health.assessment</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                    <field name="state" select="multi" icon="fa-check-square-o" enable_counters="1"/>
+                    <field name="goal" select="multi" icon="fa-bullseye" enable_counters="1"/>
+                </searchpanel>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="membership_id"/>
+                <field name="trainer_id"/>
+                <field name="nutritionist_id"/>
+                <filter name="baseline" string="Baseline Only" domain="[('is_baseline','=',True)]"/>
+                <group>
+                    <filter name="group_goal" string="Goal" context="{'group_by': 'goal'}"/>
+                    <filter name="group_trainer" string="Trainer" context="{'group_by': 'trainer_id'}"/>
+                    <filter name="group_nutritionist" string="Nutritionist" context="{'group_by': 'nutritionist_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gym_health_assessment" model="ir.actions.act_window">
+        <field name="name">Health Assessments</field>
+        <field name="res_model">gym.health.assessment</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_gym_health_assessment_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No health assessments yet</p>
+            <p>Record a member's baseline health data before creating workout and diet plans.</p>
+        </field>
+    </record>
+
+</odoo>

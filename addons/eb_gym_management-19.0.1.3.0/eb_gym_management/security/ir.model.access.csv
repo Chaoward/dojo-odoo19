@@ -1,0 +1,139 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gym_exercise_system,gym.exercise system,model_gym_exercise,base.group_system,1,1,1,1
+access_gym_exercise_branch_manager,gym.exercise branch manager,model_gym_exercise,group_gym_branch_manager,1,1,1,1
+access_gym_exercise_trainer,gym.exercise trainer,model_gym_exercise,group_gym_trainer,1,0,0,0
+access_gym_exercise_category_system,gym.exercise.category system,model_gym_exercise_category,base.group_system,1,1,1,1
+access_gym_exercise_category_branch_manager,gym.exercise.category branch manager,model_gym_exercise_category,group_gym_branch_manager,1,1,1,1
+access_gym_exercise_category_trainer,gym.exercise.category trainer,model_gym_exercise_category,group_gym_trainer,1,0,0,0
+access_gym_food_system,gym.food system,model_gym_food,base.group_system,1,1,1,1
+access_gym_food_branch_manager,gym.food branch manager,model_gym_food,group_gym_branch_manager,1,1,1,1
+access_gym_food_nutritionist,gym.food nutritionist,model_gym_food,group_gym_nutritionist,1,0,0,0
+access_gym_food_trainer,gym.food trainer,model_gym_food,group_gym_trainer,1,0,0,0
+access_gym_food_category_system,gym.food.category system,model_gym_food_category,base.group_system,1,1,1,1
+access_gym_food_category_branch_manager,gym.food.category branch manager,model_gym_food_category,group_gym_branch_manager,1,1,1,1
+access_gym_food_category_nutritionist,gym.food.category nutritionist,model_gym_food_category,group_gym_nutritionist,1,0,0,0
+access_gym_food_category_trainer,gym.food.category trainer,model_gym_food_category,group_gym_trainer,1,0,0,0
+access_gym_equipment_category_system,gym.equipment.category system,model_gym_equipment_category,base.group_system,1,1,1,1
+access_gym_equipment_category_branch_manager,gym.equipment.category branch manager,model_gym_equipment_category,group_gym_branch_manager,1,1,1,1
+access_gym_equipment_system,gym.equipment system,model_gym_equipment,base.group_system,1,1,1,1
+access_gym_equipment_branch_manager,gym.equipment branch manager,model_gym_equipment,group_gym_branch_manager,1,1,1,1
+access_gym_equipment_trainer,gym.equipment trainer,model_gym_equipment,group_gym_trainer,1,0,0,0
+access_gym_trainer_specialization_system,gym.trainer.specialization system,model_gym_trainer_specialization,base.group_system,1,1,1,1
+access_gym_trainer_specialization_branch_manager,gym.trainer.specialization branch manager,model_gym_trainer_specialization,group_gym_branch_manager,1,1,1,1
+access_gym_trainer_specialization_user,gym.trainer.specialization user,model_gym_trainer_specialization,group_gym_reception,1,0,0,0
+access_gym_trainer_specialization_trainer,gym.trainer.specialization trainer,model_gym_trainer_specialization,group_gym_trainer,1,0,0,0
+access_gym_trainer_specialization_nutritionist,gym.trainer.specialization nutritionist,model_gym_trainer_specialization,group_gym_nutritionist,1,0,0,0
+access_gym_workout_template_system,gym.workout.template system,model_gym_workout_template,base.group_system,1,1,1,1
+access_gym_workout_template_branch_manager,gym.workout.template branch manager,model_gym_workout_template,group_gym_branch_manager,1,1,1,1
+access_gym_workout_template_trainer,gym.workout.template trainer,model_gym_workout_template,group_gym_trainer,1,0,0,0
+access_gym_workout_template_line_system,gym.workout.template.line system,model_gym_workout_template_line,base.group_system,1,1,1,1
+access_gym_workout_template_line_branch_manager,gym.workout.template.line branch manager,model_gym_workout_template_line,group_gym_branch_manager,1,1,1,1
+access_gym_workout_template_line_trainer,gym.workout.template.line trainer,model_gym_workout_template_line,group_gym_trainer,1,0,0,0
+access_gym_diet_template_system,gym.diet.template system,model_gym_diet_template,base.group_system,1,1,1,1
+access_gym_diet_template_branch_manager,gym.diet.template branch manager,model_gym_diet_template,group_gym_branch_manager,1,1,1,1
+access_gym_diet_template_nutritionist,gym.diet.template nutritionist,model_gym_diet_template,group_gym_nutritionist,1,0,0,0
+access_gym_diet_template_line_system,gym.diet.template.line system,model_gym_diet_template_line,base.group_system,1,1,1,1
+access_gym_diet_template_line_branch_manager,gym.diet.template.line branch manager,model_gym_diet_template_line,group_gym_branch_manager,1,1,1,1
+access_gym_diet_template_line_nutritionist,gym.diet.template.line nutritionist,model_gym_diet_template_line,group_gym_nutritionist,1,0,0,0
+access_res_config_settings_gym_branch_manager,res.config.settings gym branch manager,base.model_res_config_settings,group_gym_branch_manager,1,1,1,0
+access_res_config_settings_gym_manager,res.config.settings gym manager,base.model_res_config_settings,group_gym_manager,1,1,1,0
+access_gym_membership_system,gym.membership system,model_gym_membership,base.group_system,1,1,1,1
+access_gym_membership_reception,gym.membership reception,model_gym_membership,group_gym_reception,1,1,1,0
+access_gym_membership_branch_manager,gym.membership branch manager,model_gym_membership,group_gym_branch_manager,1,1,1,1
+access_gym_membership_trainer,gym.membership trainer,model_gym_membership,group_gym_trainer,1,0,0,0
+access_gym_membership_nutritionist,gym.membership nutritionist,model_gym_membership,group_gym_nutritionist,1,0,0,0
+access_gym_health_assessment_system,gym.health.assessment system,model_gym_health_assessment,base.group_system,1,1,1,1
+access_gym_health_assessment_branch_manager,gym.health.assessment branch manager,model_gym_health_assessment,group_gym_branch_manager,1,1,1,1
+access_gym_health_assessment_reception,gym.health.assessment reception,model_gym_health_assessment,group_gym_reception,1,1,1,0
+access_gym_health_assessment_trainer,gym.health.assessment trainer,model_gym_health_assessment,group_gym_trainer,1,1,1,0
+access_gym_health_assessment_nutritionist,gym.health.assessment nutritionist,model_gym_health_assessment,group_gym_nutritionist,1,1,1,0
+access_gym_workout_plan_system,gym.workout.plan system,model_gym_workout_plan,base.group_system,1,1,1,1
+access_gym_workout_plan_branch_manager,gym.workout.plan branch manager,model_gym_workout_plan,group_gym_branch_manager,1,1,1,1
+access_gym_workout_plan_trainer,gym.workout.plan trainer,model_gym_workout_plan,group_gym_trainer,1,1,1,0
+access_gym_workout_plan_nutritionist,gym.workout.plan nutritionist,model_gym_workout_plan,group_gym_nutritionist,1,0,0,0
+access_gym_workout_plan_reception,gym.workout.plan reception,model_gym_workout_plan,group_gym_reception,0,0,0,0
+access_gym_workout_plan_line_system,gym.workout.plan.line system,model_gym_workout_plan_line,base.group_system,1,1,1,1
+access_gym_workout_plan_line_branch_manager,gym.workout.plan.line branch manager,model_gym_workout_plan_line,group_gym_branch_manager,1,1,1,1
+access_gym_workout_plan_line_trainer,gym.workout.plan.line trainer,model_gym_workout_plan_line,group_gym_trainer,1,1,1,1
+access_gym_workout_plan_line_nutritionist,gym.workout.plan.line nutritionist,model_gym_workout_plan_line,group_gym_nutritionist,1,0,0,0
+access_gym_diet_plan_system,gym.diet.plan system,model_gym_diet_plan,base.group_system,1,1,1,1
+access_gym_diet_plan_branch_manager,gym.diet.plan branch manager,model_gym_diet_plan,group_gym_branch_manager,1,1,1,1
+access_gym_diet_plan_nutritionist,gym.diet.plan nutritionist,model_gym_diet_plan,group_gym_nutritionist,1,1,1,0
+access_gym_diet_plan_trainer,gym.diet.plan trainer,model_gym_diet_plan,group_gym_trainer,1,0,0,0
+access_gym_diet_plan_reception,gym.diet.plan reception,model_gym_diet_plan,group_gym_reception,0,0,0,0
+access_gym_diet_plan_line_system,gym.diet.plan.line system,model_gym_diet_plan_line,base.group_system,1,1,1,1
+access_gym_diet_plan_line_branch_manager,gym.diet.plan.line branch manager,model_gym_diet_plan_line,group_gym_branch_manager,1,1,1,1
+access_gym_diet_plan_line_nutritionist,gym.diet.plan.line nutritionist,model_gym_diet_plan_line,group_gym_nutritionist,1,1,1,1
+access_gym_diet_plan_line_trainer,gym.diet.plan.line trainer,model_gym_diet_plan_line,group_gym_trainer,1,0,0,0
+access_gym_attendance_system,gym.attendance system,model_gym_attendance,base.group_system,1,1,1,1
+access_gym_attendance_branch_manager,gym.attendance branch manager,model_gym_attendance,group_gym_branch_manager,1,1,1,1
+access_gym_attendance_reception,gym.attendance reception,model_gym_attendance,group_gym_reception,1,1,1,0
+access_gym_attendance_trainer,gym.attendance trainer,model_gym_attendance,group_gym_trainer,1,0,0,0
+access_gym_attendance_nutritionist,gym.attendance nutritionist,model_gym_attendance,group_gym_nutritionist,1,0,0,0
+access_hr_attendance_gym_system,hr.attendance gym system,hr_attendance.model_hr_attendance,base.group_system,1,1,1,1
+access_hr_attendance_gym_branch_manager,hr.attendance gym branch manager,hr_attendance.model_hr_attendance,group_gym_branch_manager,1,1,1,0
+access_hr_attendance_gym_reception,hr.attendance gym reception,hr_attendance.model_hr_attendance,group_gym_reception,1,1,1,1
+access_hr_attendance_gym_trainer,hr.attendance gym trainer,hr_attendance.model_hr_attendance,group_gym_trainer,1,1,1,0
+access_hr_attendance_gym_nutritionist,hr.attendance gym nutritionist,hr_attendance.model_hr_attendance,group_gym_nutritionist,1,1,1,0
+access_hr_attendance_overtime_line_gym_system,hr.attendance.overtime.line gym system,hr_attendance.model_hr_attendance_overtime_line,base.group_system,1,1,1,1
+access_hr_attendance_overtime_line_gym_branch_manager,hr.attendance.overtime.line gym branch manager,hr_attendance.model_hr_attendance_overtime_line,group_gym_branch_manager,1,1,1,1
+access_hr_attendance_overtime_line_gym_reception,hr.attendance.overtime.line gym reception,hr_attendance.model_hr_attendance_overtime_line,group_gym_reception,1,1,1,1
+access_hr_attendance_overtime_line_gym_trainer,hr.attendance.overtime.line gym trainer,hr_attendance.model_hr_attendance_overtime_line,group_gym_trainer,1,1,1,1
+access_hr_attendance_overtime_line_gym_nutritionist,hr.attendance.overtime.line gym nutritionist,hr_attendance.model_hr_attendance_overtime_line,group_gym_nutritionist,1,1,1,1
+access_gym_staff_attendance_wizard_system,gym.staff.attendance wizard system,model_gym_staff_attendance_wizard,base.group_system,1,1,1,1
+access_gym_staff_attendance_wizard_branch_manager,gym.staff.attendance wizard branch manager,model_gym_staff_attendance_wizard,group_gym_branch_manager,1,1,1,1
+access_gym_staff_attendance_wizard_reception,gym.staff.attendance wizard reception,model_gym_staff_attendance_wizard,group_gym_reception,1,1,1,1
+access_gym_staff_attendance_wizard_trainer,gym.staff.attendance wizard trainer,model_gym_staff_attendance_wizard,group_gym_trainer,1,1,1,1
+access_gym_staff_attendance_wizard_nutritionist,gym.staff.attendance wizard nutritionist,model_gym_staff_attendance_wizard,group_gym_nutritionist,1,1,1,1
+access_gym_hold_wizard_system,gym.membership.hold.wizard system,model_gym_membership_hold_wizard,base.group_system,1,1,1,1
+access_gym_hold_wizard_branch_manager,gym.membership.hold.wizard branch manager,model_gym_membership_hold_wizard,group_gym_branch_manager,1,1,1,1
+access_gym_hold_wizard_all,gym.membership.hold.wizard all,model_gym_membership_hold_wizard,group_gym_reception,1,1,1,1
+access_gym_renew_wizard_system,gym.membership.renew.wizard system,model_gym_membership_renew_wizard,base.group_system,1,1,1,1
+access_gym_renew_wizard_branch_manager,gym.membership.renew.wizard branch manager,model_gym_membership_renew_wizard,group_gym_branch_manager,1,1,1,1
+access_gym_renew_wizard_all,gym.membership.renew.wizard all,model_gym_membership_renew_wizard,group_gym_reception,1,1,1,1
+access_hr_employee_system,hr.employee system,hr.model_hr_employee,base.group_system,1,1,1,1
+access_hr_employee_gym_branch_manager,hr.employee gym branch manager,hr.model_hr_employee,group_gym_branch_manager,1,1,1,0
+access_hr_employee_gym_trainer,hr.employee gym trainer,hr.model_hr_employee,group_gym_trainer,1,0,0,0
+access_hr_employee_gym_nutritionist,hr.employee gym nutritionist,hr.model_hr_employee,group_gym_nutritionist,1,0,0,0
+access_hr_employee_gym_reception,hr.employee gym reception,hr.model_hr_employee,group_gym_reception,1,0,0,0
+access_res_partner_gym_reception,res.partner gym reception,base.model_res_partner,group_gym_reception,1,1,1,0
+access_res_partner_gym_trainer,res.partner gym trainer,base.model_res_partner,group_gym_trainer,1,0,0,0
+access_res_partner_gym_nutritionist,res.partner gym nutritionist,base.model_res_partner,group_gym_nutritionist,1,0,0,0
+access_sale_order_system,sale.order system,sale.model_sale_order,base.group_system,1,0,0,0
+access_sale_order_gym_branch_manager,sale.order gym branch manager,sale.model_sale_order,group_gym_branch_manager,1,0,0,0
+access_sale_order_gym_reception,sale.order gym reception,sale.model_sale_order,group_gym_reception,1,0,0,0
+access_sale_order_gym_trainer,sale.order gym trainer,sale.model_sale_order,group_gym_trainer,1,0,0,0
+access_sale_order_gym_nutritionist,sale.order gym nutritionist,sale.model_sale_order,group_gym_nutritionist,1,0,0,0
+access_sale_order_line_system,sale.order.line system,sale.model_sale_order_line,base.group_system,1,0,0,0
+access_sale_order_line_gym_branch_manager,sale.order.line gym branch manager,sale.model_sale_order_line,group_gym_branch_manager,1,0,0,0
+access_sale_order_line_gym_reception,sale.order.line gym reception,sale.model_sale_order_line,group_gym_reception,1,0,0,0
+access_sale_order_line_gym_trainer,sale.order.line gym trainer,sale.model_sale_order_line,group_gym_trainer,1,0,0,0
+access_sale_order_line_gym_nutritionist,sale.order.line gym nutritionist,sale.model_sale_order_line,group_gym_nutritionist,1,0,0,0
+access_account_move_system,account.move system,account.model_account_move,base.group_system,1,0,0,0
+access_account_move_gym_branch_manager,account.move gym branch manager,account.model_account_move,group_gym_branch_manager,1,0,0,0
+access_account_move_gym_reception,account.move gym reception,account.model_account_move,group_gym_reception,1,0,0,0
+access_account_move_gym_trainer,account.move gym trainer,account.model_account_move,group_gym_trainer,1,0,0,0
+access_account_move_gym_nutritionist,account.move gym nutritionist,account.model_account_move,group_gym_nutritionist,1,0,0,0
+access_account_move_line_system,account.move.line system,account.model_account_move_line,base.group_system,1,0,0,0
+access_account_move_line_gym_branch_manager,account.move.line gym branch manager,account.model_account_move_line,group_gym_branch_manager,1,0,0,0
+access_account_move_line_gym_reception,account.move.line gym reception,account.model_account_move_line,group_gym_reception,1,0,0,0
+access_account_move_line_gym_trainer,account.move.line gym trainer,account.model_account_move_line,group_gym_trainer,1,0,0,0
+access_account_move_line_gym_nutritionist,account.move.line gym nutritionist,account.model_account_move_line,group_gym_nutritionist,1,0,0,0
+access_account_journal_system,account.journal system,account.model_account_journal,base.group_system,1,0,0,0
+access_account_journal_gym_branch_manager,account.journal gym branch manager,account.model_account_journal,group_gym_branch_manager,1,0,0,0
+access_account_journal_gym_reception,account.journal gym reception,account.model_account_journal,group_gym_reception,1,0,0,0
+access_account_journal_gym_trainer,account.journal gym trainer,account.model_account_journal,group_gym_trainer,1,0,0,0
+access_account_journal_gym_nutritionist,account.journal gym nutritionist,account.model_account_journal,group_gym_nutritionist,1,0,0,0
+access_gym_membership_portal,gym.membership portal,model_gym_membership,base.group_portal,1,0,0,0
+access_gym_health_assessment_portal,gym.health.assessment portal,model_gym_health_assessment,base.group_portal,1,0,0,0
+access_gym_workout_plan_portal,gym.workout.plan portal,model_gym_workout_plan,base.group_portal,1,0,0,0
+access_gym_workout_plan_line_portal,gym.workout.plan.line portal,model_gym_workout_plan_line,base.group_portal,1,0,0,0
+access_gym_diet_plan_portal,gym.diet.plan portal,model_gym_diet_plan,base.group_portal,1,0,0,0
+access_gym_diet_plan_line_portal,gym.diet.plan.line portal,model_gym_diet_plan_line,base.group_portal,1,0,0,0
+access_gym_attendance_portal,gym.attendance portal,model_gym_attendance,base.group_portal,1,0,0,0
+access_gym_exercise_portal,gym.exercise portal,model_gym_exercise,base.group_portal,1,0,0,0
+access_gym_exercise_category_portal,gym.exercise.category portal,model_gym_exercise_category,base.group_portal,1,0,0,0
+access_gym_food_portal,gym.food portal,model_gym_food,base.group_portal,1,0,0,0
+access_gym_food_category_portal,gym.food.category portal,model_gym_food_category,base.group_portal,1,0,0,0
+access_product_template_portal,product.template portal,product.model_product_template,base.group_portal,1,0,0,0
+access_product_product_portal,product.product portal,product.model_product_product,base.group_portal,1,0,0,0

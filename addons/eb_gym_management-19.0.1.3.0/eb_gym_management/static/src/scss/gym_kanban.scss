@@ -1,0 +1,21 @@
+// Gym Management System — Kanban styles
+
+.o_gym_membership_kanban {
+    .o_kanban_record {
+        border-radius: 6px;
+
+        &.state_active {
+            border-left: 4px solid #28a745;
+        }
+        &.state_expired {
+            border-left: 4px solid #dc3545;
+        }
+        &.state_draft {
+            border-left: 4px solid #ffc107;
+        }
+        &.state_cancelled {
+            border-left: 4px solid #6c757d;
+            opacity: 0.7;
+        }
+    }
+}

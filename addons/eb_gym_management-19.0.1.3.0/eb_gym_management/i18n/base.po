@@ -1,0 +1,4101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eb_gym_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-22 07:23+0000\n"
+"PO-Revision-Date: 2026-07-22 07:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/res_users.py:0
+msgid ""
+"%(user)s is set as Gym Administrator, which already includes Receptionist, "
+"Trainer and Nutritionist access. Uncheck %(roles)s or uncheck Gym "
+"Administrator."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "%s \"%s\" has no linked user account, so they cannot be notified."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/res_partner.py:0
+msgid "%s already has a portal user account."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "12M"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "3M"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "6M"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:product.template,name:eb_gym_management.demo_plan_trial
+msgid "7-Day Trial Pass"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "<i class=\"fa fa-sign-in me-1\"/> Check In"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "<i class=\"fa fa-sign-out me-1\"/> Check Out"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                            Attendances\n"
+"                        </span>"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_form
+msgid "<span class=\"o_stat_text\">Previous Version</span>"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "<strong>Medical Conditions / Notes:</strong>"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,body_html:eb_gym_management.mail_template_health_assessment_confirmed
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f7; padding:32px 0; font-family: Helvetica, Arial, sans-serif;\">\n"
+"<tr><td align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e6e6e6;\">\n"
+"    <tr>\n"
+"        <td style=\"background-color:#714B67; padding:24px 32px;\">\n"
+"            <span style=\"color:#ffffff; font-size:20px; font-weight:bold;\"><t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding:32px;\">\n"
+"            <p style=\"margin:0 0 8px 0; color:#714B67; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase;\">Health Assessment</p>\n"
+"            <h1 style=\"margin:0 0 16px 0; color:#1f2933; font-size:22px;\">Dear <t t-out=\"object.partner_id.name\"/>,</h1>\n"
+"            <p style=\"margin:0 0 20px 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Your health assessment has been completed by your trainer.\n"
+"            </p>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse:collapse; border:1px solid #e6e6e6; border-radius:6px; overflow:hidden;\">\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933; width:45%;\">Assessment Reference</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.name\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Date</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"format_date(object.date)\"/></td>\n"
+"                </tr>\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Height</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.height_cm\"/> cm</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Weight</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.weight_kg\"/> kg</td>\n"
+"                </tr>\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">BMI</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.bmi\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Fitness Goal</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.goal\"/></td>\n"
+"                </tr>\n"
+"                <t t-if=\"object.trainer_id\">\n"
+"                    <tr style=\"background-color:#f9f9fb;\">\n"
+"                        <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Trainer</td>\n"
+"                        <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.trainer_id.name\"/></td>\n"
+"                    </tr>\n"
+"                </t>\n"
+"            </table>\n"
+"            <p style=\"margin:24px 0 0 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Your trainer will use these results to design a personalised workout and diet plan for you.\n"
+"            </p>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"background-color:#f9f9fb; padding:16px 32px; text-align:center; border-top:1px solid #e6e6e6;\">\n"
+"            <span style=\"color:#9aa5b1; font-size:12px;\"><t t-out=\"user.company_id.name\"/> Gym Management Team</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"</td></tr>\n"
+"</table>\n"
+"            "
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,body_html:eb_gym_management.mail_template_membership_welcome
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f7; padding:32px 0; font-family: Helvetica, Arial, sans-serif;\">\n"
+"<tr><td align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e6e6e6;\">\n"
+"    <tr>\n"
+"        <td style=\"background-color:#714B67; padding:24px 32px;\">\n"
+"            <span style=\"color:#ffffff; font-size:20px; font-weight:bold;\"><t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding:32px;\">\n"
+"            <p style=\"margin:0 0 8px 0; color:#714B67; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase;\">Membership Activated</p>\n"
+"            <h1 style=\"margin:0 0 16px 0; color:#1f2933; font-size:22px;\">You're all set, <t t-out=\"object.partner_id.name\"/>!</h1>\n"
+"            <p style=\"margin:0 0 20px 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Great news — your gym membership is now\n"
+"                <span style=\"display:inline-block; background-color:#e6f4ea; color:#28a745; font-weight:bold; font-size:12px; padding:2px 10px; border-radius:12px;\">ACTIVE</span>\n"
+"            </p>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse:collapse; border:1px solid #e6e6e6; border-radius:6px; overflow:hidden;\">\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933; width:45%;\">Membership Reference</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.name\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Plan</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.plan_id.name\"/></td>\n"
+"                </tr>\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Start Date</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"format_date(object.start_date)\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">End Date</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"format_date(object.end_date)\"/></td>\n"
+"                </tr>\n"
+"                <t t-if=\"object.trainer_id\">\n"
+"                    <tr style=\"background-color:#f9f9fb;\">\n"
+"                        <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Assigned Trainer</td>\n"
+"                        <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.trainer_id.name\"/></td>\n"
+"                    </tr>\n"
+"                </t>\n"
+"            </table>\n"
+"            <p style=\"margin:24px 0 0 0; color:#52606d; font-size:14px; line-height:22px;\">We look forward to supporting your fitness journey!</p>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"background-color:#f9f9fb; padding:16px 32px; text-align:center; border-top:1px solid #e6e6e6;\">\n"
+"            <span style=\"color:#9aa5b1; font-size:12px;\"><t t-out=\"user.company_id.name\"/> Gym Management Team</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"</td></tr>\n"
+"</table>\n"
+"            "
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,body_html:eb_gym_management.mail_template_membership_renewed
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f7; padding:32px 0; font-family: Helvetica, Arial, sans-serif;\">\n"
+"<tr><td align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e6e6e6;\">\n"
+"    <tr>\n"
+"        <td style=\"background-color:#714B67; padding:24px 32px;\">\n"
+"            <span style=\"color:#ffffff; font-size:20px; font-weight:bold;\"><t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding:32px;\">\n"
+"            <p style=\"margin:0 0 8px 0; color:#714B67; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase;\">Membership Renewed</p>\n"
+"            <h1 style=\"margin:0 0 16px 0; color:#1f2933; font-size:22px;\">Thanks for renewing, <t t-out=\"object.partner_id.name\"/>!</h1>\n"
+"            <p style=\"margin:0 0 20px 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Your gym membership has been successfully\n"
+"                <span style=\"display:inline-block; background-color:#e6f4ea; color:#28a745; font-weight:bold; font-size:12px; padding:2px 10px; border-radius:12px;\">RENEWED</span>\n"
+"            </p>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse:collapse; border:1px solid #e6e6e6; border-radius:6px; overflow:hidden;\">\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933; width:45%;\">Membership Reference</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.name\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Plan</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.plan_id.name\"/></td>\n"
+"                </tr>\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">New End Date</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"format_date(object.end_date)\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Total Renewals</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.renewal_count\"/></td>\n"
+"                </tr>\n"
+"                <t t-if=\"object.trainer_id\">\n"
+"                    <tr style=\"background-color:#f9f9fb;\">\n"
+"                        <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Assigned Trainer</td>\n"
+"                        <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.trainer_id.name\"/></td>\n"
+"                    </tr>\n"
+"                </t>\n"
+"            </table>\n"
+"            <p style=\"margin:24px 0 0 0; color:#52606d; font-size:14px; line-height:22px;\">Keep up the great work and stay consistent!</p>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"background-color:#f9f9fb; padding:16px 32px; text-align:center; border-top:1px solid #e6e6e6;\">\n"
+"            <span style=\"color:#9aa5b1; font-size:12px;\"><t t-out=\"user.company_id.name\"/> Gym Management Team</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"</td></tr>\n"
+"</table>\n"
+"            "
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,body_html:eb_gym_management.mail_template_membership_expired
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f7; padding:32px 0; font-family: Helvetica, Arial, sans-serif;\">\n"
+"<tr><td align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e6e6e6;\">\n"
+"    <tr>\n"
+"        <td style=\"background-color:#714B67; padding:24px 32px;\">\n"
+"            <span style=\"color:#ffffff; font-size:20px; font-weight:bold;\"><t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding:32px;\">\n"
+"            <p style=\"margin:0 0 8px 0; color:#714B67; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase;\">Membership Update</p>\n"
+"            <h1 style=\"margin:0 0 16px 0; color:#1f2933; font-size:22px;\">Dear <t t-out=\"object.partner_id.name\"/>,</h1>\n"
+"            <p style=\"margin:0 0 20px 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Your gym membership has\n"
+"                <span style=\"display:inline-block; background-color:#fdecea; color:#dc3545; font-weight:bold; font-size:12px; padding:2px 10px; border-radius:12px;\">EXPIRED</span>\n"
+"            </p>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse:collapse; border:1px solid #e6e6e6; border-radius:6px; overflow:hidden;\">\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933; width:45%;\">Membership Reference</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.name\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Plan</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.plan_id.name\"/></td>\n"
+"                </tr>\n"
+"                <tr style=\"background-color:#fdecea;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#dc3545;\">Expired On</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#dc3545;\"><t t-out=\"format_date(object.end_date)\"/></td>\n"
+"                </tr>\n"
+"            </table>\n"
+"            <p style=\"margin:24px 0 0 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                We'd love to have you back! Please visit us to renew your membership and get back on track.\n"
+"            </p>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"background-color:#f9f9fb; padding:16px 32px; text-align:center; border-top:1px solid #e6e6e6;\">\n"
+"            <span style=\"color:#9aa5b1; font-size:12px;\"><t t-out=\"user.company_id.name\"/> Gym Management Team</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"</td></tr>\n"
+"</table>\n"
+"            "
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,body_html:eb_gym_management.mail_template_portal_invitation
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f7; padding:32px 0; font-family: Helvetica, Arial, sans-serif;\">\n"
+"<tr><td align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e6e6e6;\">\n"
+"    <tr>\n"
+"        <td style=\"background-color:#714B67; padding:24px 32px;\">\n"
+"            <span style=\"color:#ffffff; font-size:20px; font-weight:bold;\"><t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding:32px;\">\n"
+"            <p style=\"margin:0 0 8px 0; color:#714B67; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase;\">Portal Access</p>\n"
+"            <h1 style=\"margin:0 0 16px 0; color:#1f2933; font-size:22px;\">Hello <t t-out=\"object.name\"/>, your member portal is ready</h1>\n"
+"            <p style=\"margin:0 0 20px 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Your membership has been activated and a member portal account has been created for you.\n"
+"                Click the button below to set your password and access your account.\n"
+"            </p>\n"
+"            <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"margin:8px auto 24px auto;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"border-radius:6px; background-color:#714B67;\">\n"
+"                        <a t-att-href=\"object._get_signup_url()\" target=\"_blank\" style=\"display:inline-block; padding:14px 32px; font-size:15px; font-weight:bold; color:#ffffff; text-decoration:none; border-radius:6px; font-family: Helvetica, Arial, sans-serif;\">\n"
+"                            Set My Password\n"
+"                        </a>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"            <p style=\"margin:0 0 8px 0; color:#1f2933; font-size:14px; font-weight:bold;\">From the portal you can:</p>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse:collapse;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding:4px 0; color:#52606d; font-size:14px; line-height:22px;\">✓ View your membership</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:4px 0; color:#52606d; font-size:14px; line-height:22px;\">✓ View your workout plan</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:4px 0; color:#52606d; font-size:14px; line-height:22px;\">✓ View your diet plan</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:4px 0; color:#52606d; font-size:14px; line-height:22px;\">✓ Check your attendance</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:4px 0; color:#52606d; font-size:14px; line-height:22px;\">✓ View fitness reports</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:4px 0; color:#52606d; font-size:14px; line-height:22px;\">✓ Register for classes</td>\n"
+"                </tr>\n"
+"            </table>\n"
+"            <p style=\"margin:24px 0 0 0; color:#9aa5b1; font-size:12px; line-height:18px;\">\n"
+"                If the button above doesn't work, copy and paste this link into your browser:<br/>\n"
+"                <a t-att-href=\"object._get_signup_url()\" style=\"color:#714B67; word-break:break-all;\" t-out=\"object._get_signup_url()\"/>\n"
+"            </p>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"background-color:#f9f9fb; padding:16px 32px; text-align:center; border-top:1px solid #e6e6e6;\">\n"
+"            <span style=\"color:#9aa5b1; font-size:12px;\">Thank you, <t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"</td></tr>\n"
+"</table>\n"
+"            "
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,body_html:eb_gym_management.mail_template_membership_expiry_reminder
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f4f4f7; padding:32px 0; font-family: Helvetica, Arial, sans-serif;\">\n"
+"<tr><td align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; width:100%; background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e6e6e6;\">\n"
+"    <tr>\n"
+"        <td style=\"background-color:#714B67; padding:24px 32px;\">\n"
+"            <span style=\"color:#ffffff; font-size:20px; font-weight:bold;\"><t t-out=\"user.company_id.name\"/> Gym</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding:32px;\">\n"
+"            <p style=\"margin:0 0 8px 0; color:#714B67; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase;\">Renewal Reminder</p>\n"
+"            <h1 style=\"margin:0 0 16px 0; color:#1f2933; font-size:22px;\">Dear <t t-out=\"object.partner_id.name\"/>,</h1>\n"
+"            <p style=\"margin:0 0 20px 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                This is a friendly reminder that your gym membership will\n"
+"                <span style=\"display:inline-block; background-color:#fff8e1; color:#a97400; font-weight:bold; font-size:12px; padding:2px 10px; border-radius:12px;\">EXPIRE SOON</span>\n"
+"            </p>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse:collapse; border:1px solid #e6e6e6; border-radius:6px; overflow:hidden;\">\n"
+"                <tr style=\"background-color:#f9f9fb;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933; width:45%;\">Membership Reference</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.name\"/></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#1f2933;\">Plan</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; color:#52606d;\"><t t-out=\"object.plan_id.name\"/></td>\n"
+"                </tr>\n"
+"                <tr style=\"background-color:#fff8e1;\">\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#a97400;\">Expiry Date</td>\n"
+"                    <td style=\"padding:10px 16px; font-size:13px; font-weight:bold; color:#a97400;\"><t t-out=\"format_date(object.end_date)\"/></td>\n"
+"                </tr>\n"
+"            </table>\n"
+"            <p style=\"margin:24px 0 0 0; color:#52606d; font-size:14px; line-height:22px;\">\n"
+"                Please visit the gym or contact us to renew your membership and continue your fitness journey without interruption.\n"
+"            </p>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"background-color:#f9f9fb; padding:16px 32px; text-align:center; border-top:1px solid #e6e6e6;\">\n"
+"            <span style=\"color:#9aa5b1; font-size:12px;\"><t t-out=\"user.company_id.name\"/> Gym Management Team</span>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"</td></tr>\n"
+"</table>\n"
+"            "
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_needaction
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_needaction
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_needaction
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_needaction
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_needaction
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_needaction
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_form
+msgid "Activate"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__active
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__active
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan__state__active
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__state__active
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan__state__active
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_search
+msgid "Active"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Active Members"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_exception_decoration
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_exception_decoration
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_exception_decoration
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_exception_decoration
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_exception_decoration
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_type_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_type_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_type_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_type_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_type_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_members
+msgid "Add contacts and mark them as gym members to get started."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_equipment_category
+msgid ""
+"Add equipment categories to classify the gym equipment used in exercises."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_exercise
+msgid "Add exercises to build your workout templates and member plans."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_food
+msgid "Add food items with nutritional info to use in member diet plans."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_equipment
+msgid "Add gym equipment items and assign them to categories."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_attendance.py:0
+msgid ""
+"Alert: %s has been checked in since %s (over 12 hours). Please verify check-"
+"out."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:product.template,name:eb_gym_management.demo_plan_annual_gold
+msgid "Annual Gold"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_form
+msgid "Archived"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Are you sure you want to cancel this membership?"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__date
+msgid "Assessment Date"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid ""
+"Assessment assigned. Please open this record to fill in the body "
+"measurements, health screening, fitness evaluation and recommendations."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Assessment completed. Goal: %s | BMI: %.2f | Weight: %.1f kg"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+msgid "Assessments"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Assign & Notify"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__state__assigned
+msgid "Assigned"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__trainer_id
+msgid "Assigned Trainer"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Assigned Trainer: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_attachment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_attachment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_attachment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_attachment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_attachment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_attachment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: code:addons/eb_gym_management/models/res_partner.py:0
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_attendance
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_staff_attendance
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_attendance
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_staff_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_breadcrumbs_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_partner_form_gym_inherit
+msgid "Attendance"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_attendance_analysis
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_report_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_graph
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_pivot
+msgid "Attendance Analysis"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__attendance_count
+msgid "Attendance Count"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_attendance.py:0
+msgid ""
+"Attendance record \"%s\" cannot be deleted because the member has already "
+"checked out."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_attendance.py:0
+msgid "Attendance records cannot be duplicated."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__attendance_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__attendance_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__attendance_count
+msgid "Attendances"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__exercise_equipment_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__exercise_equipment_ids
+msgid "Available Equipment"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__bmi
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "BMI"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__is_baseline
+msgid "Baseline Assessment"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_search
+msgid "Baseline Only"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_benefits
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_benefits
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "Benefits"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__body_fat_pct
+msgid "Body Fat %"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Body Fat % must be between 0 and 100."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Body Measurements"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_search
+msgid "Branch Managers"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__meal_type__breakfast
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__meal_type__breakfast
+msgid "Breakfast"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_calendar_event
+msgid "Calendar Event"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__calories_per_100g
+msgid "Calories per 100g"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_master_data.py:0
+msgid "Calories per 100g must be 0 or greater."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_renew_wizard_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_wizard_form
+msgid "Cancel"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_plan.py:0
+msgid "Cannot activate a Diet Plan with no Meal Lines."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_workout_plan.py:0
+msgid "Cannot activate a Workout Plan with no Exercise Lines."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Cannot cancel a membership that is already expired or cancelled."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__carbs_g
+msgid "Carbs (g)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__cardio_level
+msgid "Cardio Level"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__category_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__category_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__category_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__exercise_category_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__exercise_category_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_search
+msgid "Category"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_category_form
+msgid "Category Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__check_in
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__check_in
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_wizard_form
+msgid "Check In"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_staff_checkin_checkout
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_staff_checkin_checkout
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_wizard_form
+msgid "Check In / Check Out"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__check_out
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__check_out
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_wizard_form
+msgid "Check Out"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_attendance.py:0
+msgid "Check Out time must be after Check In time."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_attendance
+msgid "Check in a member to start tracking gym attendance."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+msgid "Check in, check out and track your visit history"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Check-ins"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_staff_attendance_wizard__state__checked_in
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "Checked In"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "Checked in at"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__chest_cm
+msgid "Chest (cm)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_class_schedule
+msgid "Class Schedule"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__code
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+msgid "Code"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__company_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__company_id
+msgid "Company"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Complete"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__completed
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan__state__completed
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__state__completed
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan__state__completed
+msgid "Completed"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config
+msgid "Configuration"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Confirm & Invoice"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_renew_wizard_form
+msgid "Confirm Renewal"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Create Assessment"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Create Diet Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_partner_form_gym_inherit
+msgid "Create Portal User"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Create Workout Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_diet_plan
+msgid ""
+"Create a diet plan for a member based on their health assessment and goals."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_membership
+msgid ""
+"Create a membership to enrol a member and track their plan, trainer, and "
+"activity."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_workout_plan
+msgid ""
+"Create a workout plan for a member by selecting a template and assigning a "
+"trainer."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_trainers
+msgid ""
+"Create an employee record here, then link it to a user to grant gym access "
+"rights."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_exercise_category
+msgid ""
+"Create categories like Cardio, Strength, or Flexibility to organise your "
+"exercises."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_food_category
+msgid ""
+"Create categories like Protein, Carbohydrate, or Fruit to organise your "
+"foods."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_workout_template
+msgid ""
+"Create reusable workout templates to quickly build personalised member "
+"plans."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_membership_plan
+msgid "Create your first Membership Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__create_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__create_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__uom__cup
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__uom__cup
+msgid "Cup"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.client,name:eb_gym_management.action_gym_dashboard
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_dashboard
+msgid "Dashboard"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_search
+msgid "Date"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__day_of_week
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__day_of_week
+msgid "Day of Week"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__product_template__gym_duration_uom__days
+msgid "Days"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_membership_plan
+msgid ""
+"Define gym membership plans here. Each plan is a service product.\n"
+"                Set the duration, price, and benefits that members will enjoy."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_trainer_specialization
+msgid "Define specializations to assign to trainers based on their expertise."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_search
+msgid "Department"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_form
+msgid "Describe this template..."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__description
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__description
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__description
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__description
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__description
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__description
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__description
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+msgid "Description"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_category_form
+msgid "Description..."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_nutrition
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+msgid "Diet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+#: model:ir.model,name:eb_gym_management.model_gym_diet_plan
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_form
+msgid "Diet Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_plan.py:0
+msgid ""
+"Diet Plan \"%s\" cannot be deleted because it is %s. Keep it for history "
+"instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__diet_plan_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__diet_plan_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__diet_plan_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__diet_plan_count
+msgid "Diet Plan Count"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_diet_plan_line
+msgid "Diet Plan Line"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_template.py:0
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_diet_plan
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__diet_plan_ids
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_diet_plan
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+msgid "Diet Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_plan.py:0
+msgid ""
+"Diet Plans cannot be duplicated. Create a new plan from a Health Assessment "
+"instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Diet Recommendation"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_diet_template
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__template_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__diet_template_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_form
+msgid "Diet Template"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_template.py:0
+msgid ""
+"Diet Template \"%s\" cannot be deleted because it is used by existing Diet "
+"Plans. Archive it instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_diet_template_line
+msgid "Diet Template Line"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_diet_template
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_diet_templates
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_list
+msgid "Diet Templates"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__meal_type__dinner
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__meal_type__dinner
+msgid "Dinner"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_account_move__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_calendar_event__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__display_name
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan__state__draft
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__state__draft
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__state__draft
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_duration_value
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_duration_value
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+msgid "Duration"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__duration_weeks
+msgid "Duration (Weeks)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__duration
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "Duration (hrs)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_duration_uom
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_duration_uom
+msgid "Duration Unit"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership_plan.py:0
+#: code:addons/eb_gym_management/models/gym_workout_template.py:0
+msgid "Duration must be greater than 0."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Duration: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model:ir.model,name:eb_gym_management.model_hr_employee
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__employee_name
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_search
+msgid "Employee"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_employees_reception
+msgid "Employee records visible to receptionists are limited to gym staff."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_employees_reception
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_trainers
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_staff_employees
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_staff_employees_reception
+msgid "Employees"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__plan_includes_diet
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__plan_includes_diet
+#: model:ir.model.fields,help:eb_gym_management.field_product_product__gym_includes_diet
+#: model:ir.model.fields,help:eb_gym_management.field_product_template__gym_includes_diet
+msgid "Enable if members on this plan get a diet plan."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__plan_includes_workout
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__plan_includes_workout
+#: model:ir.model.fields,help:eb_gym_management.field_product_product__gym_includes_workout
+#: model:ir.model.fields,help:eb_gym_management.field_product_template__gym_includes_workout
+msgid "Enable if members on this plan get a workout plan."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_product_product__is_gym_membership_plan
+#: model:ir.model.fields,help:eb_gym_management.field_product_template__is_gym_membership_plan
+msgid "Enable to use this product as a Gym Membership Plan."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__end_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__end_date
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "End Date"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "End Date: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "End date must be after start date."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_equipment
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__equipment_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__equipment_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__equipment_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__equipment_id
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_equipment_items
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_equipment_section
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_list
+msgid "Equipment"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_equipment_category
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_equipment
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_category_list
+msgid "Equipment Categories"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_equipment_category_form
+msgid "Equipment Category"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__name
+msgid "Equipment Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__meal_type__evening_snack
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__meal_type__evening_snack
+msgid "Evening Snack"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_exercise
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__exercise_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__exercise_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "Exercise"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_exercise_category
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_exercise_categories
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_category_list
+msgid "Exercise Categories"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_exercise_category
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_category_form
+msgid "Exercise Category"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__line_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__line_ids
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_form
+msgid "Exercise Lines"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__name
+msgid "Exercise Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_exercise
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__exercise_ids
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_exercises
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_exercise_list
+msgid "Exercises"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__state__expired
+msgid "Expired"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_kanban
+msgid "Expires:"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Expiring Soon"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_search
+msgid "Expiring in 7 Days"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Expiry reminder sent. Membership expires on %s."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__fat_g
+msgid "Fat (g)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_fitness
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_fitness
+msgid "Fitness"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Fitness Evaluation"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__goal
+msgid "Fitness Goal"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__fitness_level
+msgid "Fitness Level"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__flexibility
+msgid "Flexibility"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+msgid "Follow your gym membership, trainer and progress"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_follower_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_follower_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_follower_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_follower_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_follower_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_follower_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_partner_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_partner_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_partner_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_partner_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_partner_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_partner_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__activity_type_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__activity_type_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__activity_type_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__activity_type_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__activity_type_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+msgid "Food"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_food_category
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_food_categories
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_category_list
+msgid "Food Categories"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_food_category
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_category_form
+msgid "Food Category"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_food
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__food_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__food_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_form
+msgid "Food Item"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__name
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_form
+msgid "Food Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_food
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__food_ids
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_foods
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_category_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_food_list
+msgid "Foods"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__friday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__friday
+msgid "Friday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template__goal_type__fitness
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__goal__fitness
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template__goal_type__fitness
+msgid "General Fitness"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_search
+msgid "Goal"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__goal_mismatch
+msgid "Goal Mismatch"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__goal_type
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__goal_type
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_search
+msgid "Goal Type"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+msgid "Granted from the linked user's Access Rights (Settings &gt; Users)."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__is_gym_administrator
+#: model:res.groups,name:eb_gym_management.group_gym_manager
+msgid "Gym Administrator"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__is_gym_branch_manager
+#: model:res.groups,name:eb_gym_management.group_gym_branch_manager
+msgid "Gym Branch Manager"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_equipment
+msgid "Gym Equipment"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_equipment_category
+msgid "Gym Equipment Category"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_calendar_event_form_gym_inherit
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_partner_form_gym_inherit
+msgid "Gym Info"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_root
+msgid "Gym Management"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_membership
+msgid "Gym Membership"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__is_gym_nutritionist
+#: model:res.groups,name:eb_gym_management.group_gym_nutritionist
+msgid "Gym Nutritionist"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__is_gym_receptionist
+#: model:res.groups,name:eb_gym_management.group_gym_reception
+msgid "Gym Receptionist"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Gym Revenue"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_users_form_gym_roles
+msgid "Gym Roles"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__is_gym_trainer
+#: model:res.groups,name:eb_gym_management.group_gym_trainer
+msgid "Gym Trainer"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.server,name:eb_gym_management.ir_cron_gym_checkout_reminder_ir_actions_server
+msgid "Gym: Auto Check-out Reminder"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.server,name:eb_gym_management.ir_cron_gym_auto_expire_ir_actions_server
+msgid "Gym: Auto-Expire Memberships"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.server,name:eb_gym_management.ir_cron_gym_expiry_reminder_ir_actions_server
+msgid "Gym: Membership Expiry Reminder"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:product.template,name:eb_gym_management.demo_plan_half_yearly_premium
+msgid "Half-Yearly Premium"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__has_message
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__has_message
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__has_message
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__has_message
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__has_message
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__has_message
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__has_portal_user
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__has_portal_user
+msgid "Has Portal User"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_health_assessment
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__health_assessment_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__health_assessment_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Health Assessment"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid ""
+"Health Assessment \"%s\" cannot be deleted because it is no longer in Draft "
+"state. Reset it to Draft first if you are sure you want to remove it."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Health Assessment Assigned: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,subject:eb_gym_management.mail_template_health_assessment_confirmed
+msgid "Health Assessment Completed — {{ object.name }}"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__health_assessment_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__health_assessment_count
+msgid "Health Assessment Count"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,name:eb_gym_management.mail_template_health_assessment_confirmed
+msgid "Health Assessment: Completed"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_health_assessment
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__health_assessment_ids
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_health_assessment
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_list
+msgid "Health Assessments"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid ""
+"Health Assessments cannot be duplicated. Create a new assessment instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Health Screening"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Health assessment completed."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__height_cm
+msgid "Height (cm)"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Height cannot be negative."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Height, Weight and Fitness Goal are required to complete."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_account_move__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_calendar_event__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__id
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_exception_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_exception_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_exception_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_exception_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_exception_icon
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__activity_exception_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__activity_exception_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__activity_exception_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__activity_exception_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__activity_exception_icon
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_attendance__message_needaction
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__message_needaction
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__message_needaction
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__message_needaction
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__message_needaction
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__message_needaction
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_attendance__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_attendance__message_has_sms_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__message_has_sms_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__message_has_sms_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__message_has_sms_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__message_has_sms_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__message_has_sms_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__message_has_error
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__payment_state__in_payment
+msgid "In Payment"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__state__in_progress
+msgid "In Progress"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+msgid "Includes Diet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__plan_includes_diet
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__plan_includes_diet
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_includes_diet
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_includes_diet
+msgid "Includes Diet Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+msgid "Includes Workout"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__plan_includes_workout
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__plan_includes_workout
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_includes_workout
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_includes_workout
+msgid "Includes Workout Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__injuries
+msgid "Injuries"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Invoice"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__invoice_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__invoice_ids
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Invoices"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__is_branch_manager
+msgid "Is Branch Manager"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_is_follower
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_is_follower
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_is_follower
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_is_follower
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_is_follower
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_is_follower
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__is_member
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__is_member
+msgid "Is Member"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__is_gym_membership_plan
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__is_gym_membership_plan
+msgid "Is Membership Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__is_nutritionist
+msgid "Is Nutritionist"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__is_receptionist
+msgid "Is Receptionist"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__is_trainer
+msgid "Is Trainer"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__write_uid
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__write_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__company_id
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template_line__company_id
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__company_id
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template_line__company_id
+msgid "Leave empty to share this template across all branches."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_nutritionists
+msgid ""
+"Link an employee to a user, then grant the Nutritionist role from the user's"
+" Access Rights."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_calendar_event__membership_id
+msgid "Links this class booking to a member's membership."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "List the benefits of this membership plan…"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_wizard_form
+msgid "Logged In Employee"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__meal_type__lunch
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__meal_type__lunch
+msgid "Lunch"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_form
+msgid "Mark Completed"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__line_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__line_ids
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_form
+msgid "Meal Lines"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__meal_type
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__meal_type
+msgid "Meal Type"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__medical_conditions
+msgid "Medical Conditions / Notes"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__medical_restrictions
+msgid "Medical Restrictions"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__medication
+msgid "Medication"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__partner_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__partner_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__partner_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_search
+msgid "Member"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Member %s already has an active membership."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_list
+msgid "Member Attendance"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_attendance.py:0
+msgid "Member has already checked out."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Member: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_members
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_members
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_members_root
+msgid "Members"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_calendar_event__membership_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__membership_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__membership_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__membership_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__membership_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__membership_id
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_membership
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Membership"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership \"%s\" cannot be activated until the invoice is paid."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid ""
+"Membership \"%s\" cannot be deleted because it has already been confirmed. "
+"Cancel it instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_membership_analysis
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_report_membership
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_graph
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_pivot
+msgid "Membership Analysis"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__membership_count
+msgid "Membership Count"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__plan_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "Membership Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_membership_plan
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+msgid "Membership Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+msgid "Membership Plans Only"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership Reference: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_membership_renew_wizard
+msgid "Membership Renewal Wizard"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,subject:eb_gym_management.mail_template_membership_renewed
+msgid "Membership Renewed — {{ object.name }}"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership activated after payment confirmation."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership auto-activated upon payment."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership cancelled."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership expired automatically on %s."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_attendance.py:0
+msgid "Membership is not active — cannot check in."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Membership is not in Draft state."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_membership_renew_wizard.py:0
+msgid "Membership renewed. New end date: %s. Invoice: %s."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,name:eb_gym_management.mail_template_membership_expired
+msgid "Membership: Expired"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,name:eb_gym_management.mail_template_membership_expiry_reminder
+msgid "Membership: Expiry Reminder"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,name:eb_gym_management.mail_template_portal_invitation
+msgid "Membership: Portal Invitation"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,name:eb_gym_management.mail_template_membership_renewed
+msgid "Membership: Renewed"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,name:eb_gym_management.mail_template_membership_welcome
+msgid "Membership: Welcome"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership_plan.py:0
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_membership
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_membership_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_membership_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__membership_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_partner__membership_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__membership_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_res_users__membership_ids
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_memberships
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_partner_form_gym_inherit
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "Memberships"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid ""
+"Memberships cannot be duplicated. Use \"Renew\" to extend an existing "
+"membership."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__status_message
+msgid "Message"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_has_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_has_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_has_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_has_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_has_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_has_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__meal_type__mid_morning
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__meal_type__mid_morning
+msgid "Mid-Morning Snack"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__monday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__monday
+msgid "Monday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:product.template,name:eb_gym_management.demo_plan_monthly_basic
+msgid "Monthly Basic"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__product_template__gym_duration_uom__months
+msgid "Months"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template__goal_type__muscle_gain
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__goal__muscle_gain
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template__goal_type__muscle_gain
+msgid "Muscle Gain"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise__muscle_group
+msgid "Muscle Group"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__my_activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__my_activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__my_activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__my_activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__my_activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_breadcrumbs_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+msgid "My Diet Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_breadcrumbs_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+msgid "My Memberships"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_breadcrumbs_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+msgid "My Workout Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_equipment_category__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_exercise_category__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food_category__name
+msgid "Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__new_end_date
+msgid "New End Date (Preview)"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "New Health Assessment"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "New Members"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "New Memberships"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_calendar_event_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_calendar_event_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_calendar_event_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_calendar_event_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_calendar_event_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_date_deadline
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_summary
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_summary
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_summary
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_summary
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_summary
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_type_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_type_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_type_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_type_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_type_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__next_assessment_date
+msgid "Next Assessment Date"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "No attendance recorded yet."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_attendance
+msgid "No attendance records yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_diet_plan
+msgid "No diet plans yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "No diet plans yet."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_staff_attendance_wizard.py:0
+msgid "No employee is linked to your user account."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_staff_attendance_wizard.py:0
+msgid ""
+"No employee is linked to your user account. Please contact your "
+"administrator."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_employees_reception
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_trainers
+msgid "No employees found"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_equipment_category
+msgid "No equipment categories yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_equipment
+msgid "No equipment yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_exercise_category
+msgid "No exercise categories yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_exercise
+msgid "No exercises yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_food_category
+msgid "No food categories yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_food
+msgid "No food items yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_health_assessment
+msgid "No health assessments yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "No health assessments yet."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_members
+msgid "No members yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_membership
+msgid "No memberships yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_nutritionists
+msgid "No nutritionists found"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_staff_attendance
+msgid "No staff attendance records yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_trainer_specialization
+msgid "No trainer specializations yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_workout_plan
+msgid "No workout plans yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "No workout plans yet."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_workout_template
+msgid "No workout templates yet"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_staff_attendance_wizard__state__not_checked_in
+msgid "Not Checked In"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__payment_state__not_paid
+msgid "Not Paid"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Note any medical conditions or contraindications..."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__notes
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__notes
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__notes
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__notes
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__notes
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Notes"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_needaction_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_needaction_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_needaction_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_needaction_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_needaction_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_needaction_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_has_error_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_has_error_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_has_error_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_has_error_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_has_error_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_has_error_counter
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_attendance__message_needaction_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__message_needaction_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__message_needaction_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__message_needaction_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__message_needaction_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__message_needaction_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_attendance__message_has_error_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__message_has_error_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__message_has_error_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__message_has_error_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__message_has_error_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__message_has_error_counter
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_nutrition
+msgid "Nutrition"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__nutritionist_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__nutritionist_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_search
+msgid "Nutritionist"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_nutritionists
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_search
+msgid "Nutritionists"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Only assessments in progress can be completed."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Only draft assessments can be assigned."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__current_attendance_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_wizard_form
+msgid "Open Attendance"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__payment_state__paid
+msgid "Paid"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__payment_state__partial
+msgid "Partially Paid"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__payment_state
+msgid "Payment Status"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Pending Payments"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: code:addons/eb_gym_management/wizard/gym_membership_renew_wizard.py:0
+msgid "Period"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__uom__piece
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__uom__piece
+msgid "Piece"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__plan_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership_renew_wizard__plan_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__plan_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_search
+msgid "Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_product__gym_plan_code
+#: model:ir.model.fields,field_description:eb_gym_management.field_product_template__gym_plan_code
+msgid "Plan Code"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+msgid "Plan Details"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_search
+msgid "Plan Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "Plan Settings"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__state
+msgid "Plan Status"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Plan: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Diet Template before creating a Diet Plan."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Fitness Goal before assigning."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Please select a Membership Plan before confirming."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Nutritionist before assigning."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Nutritionist before creating a Diet Plan."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Trainer before assigning."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Trainer before creating a Workout Plan."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Trainer or Nutritionist before assigning."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Please select a Workout Template before creating a Workout Plan."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/res_partner.py:0
+msgid "Please set an email address for %s before creating a portal account."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/res_partner.py:0
+msgid "Portal access can only be created for active members."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/res_partner.py:0
+msgid "Portal user account created and invitation email sent."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_plan.py:0
+#: code:addons/eb_gym_management/models/gym_workout_plan.py:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__previous_plan_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__previous_plan_id
+msgid "Previous Version"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+msgid "Price"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+msgid "Pricing"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+msgid "Product Configuration"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_food__protein_g
+msgid "Protein (g)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__quantity
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__quantity
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+msgid "Quantity"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_template.py:0
+msgid "Quantity must be greater than 0."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:product.template,name:eb_gym_management.demo_plan_quarterly_fitness
+msgid "Quarterly Fitness"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__rating_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__rating_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__rating_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__rating_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__rating_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__rating_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "Recent Attendance"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_staff_attendance_recent
+msgid "Recent Staff Attendance"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Receptionist"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_search
+msgid "Receptionists"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_health_assessment
+msgid ""
+"Record a member's baseline health data before creating workout and diet "
+"plans."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__name
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+msgid "Reference"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template__goal_type__rehabilitation
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__goal__rehabilitation
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template__goal_type__rehabilitation
+msgid "Rehabilitation"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__reminder_sent_date
+msgid "Reminder Sent"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_renew_wizard_form
+msgid "Renew Membership"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__is_renewal_due
+msgid "Renewal Due"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_membership_renew_wizard.py:0
+msgid "Renewal Invoice"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_membership_renew_wizard.py:0
+msgid "Renewal is only available for Active or Expired memberships."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__renewal_count
+msgid "Renewals"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_reporting
+msgid "Reporting"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__reps
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__reps
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "Reps"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__activity_user_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__activity_user_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__activity_user_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__activity_user_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__activity_user_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__rest_seconds
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "Rest (sec)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__rest_seconds
+msgid "Rest (seconds)"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Revenue"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_membership__payment_state__reversed
+msgid "Reversed"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan__state__revised
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan__state__revised
+msgid "Revised"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__message_has_sms_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__message_has_sms_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__message_has_sms_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__message_has_sms_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__message_has_sms_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__message_has_sms_error
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Sales & Billing"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__sale_order_id
+msgid "Sales Order"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Sales Order %s and Invoice %s created."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__saturday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__saturday
+msgid "Saturday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_form
+msgid "Selected template goal differs from member's fitness goal."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__sequence
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan_line__sets
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__sets
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "Sets"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_workout_template.py:0
+msgid "Sets must be greater than 0."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_trainer_specialization__name
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_trainer_specialization_list
+msgid "Specialization"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__specialization_ids
+msgid "Specializations"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_staff
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_staff_root
+msgid "Staff"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_list
+msgid "Staff Attendance"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_staff_attendance_wizard
+msgid "Staff Attendance Check In / Check Out Wizard"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__staff_attendance_count
+msgid "Staff Attendance Count"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/js/gym_dashboard.js:0
+msgid "Staff Check-ins"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+msgid "Staff attendance records for this employee"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__start_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__start_date
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__start_date
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "Start Date"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "Start Date: %s"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_staff_attendance_wizard__state
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__state
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_plan_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_search
+msgid "Status"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__activity_state
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__activity_state
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__activity_state
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__activity_state
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__activity_state
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_search
+msgid "Still Checked In"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template__goal_type__strength
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__goal__strength
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template__goal_type__strength
+msgid "Strength"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__strength_level
+msgid "Strength Level"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:product.template,name:eb_gym_management.demo_plan_student_monthly
+msgid "Student Monthly"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__sunday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__sunday
+msgid "Sunday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__template_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__template_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template_line__template_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+msgid "Template"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__name
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__name
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_diet_template_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_form
+msgid "Template Name"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+msgid "Terms and conditions visible on sales orders…"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "The selected Membership Plan has no product variant."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_membership_renew_wizard.py:0
+msgid ""
+"The selected Plan has no product variant. Please check the product "
+"configuration."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_staff_attendance_wizard.py:0
+msgid "There is no open attendance to check out."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__thursday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__thursday
+msgid "Thursday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_attendance_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_attendance_search
+msgid "Today"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#. odoo-python
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__trainer_id
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__trainer_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_workout_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_search
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_search
+msgid "Trainer"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_trainer_performance
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_report_trainer
+msgid "Trainer Performance"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_trainer_specialization
+msgid "Trainer Specialization"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_trainer_specialization
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_specializations
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_trainer_specialization_list
+msgid "Trainer Specializations"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_staff_search
+msgid "Trainers"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__tuesday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__tuesday
+msgid "Tuesday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__activity_exception_decoration
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__activity_exception_decoration
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__activity_exception_decoration
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__activity_exception_decoration
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__activity_exception_decoration
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan_line__uom
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template_line__uom
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_diet_plan_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+msgid "Unit"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_staff_attendance
+msgid ""
+"Use Check In / Check Out to record staff attendance, or add a row here "
+"directly."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.actions.act_window,help:eb_gym_management.action_gym_staff_checkin_checkout
+msgid "Use this screen to check in or check out staff."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_res_users
+msgid "User"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+msgid "View your assigned diet plans and meals"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_home_gym
+msgid "View your assigned workout plans and exercises"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__waist_cm
+msgid "Waist (cm)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__website_message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_plan__website_message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_diet_template__website_message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__website_message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__website_message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_plan__website_message_ids
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,help:eb_gym_management.field_gym_attendance__website_message_ids
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_plan__website_message_ids
+#: model:ir.model.fields,help:eb_gym_management.field_gym_diet_template__website_message_ids
+#: model:ir.model.fields,help:eb_gym_management.field_gym_health_assessment__website_message_ids
+#: model:ir.model.fields,help:eb_gym_management.field_gym_membership__website_message_ids
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_plan__website_message_ids
+#: model:ir.model.fields,help:eb_gym_management.field_gym_workout_template__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_plan_line__day_of_week__wednesday
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template_line__day_of_week__wednesday
+msgid "Wednesday"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__weight_kg
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+msgid "Weight (kg)"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template__goal_type__weight_loss
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_health_assessment__goal__weight_loss
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_workout_template__goal_type__weight_loss
+msgid "Weight Loss"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "Weight cannot be negative."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,subject:eb_gym_management.mail_template_membership_welcome
+msgid "Welcome to the Gym, {{ object.partner_id.name }}!"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,subject:eb_gym_management.mail_template_portal_invitation
+msgid "Welcome to {{ user.company_id.name }} Gym — Set Up Your Portal Access"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "What's Included"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_list
+msgid "Workout"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+#: model:ir.model,name:eb_gym_management.model_gym_workout_plan
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_attendance__workout_plan_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_form
+msgid "Workout Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_workout_plan.py:0
+msgid ""
+"Workout Plan \"%s\" cannot be deleted because it is %s. Mark it "
+"Completed/keep it for history instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__workout_plan_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__workout_plan_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_workout_template__workout_plan_count
+#: model:ir.model.fields,field_description:eb_gym_management.field_hr_employee__workout_plan_count
+msgid "Workout Plan Count"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_workout_plan_line
+msgid "Workout Plan Line"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+#: code:addons/eb_gym_management/models/gym_workout_template.py:0
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_workout_plan
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_membership__workout_plan_ids
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_workout_plan
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_membership_detail
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_plan_list
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_hr_employee_form_gym_inherit
+msgid "Workout Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_workout_plan.py:0
+msgid ""
+"Workout Plans cannot be duplicated. Create a new plan from a Health "
+"Assessment instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_health_assessment_form
+msgid "Workout Recommendation"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_workout_template
+#: model:ir.model.fields,field_description:eb_gym_management.field_gym_health_assessment__workout_template_id
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_form
+msgid "Workout Template"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_workout_template.py:0
+msgid ""
+"Workout Template \"%s\" cannot be deleted because it is used by existing "
+"Workout Plans. Archive it instead."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model,name:eb_gym_management.model_gym_workout_template_line
+msgid "Workout Template Line"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.actions.act_window,name:eb_gym_management.action_gym_workout_template
+#: model:ir.ui.menu,name:eb_gym_management.menu_gym_config_workout_templates
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_workout_template_list
+msgid "Workout Templates"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_form
+msgid "Workouts"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__product_template__gym_duration_uom__years
+msgid "Years"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_staff_attendance_wizard.py:0
+msgid "You are already checked in. Please check out first."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_staff_attendance_wizard.py:0
+msgid "You are currently checked in."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "You are currently checked out."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/wizard/gym_staff_attendance_wizard.py:0
+msgid "You are not checked in right now."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid ""
+"You don't have an active membership. Please contact the gym to check in."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_attendance
+msgid "You don't have any attendance recorded yet."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_diet_plans
+msgid "You don't have any diet plan yet."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_memberships
+msgid "You don't have any gym membership yet."
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.portal_my_workout_plans
+msgid "You don't have any workout plan yet."
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid ""
+"You have been assigned as %s to complete the health assessment for %s. "
+"Please fill in the body measurements, health screening, fitness evaluation "
+"and recommendations."
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,subject:eb_gym_management.mail_template_membership_expiry_reminder
+msgid "Your Gym Membership Expires Soon — {{ object.name }}"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:mail.template,subject:eb_gym_management.mail_template_membership_expired
+msgid "Your Gym Membership Has Expired — {{ object.name }}"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_product_template_gym_plan_form
+msgid "e.g. MONTHLY-01"
+msgstr ""
+
+#. module: eb_gym_management
+#: model_terms:ir.ui.view,arch_db:eb_gym_management.view_gym_membership_plan_form
+msgid "e.g. Monthly Bronze"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+msgid "employee_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_health_assessment.py:0
+msgid "health_assessment_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership.py:0
+msgid "membership_id"
+msgstr ""
+
+#. module: eb_gym_management
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_plan_line__uom__ml
+#: model:ir.model.fields.selection,name:eb_gym_management.selection__gym_diet_template_line__uom__ml
+msgid "ml"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+msgid "nutritionist_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/res_partner.py:0
+msgid "partner_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_membership_plan.py:0
+msgid "plan_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/gym_diet_template.py:0
+#: code:addons/eb_gym_management/models/gym_workout_template.py:0
+msgid "template_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-python
+#: code:addons/eb_gym_management/models/hr_employee.py:0
+msgid "trainer_id"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Active Diet Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Active Memberships"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Active Nutritionists"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Active Trainers"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Active Workout Plans"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Assessment Pipeline"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Attendance & Staff"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Attendance Trend"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Avg Session"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Avg Staff Hours"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Check-ins Today"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Checked-In Now"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Currently In Gym"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Days Left"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Every member has their plan set up"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Expires"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Expiring Memberships"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Gym Overview"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Member Care Pipeline"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Members & Billing"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Members Awaiting a Plan"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Membership Status"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Memberships, billing and attendance at a glance"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Missing"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "New Memberships Trend"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "New This Month"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No attendance recorded yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No data yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No membership activity yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No membership data"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No payment data"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No plans sold yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No revenue recorded yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No staff attendance recorded yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No staff on duty right now"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No trainer assignments yet"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "No upcoming expirations"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Nobody checked in right now"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Peak Hours"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Pending Assessments"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Plan Popularity"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Revenue This Month"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Revenue Trend"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Role"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Since"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Staff Attendance Trend"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Staff Check-ins Today"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Staff On Duty Now"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Staff Operations"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Today Check-ins"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Top Trainers (Active Members)"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Total Members"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "Upcoming Expirations"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "View All"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "days"
+msgstr ""
+
+#. module: eb_gym_management
+#. odoo-javascript
+#: code:addons/eb_gym_management/static/src/xml/gym_dashboard.xml:0
+msgid "hrs"
+msgstr ""

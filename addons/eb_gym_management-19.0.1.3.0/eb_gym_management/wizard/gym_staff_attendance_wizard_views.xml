@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_gym_staff_attendance_wizard_form" model="ir.ui.view">
+        <field name="name">gym.staff.attendance.wizard.form</field>
+        <field name="model">gym.staff.attendance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Check In / Check Out" create="false" edit="false">
+                <sheet>
+                    <div class="p-4 rounded-3 border bg-light o_gym_staff_attendance_card">
+                        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+                            <div>
+                                <div class="text-uppercase text-muted small fw-bold">Logged In Employee</div>
+                                <h2 class="mb-1">
+                                    <field name="employee_name" nolabel="1" readonly="1"/>
+                                </h2>
+                                <div class="text-muted">
+                                    <field name="status_message" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                            <field name="state" widget="statusbar" statusbar_visible="not_checked_in,checked_in"/>
+                        </div>
+
+                        <div class="row g-3 mt-4">
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 bg-white rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase">Open Attendance</div>
+                                    <div class="fw-semibold">
+                                        <field name="current_attendance_id" nolabel="1" readonly="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 bg-white rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase">Check In</div>
+                                    <div class="fw-semibold">
+                                        <field name="check_in" nolabel="1" readonly="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 bg-white rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase">Check Out</div>
+                                    <div class="fw-semibold">
+                                        <field name="check_out" nolabel="1" readonly="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <footer>
+                    <button name="action_check_in" string="Check In" type="object"
+                            class="btn-primary" invisible="state != 'not_checked_in'"/>
+                    <button name="action_check_out" string="Check Out" type="object"
+                            class="btn-primary" invisible="state != 'checked_in'"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gym_staff_checkin_checkout" model="ir.actions.act_window">
+        <field name="name">Check In / Check Out</field>
+        <field name="res_model">gym.staff.attendance.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Use this screen to check in or check out staff.</p>
+        </field>
+    </record>
+
+</odoo>
