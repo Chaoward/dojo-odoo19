@@ -14,16 +14,30 @@
         ]"/>
     </record> -->
 
+    <record id="all_lead_group" model="res.groups">
+        <field name="name">CRM Lead Group</field>
+        <field name="implied_ids" eval="[
+            (4, ref('sales_team.group_sale_salesman_all_leads')),
+            (4, ref('dojo_core.group_dojo_instructor'))
+        ]"/>
+    </record>
+
+
     <record id="crm.crm_rule_all_lead" model="ir.access">
+        <field name="name">crm_rule_all_lead access</field>
+        <field name="group_id" ref="all_lead_group"/>
+    </record>
+
+    <!-- <record id="crm.crm_rule_all_lead" model="ir.access">
         <field name="name">crm_rule_all_lead sales</field>
         <field name="model_id" ref="crm.crm_rule_all_lead"/>
         <field name="group_id" ref="sales_team.group_sale_salesman_all_leads"/>
     </record>
 
-    <record id="crm.crm_rule_all_lead2" model="ir.access">
+    <record id="crm.crm_rule_all_lead" model="ir.access">
         <field name="name">crm_rule_all_lead instructor</field>
         <field name="model_id" ref="crm.crm_rule_all_lead"/>
         <field name="group_id" ref="dojo_core.group_dojo_instructor"/>
-    </record>
+    </record> -->
 
 </odoo>

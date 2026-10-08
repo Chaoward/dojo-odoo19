@@ -4,27 +4,31 @@
         <field name="name">Subscription Plan Instructor Company</field>
         <field name="model_id" ref="model_dojo_subscription_plan"/>
         <field name="group_id" ref="dojo_core.group_dojo_instructor"/>
+        <field name="operation">crud</field>
         <field name="domain">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="rule_dojo_subscription_plan_parent_company" model="ir.access">
         <field name="name">Subscription Plan Parent Company</field>
         <field name="model_id" ref="model_dojo_subscription_plan"/>
-        <field name="group_id" eval="dojo_core.group_dojo_parent_student"/>
+        <field name="group_id" ref="dojo_core.group_dojo_parent_student"/>
+        <field name="operation">r</field>
         <field name="domain">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="rule_dojo_member_subscription_instructor_company" model="ir.access">
         <field name="name">Sale Subscription Instructor Company</field>
         <field name="model_id" ref="subscription_oca.model_sale_subscription"/>
-        <field name="group_id" eval="dojo_core.group_dojo_instructor"/>
+        <field name="group_id" ref="dojo_core.group_dojo_instructor"/>
+        <field name="operation">r</field>
         <field name="domain">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="rule_dojo_member_subscription_parent_self_or_household" model="ir.access">
         <field name="name">Sale Subscription Parent Self or Household</field>
         <field name="model_id" ref="subscription_oca.model_sale_subscription"/>
-        <field name="group_id" eval="dojo_core.group_dojo_parent_student"/>
+        <field name="group_id" ref="dojo_core.group_dojo_parent_student"/>
+        <field name="operation">r</field>
         <field name="domain">['|', ('member_id.partner_id', '=', user.partner_id.id), ('member_id.partner_id.parent_id.primary_guardian_id', '=', user.partner_id.id)]</field>
     </record>
 </odoo>
