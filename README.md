@@ -1,5 +1,7 @@
 # Odoo saas-19.2 — Setup Guide
 
+EDIT: Only docker deployment instructions are updated for odoo20. 
+
 This repo contains the custom addons, Docker setup, and configuration for running
 Odoo `saas-19.2`. Two installation paths are supported:
 
@@ -36,14 +38,16 @@ repo-root/
 ### 1. Clone this repo
 
 ```bash
-git clone <your-repo-url> odoo19.2
-cd odoo19.2
+git clone <your-repo-url> odoo20
+cd odoo20
 ```
 
-### 2. Clone the Odoo saas-19.2 source
+### 2. (SKIP) Clone the Odoo saas-19.2 source
+
+This deployment uses the [offical odoo 20 image](https://hub.docker.com/_/odoo?tag=20.0)
 
 ```bash
-git clone --depth=1 --branch saas-19.2 https://github.com/odoo/odoo ./odoo
+# git clone --depth=1 --branch saas-19.2 https://github.com/odoo/odoo ./odoo
 ```
 
 ### 3. Clone enterprise addons (optional — requires Odoo partner access)
@@ -61,10 +65,11 @@ cp config/odoo.conf.example config/odoo.conf
 # Edit config/odoo.conf — set admin_passwd and db_name at minimum
 ```
 
-### 5. Build and start
+### 5. start
 
+odoo
 ```bash
-docker compose build
+#docker compose build
 docker compose up -d
 ```
 
@@ -75,7 +80,7 @@ The first build takes several minutes as it compiles all system and Python depen
 The database container starts empty — you must install the Odoo schema before the web UI works:
 
 ```bash
-docker compose run --rm web --config=/etc/odoo/odoo.conf -d odoo19 -i base --stop-after-init
+docker compose run --rm web --config=/etc/odoo/odoo.conf -d odoo20 -i base --stop-after-init
 ```
 
 This takes 1–3 minutes. You'll see `Modules loaded.` when it's done.

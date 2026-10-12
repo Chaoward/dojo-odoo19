@@ -11,3 +11,4 @@ dbfilter = ^odoo19$ # Change if needed
 list_db = False  # Change if needed
 gevent_port = 8072 # Change if neeeded
 workers = 2 # Change if neeeded
+http_interface = 0.0.0.0
