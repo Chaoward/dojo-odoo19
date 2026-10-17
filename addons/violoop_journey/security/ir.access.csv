@@ -1,0 +1,25 @@
+id,name,model_id,group_id/id,operation,domain
+access_journey_user,journey user,violoop.journey,violoop_journey.group_violoop_journey_user,r,
+access_journey_manager,journey manager,violoop.journey,violoop_journey.group_violoop_journey_manager,crud,
+access_journey_api,journey api,violoop.journey,violoop_facilities_api.group_violoop_api,cru,
+rule_journey_company,Violoop journeys by company,violoop.journey,,crud,"[('company_id', 'in', company_ids)]"
+access_version_user,version user,violoop.journey.version,violoop_journey.group_violoop_journey_user,r,
+access_version_manager,version manager,violoop.journey.version,violoop_journey.group_violoop_journey_manager,crud,
+access_version_api,version api,violoop.journey.version,violoop_facilities_api.group_violoop_api,cru,
+rule_version_company,Violoop journey versions by company,violoop.journey.version,,crud,"[('company_id', 'in', company_ids)]"
+access_node_user,node user,violoop.journey.node,violoop_journey.group_violoop_journey_user,r,
+access_node_manager,node manager,violoop.journey.node,violoop_journey.group_violoop_journey_manager,crud,
+access_node_api,node api,violoop.journey.node,violoop_facilities_api.group_violoop_api,cru,
+rule_journey_node_company,Violoop journey nodes by company,violoop.journey.node,,crud,"[('version_id.company_id', 'in', company_ids)]"
+access_edge_user,edge user,violoop.journey.edge,violoop_journey.group_violoop_journey_user,r,
+access_edge_manager,edge manager,violoop.journey.edge,violoop_journey.group_violoop_journey_manager,crud,
+access_edge_api,edge api,violoop.journey.edge,violoop_facilities_api.group_violoop_api,cru,
+rule_journey_edge_company,Violoop journey edges by company,violoop.journey.edge,,crud,"[('version_id.company_id', 'in', company_ids)]"
+access_enrollment_user,enrollment user,violoop.journey.enrollment,violoop_journey.group_violoop_journey_user,r,
+access_enrollment_manager,enrollment manager,violoop.journey.enrollment,violoop_journey.group_violoop_journey_manager,crud,
+access_enrollment_api,enrollment api,violoop.journey.enrollment,violoop_facilities_api.group_violoop_api,cru,
+rule_enrollment_company,Violoop journey enrollments by company,violoop.journey.enrollment,,crud,"[('company_id', 'in', company_ids)]"
+access_execution_user,execution user,violoop.journey.execution,violoop_journey.group_violoop_journey_user,r,
+access_execution_manager,execution manager,violoop.journey.execution,violoop_journey.group_violoop_journey_manager,crud,
+access_execution_api,execution api,violoop.journey.execution,violoop_facilities_api.group_violoop_api,cru,
+rule_execution_company,Violoop journey executions by company,violoop.journey.execution,,crud,"[('company_id', 'in', company_ids)]"

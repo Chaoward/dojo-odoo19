@@ -1,5 +1,5 @@
 /** @odoo-module **/
-import { Component, useState } from "@odoo/owl";
+import { Component, proxy } from "@odoo/owl";
 
 export class MiniCalendar extends Component {
     static template = "dojo_core.MiniCalendar";
@@ -15,7 +15,7 @@ export class MiniCalendar extends Component {
 
     setup() {
         const now = new Date();
-        this.state = useState({
+        this.state = proxy({
             year: now.getFullYear(),
             month: now.getMonth(), // 0-indexed
         });

@@ -13,7 +13,7 @@
  *  • Optional text-to-speech — browser SpeechSynthesis reads AI responses aloud
  */
 
-import { Component, useState, useRef, onMounted, onWillUnmount } from "@odoo/owl";
+import { Component, proxy, signal, onMounted, onWillUnmount } from "@odoo/owl";
 import { useService } from "@web/core/utils/hooks";
 import { rpc } from "@web/core/network/rpc";
 
@@ -56,10 +56,10 @@ export class DojoVoiceAssistant extends Component {
 
     setup() {
         this.notification = useService("notification");
-        this.inputRef = useRef("msgInput");
-        this.endRef = useRef("msgEnd");
+        this.inputRef = signal.ref();
+        this.endRef = signal.ref();
 
-        this.state = useState({
+        this.state = proxy({
             open: false,
             messages: [],          // [{role, text, time}] — grows forever, never cleared
             contextWindow: [],     // [{role, text}] — rolling window sent to LLM; resets on new session

@@ -7,7 +7,7 @@
  */
 
 import { registry } from "@web/core/registry";
-import { Component, useState, onMounted, useRef, useEffect } from "@odoo/owl";
+import { Component, proxy, onMounted, signal, useEffect } from "@odoo/owl";
 import { rpc } from "@web/core/network/rpc";
 
 class CrmConvertStripePayment extends Component {
@@ -19,12 +19,12 @@ class CrmConvertStripePayment extends Component {
     };
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             status: "idle",
             errorMessage: "",
             cardDisplay: "",
         });
-        this.mountRef = useRef("stripe-mount");
+        this.mountRef = signal.ref();
         this.stripe = null;
         this.elements = null;
         this._pendingPaymentEl = null;

@@ -1,0 +1,52 @@
+<odoo>
+    <record id="view_dojo_interaction_event_list" model="ir.ui.view">
+        <field name="name">dojo.interaction.event.list</field>
+        <field name="model">dojo.interaction.event</field>
+        <field name="arch" type="xml">
+            <list create="false">
+                <field name="occurred_at"/>
+                <field name="source"/>
+                <field name="kind"/>
+                <field name="direction"/>
+                <field name="channel"/>
+                <field name="partner_id"/>
+                <field name="attention_state"/>
+                <field name="classification"/>
+                <field name="summary"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_dojo_interaction_event_form" model="ir.ui.view">
+        <field name="name">dojo.interaction.event.form</field>
+        <field name="model">dojo.interaction.event</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="source"/>
+                            <field name="source_id"/>
+                            <field name="source_thread_id"/>
+                            <field name="kind"/>
+                            <field name="direction"/>
+                            <field name="channel"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="classification"/>
+                            <field name="attention_state"/>
+                            <field name="occurred_at"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="summary"/>
+                        <field name="body_text"/>
+                        <field name="payload"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

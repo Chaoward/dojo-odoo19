@@ -5,7 +5,7 @@
  * Mounts to #kiosk-root on /kiosk/<token>
  */
 /* global owl */
-const { Component, useState, onMounted, onWillUnmount, mount, xml, useRef } = owl;
+const { Component, proxy, onMounted, onWillUnmount, mount, xml, signal } =  "@odoo/owl";
 
 // ─── Config identity (per-tablet token from URL) ─────────────────────────────
 const KIOSK_TOKEN = window.KIOSK_TOKEN || null;
@@ -120,7 +120,7 @@ class PinModal extends Component {
     static props = ["onClose", "onSuccess"];
 
     setup() {
-        this.state = useState({ pin: "", error: "" });
+        this.state = proxy({ pin: "", error: "" });
     }
 
     pressKey(digit) {
@@ -245,7 +245,7 @@ class IdleScreen extends Component {
     static props = ["announcements", "marketing_cards", "onWake"];
 
     setup() {
-        this.state = useState({ idx: 0 });
+        this.state = proxy({ idx: 0 });
         this._carouselTimer = null;
         onMounted(() => this._startCarousel());
         onWillUnmount(() => clearInterval(this._carouselTimer));
@@ -316,7 +316,7 @@ class MemberProfileCard extends Component {
                                 <button class="k-profile__photo-sheet-btn k-profile__photo-sheet-btn--cancel" t-on-click="() => this.state.showPhotoSheet = false">Cancel</button>
                             </div>
                         </t>
-                        <input type="file" accept="image/*" style="display:none;" t-ref="fileInput" t-on-change="onPhotoSelected"/>
+                        <input type="file" accept="image/*" style="display:none;" t-ref="this.fileInputRef" t-on-change="onPhotoSelected"/>
                     </div>
                     <div class="k-profile__head-info">
                         <t t-if="state.photoError"><div class="k-profile__photo-msg k-profile__photo-msg--error" t-esc="state.photoError"/></t>
@@ -799,9 +799,9 @@ class MemberProfileCard extends Component {
                         <t t-if="state.cameraError">
                             <div class="k-camera-modal__error" t-esc="state.cameraError"/>
                         </t>
-                        <video t-ref="cameraVideo" class="k-camera-modal__video" autoplay="true" playsinline="true"
+                        <video t-ref="this.cameraVideoRef" class="k-camera-modal__video" autoplay="true" playsinline="true"
                             t-att-style="state.cameraCaptured ? 'display:none' : ''"/>
-                        <canvas t-ref="cameraCanvas" class="k-camera-modal__canvas"
+                        <canvas t-ref="cameraCanvasRef" class="k-camera-modal__canvas"
                             t-att-style="state.cameraCaptured ? '' : 'display:none'"/>
                     </div>
                     <div class="k-camera-modal__actions">
@@ -821,7 +821,7 @@ class MemberProfileCard extends Component {
     static props = ["member", "sessionId", "instructorMode", "initialTab", "onClose", "onCheckin", "onMarkAttendance", "onRosterAdd", "onRosterRemove", "onCheckout", "onRosterRemoveBySession", "onRefreshProfile"];
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             tab: (this.props.initialTab && this.props.initialTab !== "photo") ? this.props.initialTab : "profile",
             rosterAddError: "",
             // Photo update
@@ -860,9 +860,9 @@ class MemberProfileCard extends Component {
             sessionsLoadError: "",
             sessionRemoveMsg: "",
         });
-        this.fileInputRef = useRef("fileInput");
-        this.cameraVideoRef = useRef("cameraVideo");
-        this.cameraCanvasRef = useRef("cameraCanvas");
+        this.fileInputRef = signal.ref()
+        this.cameraVideoRef = signal.ref()
+        this.cameraCanvasRef = signal.ref()
         this._cameraStream = null;
     }
 
@@ -1443,7 +1443,7 @@ class InstructorRosterTile extends Component {
     static props = ["entry", "sessionId", "onMark", "onRemoveAttendance", "onManage"];
 
     setup() {
-        this.state = owl.useState({ pressing: false });
+        this.state = owl.proxy({ pressing: false });
         this._lpTimer = null;
         this._lpFired = false;
     }
@@ -1701,7 +1701,7 @@ class SessionEditModal extends Component {
     static props = ["session", "onClose", "onSaved"];
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             capacity: this.props.session.capacity || "",
             saving: false,
             error: "",
@@ -1801,7 +1801,7 @@ class CreateSessionModal extends Component {
     static props = ["date", "onClose", "onCreated"];
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             templates: [],
             loadingTemplates: true,
             loadError: "",
@@ -2067,7 +2067,7 @@ class AssignRosterModal extends Component {
     static props = ["session", "sessions", "onClose", "onAssigned"];
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             step: 1,
             query: "",
             results: [],
@@ -2291,7 +2291,7 @@ class KioskVoiceAssistant extends Component {
                         <button class="k-ai-panel__close" t-on-click="close">✕</button>
                     </div>
 
-                    <div class="k-ai-panel__messages" t-ref="msgList">
+                    <div class="k-ai-panel__messages" t-ref="this._msgListRef">
                         <t t-foreach="state.messages" t-as="msg" t-key="msg_index">
                             <div t-attf-class="k-ai-msg k-ai-msg--#{msg.role}">
                                 <div class="k-ai-msg__text" t-esc="msg.text"/>
@@ -2309,7 +2309,7 @@ class KioskVoiceAssistant extends Component {
                             </div>
                             <button class="k-ai-cancel-btn" t-on-click="cancelAiRequest">Cancel</button>
                         </t>
-                        <div t-ref="msgEnd"/>
+                        <div t-ref="this._msgEndRef"/>
                     </div>
 
                     <div class="k-ai-panel__footer">
@@ -2349,7 +2349,7 @@ class KioskVoiceAssistant extends Component {
     static props = ["instructorMode", "kioskName"];
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             open: false,
             messages: [],
             input: "",
@@ -2358,8 +2358,8 @@ class KioskVoiceAssistant extends Component {
             thinkingHint: false,
             liveTranscript: "",
         });
-        this._msgListRef = useRef("msgList");
-        this._msgEndRef = useRef("msgEnd");
+        this._msgListRef = signal.ref()
+        this._msgEndRef = signal.ref()
         this._mediaRecorder = null;
         this._audioChunks = [];
         this._stream = null;
@@ -2919,7 +2919,7 @@ class KioskApp extends Component {
     };
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             // Student flow
             searchQuery: "",
             searchResults: [],

@@ -1,0 +1,19 @@
+<odoo>
+    <record id="view_dojo_external_entity_link_list" model="ir.ui.view">
+        <field name="name">dojo.external.entity.link.list</field>
+        <field name="model">dojo.external.entity.link</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="provider"/>
+                <field name="external_type"/>
+                <field name="external_id"/>
+                <field name="res_model"/>
+                <field name="res_id"/>
+                <field name="partner_id"/>
+                <field name="workspace_key"/>
+                <field name="company_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+</odoo>

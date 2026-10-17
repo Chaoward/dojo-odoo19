@@ -1,0 +1,28 @@
+id,name,model_id,group_id/id,operation,domain
+access_conversation_user,conversation user,violoop.conversation,violoop_conversation.group_violoop_conversation_user,cru,
+access_conversation_manager,conversation manager,violoop.conversation,violoop_conversation.group_violoop_conversation_manager,crud,
+access_conversation_api,conversation api,violoop.conversation,violoop_facilities_api.group_violoop_api,cru,
+rule_conversation_company,Violoop conversations by company,violoop.conversation,,crud,"[('company_id', 'in', company_ids)]"
+access_interaction_user,interaction user,violoop.interaction,violoop_conversation.group_violoop_conversation_user,cru,
+access_interaction_manager,interaction manager,violoop.interaction,violoop_conversation.group_violoop_conversation_manager,crud,
+access_interaction_api,interaction api,violoop.interaction,violoop_facilities_api.group_violoop_api,cru,
+rule_interaction_company,Violoop interactions by company,violoop.interaction,,crud,"[('company_id', 'in', company_ids)]"
+access_identity_user,identity user,violoop.channel.identity,violoop_conversation.group_violoop_conversation_user,r,
+access_identity_manager,identity manager,violoop.channel.identity,violoop_conversation.group_violoop_conversation_manager,crud,
+access_identity_api,identity api,violoop.channel.identity,violoop_facilities_api.group_violoop_api,cru,
+rule_identity_company,Violoop channel identities by company,violoop.channel.identity,,crud,"[('company_id', 'in', company_ids)]"
+access_call_user,call user,violoop.call.session,violoop_conversation.group_violoop_conversation_user,cru,
+access_call_manager,call manager,violoop.call.session,violoop_conversation.group_violoop_conversation_manager,crud,
+access_call_api,call api,violoop.call.session,violoop_facilities_api.group_violoop_api,cru,
+rule_call_company,Violoop calls by company,violoop.call.session,,crud,"[('company_id', 'in', company_ids)]"
+access_approval_user,approval user,violoop.approval.request,violoop_conversation.group_violoop_conversation_user,cr,
+access_approval_manager,approval manager,violoop.approval.request,violoop_conversation.group_violoop_conversation_manager,cru,
+access_approval_api,approval api,violoop.approval.request,violoop_facilities_api.group_violoop_api,cru,
+rule_approval_company,Violoop approvals by company,violoop.approval.request,,crud,"[('company_id', 'in', company_ids)]"
+access_tool_receipt_user,tool receipt user,violoop.tool.receipt,violoop_conversation.group_violoop_conversation_user,r,
+access_tool_receipt_api,tool receipt api,violoop.tool.receipt,violoop_facilities_api.group_violoop_api,cru,
+rule_tool_receipt_company,Violoop tool receipts by company,violoop.tool.receipt,,crud,"[('company_id', 'in', company_ids)]"
+access_consent_user,communication consent user,violoop.communication.consent,violoop_conversation.group_violoop_conversation_user,r,
+access_consent_manager,communication consent manager,violoop.communication.consent,violoop_conversation.group_violoop_conversation_manager,cru,
+access_consent_api,communication consent api,violoop.communication.consent,violoop_facilities_api.group_violoop_api,cru,
+rule_consent_company,Violoop communication consent by company,violoop.communication.consent,,crud,"[('company_id', 'in', company_ids)]"

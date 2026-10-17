@@ -23,7 +23,7 @@
  *   BulkTagModal        — bulk: tag add/remove
  */
 
-import { Component, useState, onMounted, onWillUpdateProps, useRef, xml } from "@odoo/owl";
+import { Component, proxy, onMounted, onWillUpdateProps, signal, xml } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 
@@ -131,7 +131,7 @@ class QuickCreateForm extends Component {
     static props = ["stageId", "onSave", "onCancel"];
 
     setup() {
-        this.state = useState({ name: "Manual Inquiry", contact_name: "", email_from: "", phone: "" });
+        this.state = proxy({ name: "Manual Inquiry", contact_name: "", email_from: "", phone: "" });
     }
 
     async save() {
@@ -153,7 +153,7 @@ class BookTrialModal extends Component {
     static props = ["lead", "sessions", "onConfirm", "onCancel"];
 
     setup() {
-        this.state = useState({ sessionId: null, force: false, saving: false, error: "" });
+        this.state = proxy({ sessionId: null, force: false, saving: false, error: "" });
     }
 
     onSessionSelectChange(ev) {
@@ -191,7 +191,7 @@ class BulkMoveModal extends Component {
     static props = ["stages", "selectedCount", "onConfirm", "onCancel"];
 
     setup() {
-        this.state = useState({ stageId: null });
+        this.state = proxy({ stageId: null });
     }
     onStageSelectChange(ev) {
         this.state.stageId = parseInt(ev.target.value, 10) || null;
@@ -206,7 +206,7 @@ class BulkAssignModal extends Component {
     static props = ["salespersons", "selectedCount", "onConfirm", "onCancel"];
 
     setup() {
-        this.state = useState({ userId: null });
+        this.state = proxy({ userId: null });
     }
     onUserSelectChange(ev) {
         this.state.userId = parseInt(ev.target.value, 10) || null;
@@ -221,7 +221,7 @@ class BulkNoteModal extends Component {
     static props = ["selectedCount", "onConfirm", "onCancel"];
 
     setup() {
-        this.state = useState({ body: "" });
+        this.state = proxy({ body: "" });
     }
 
     onBodyInput(ev) { this.state.body = ev.target.value; }
@@ -233,7 +233,7 @@ class BulkMessageModal extends Component {
     static props = ["selectedCount", "onConfirm", "onCancel"];
 
     setup() {
-        this.state = useState({ subject: "", body: "" });
+        this.state = proxy({ subject: "", body: "" });
     }
 
     onSubjectInput(ev) { this.state.subject = ev.target.value; }
@@ -246,7 +246,7 @@ class BulkTagModal extends Component {
     static props = ["tagOptions", "selectedCount", "onConfirm", "onCancel"];
 
     setup() {
-        this.state = useState({ addIds: [], removeIds: [] });
+        this.state = proxy({ addIds: [], removeIds: [] });
     }
 
     toggleAdd(tagId) {
@@ -308,7 +308,7 @@ class LeadDetailModal extends Component {
     get scoreInfo() { return scoreLabel(this.props.lead.dojo_lead_score); }
 
     setup() {
-        this.state = useState({
+        this.state = proxy({
             tab: "overview",
             confirmDelete: false,
             notesDraft: this.props.lead.description || "",
@@ -325,7 +325,7 @@ class LeadDetailModal extends Component {
             messagesLoading: false,
             expandedMessages: {},
         });
-        this.fileInputRef = useRef("avatarFileInput");
+        this.fileInputRef = signal.ref();
         this._notesTimer = null;
         this._lastSavedNotes = this.props.lead.description || "";
         this.orm = useService("orm");
@@ -529,7 +529,7 @@ class CrmPipelineApp extends Component {
         this.notification = useService("notification");
         this.action = useService("action");
 
-        this.state = useState({
+        this.state = proxy({
             loading: true,
             stages: [],
             kpis: { total_leads: 0, conversion_rate: 0, trials_this_week: 0, expiring_offers: 0 },

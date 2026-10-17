@@ -13,7 +13,7 @@
  *   POST /dojo/ai/history — jsonrpc recent action log
  */
 
-import { Component, useState, onWillStart } from "@odoo/owl";
+import { Component, proxy, onWillStart } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { rpc } from "@web/core/network/rpc";
 import { useService } from "@web/core/utils/hooks";
@@ -31,7 +31,7 @@ class DojoVoiceAssistantPage extends Component {
 
     setup() {
         this.notification = useService("notification");
-        this.state = useState({
+        this.state = proxy({
             mode: "voice",              // "voice" | "text"
             isRecording: false,
             isProcessing: false,

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_violoop_journey_list" model="ir.ui.view">
+    <field name="name">violoop.journey.list</field>
+    <field name="model">violoop.journey</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="kind"/>
+        <field name="state"/>
+        <field name="active_version_id"/>
+      </list>
+    </field>
+  </record>
+  <record id="view_violoop_journey_form" model="ir.ui.view">
+    <field name="name">violoop.journey.form</field>
+    <field name="model">violoop.journey</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="kind"/>
+            <field name="state"/>
+            <field name="active_version_id"/>
+          </group>
+          <field name="description"/>
+          <field name="version_ids" readonly="1">
+            <list>
+              <field name="version"/>
+              <field name="state"/>
+              <field name="checksum"/>
+              <field name="published_at"/>
+            </list>
+          </field>
+        </sheet>
+        <chatter/>
+      </form>
+    </field>
+  </record>
+  <record id="action_violoop_journeys" model="ir.actions.act_window">
+    <field name="name">Journeys</field>
+    <field name="res_model">violoop.journey</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <menuitem id="menu_violoop_journey_root" name="Violoop Journeys" sequence="71"
+            groups="violoop_journey.group_violoop_journey_user"/>
+  <menuitem id="menu_violoop_journeys" name="Journeys"
+            parent="menu_violoop_journey_root"
+            action="action_violoop_journeys" sequence="10"/>
+</odoo>

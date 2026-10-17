@@ -1,0 +1,13 @@
+id,name,model_id,group_id/id,operation,domain
+access_violoop_site_user,violoop.site user,violoop.facility.site,violoop_facilities_api.group_violoop_facility_user,r,
+access_violoop_site_manager,violoop.site manager,violoop.facility.site,violoop_facilities_api.group_violoop_facility_manager,crud,
+rule_violoop_site_company,Violoop facility sites by company,violoop.facility.site,,crud,"[('company_id', 'in', company_ids)]"
+access_violoop_edge_user,violoop.edge user,violoop.edge.node,violoop_facilities_api.group_violoop_facility_user,r,
+access_violoop_edge_manager,violoop.edge manager,violoop.edge.node,violoop_facilities_api.group_violoop_facility_manager,crud,
+rule_violoop_edge_company,Violoop edge nodes by company,violoop.edge.node,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+access_violoop_anchor_user,violoop.anchor user,violoop.spatial.anchor,violoop_facilities_api.group_violoop_facility_user,r,
+access_violoop_anchor_manager,violoop.anchor manager,violoop.spatial.anchor,violoop_facilities_api.group_violoop_facility_manager,crud,
+rule_violoop_anchor_company,Violoop spatial anchors by company,violoop.spatial.anchor,,crud,"[('company_id', 'in', company_ids)]"
+access_maintenance_request_violoop_api,maintenance request violoop api,maintenance.request,violoop_facilities_api.group_violoop_api,cru,
+access_maintenance_equipment_violoop_api,maintenance equipment violoop api,maintenance.equipment,violoop_facilities_api.group_violoop_api,r,
+access_crm_lead_violoop_api,crm lead violoop api,crm.lead,violoop_facilities_api.group_violoop_api,cru,

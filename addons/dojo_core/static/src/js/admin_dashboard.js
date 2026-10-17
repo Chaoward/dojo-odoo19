@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Component, useState, onWillStart, onMounted, useRef } from "@odoo/owl";
+import { Component, proxy, onWillStart, onMounted, signal } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { DojoVoiceAssistant } from "@ai_assistant/js/voice_assistant";
@@ -13,10 +13,10 @@ class AdminDashboard extends Component {
     setup() {
         this.orm = useService("orm");
         this.action = useService("action");
-        this.rootRef = useRef("root");
+        this.rootRef = signal.ref();
 
         const todayStr = this._isoToday();
-        this.state = useState({
+        this.state = proxy({
             loading: true,
             summary: null,
             instructors: [],

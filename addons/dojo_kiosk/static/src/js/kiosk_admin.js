@@ -1,5 +1,5 @@
 /** @odoo-module **/
-import { Component, useState, onMounted } from "@odoo/owl";
+import { Component, proxy, onMounted } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 
@@ -9,7 +9,7 @@ export class KioskAdminApp extends Component {
     setup() {
         this.orm = useService("orm");
         this.action = useService("action");
-        this.state = useState({
+        this.state = proxy({
             kiosks: [],
             search: "",
             page: 0,

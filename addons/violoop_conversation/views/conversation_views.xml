@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_violoop_conversation_list" model="ir.ui.view">
+    <field name="name">violoop.conversation.list</field>
+    <field name="model">violoop.conversation</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="priority"/>
+        <field name="name"/>
+        <field name="partner_id"/>
+        <field name="primary_channel"/>
+        <field name="state"/>
+        <field name="assigned_user_id"/>
+        <field name="last_interaction_at"/>
+      </list>
+    </field>
+  </record>
+  <record id="view_violoop_conversation_form" model="ir.ui.view">
+    <field name="name">violoop.conversation.form</field>
+    <field name="model">violoop.conversation</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="partner_id"/>
+            <field name="crm_lead_id"/>
+            <field name="facility_site_id"/>
+            <field name="primary_channel"/>
+            <field name="state"/>
+            <field name="priority"/>
+            <field name="assigned_user_id"/>
+            <field name="ai_owner"/>
+            <field name="human_required"/>
+          </group>
+          <notebook>
+            <page string="Interactions">
+              <field name="interaction_ids" readonly="1">
+                <list>
+                  <field name="occurred_at"/>
+                  <field name="channel"/>
+                  <field name="direction"/>
+                  <field name="actor_type"/>
+                  <field name="status"/>
+                  <field name="subject"/>
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+        <chatter/>
+      </form>
+    </field>
+  </record>
+  <record id="action_violoop_conversations" model="ir.actions.act_window">
+    <field name="name">Conversations</field>
+    <field name="res_model">violoop.conversation</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <menuitem id="menu_violoop_conversation_root" name="Violoop Conversations" sequence="70"
+            groups="violoop_conversation.group_violoop_conversation_user"/>
+  <menuitem id="menu_violoop_conversations" name="Conversations"
+            parent="menu_violoop_conversation_root"
+            action="action_violoop_conversations" sequence="10"/>
+
+<record id="view_violoop_consent_list" model="ir.ui.view">
+    <field name="name">violoop.communication.consent.list</field>
+    <field name="model">violoop.communication.consent</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="captured_at"/>
+            <field name="partner_id"/>
+            <field name="channel"/>
+            <field name="purpose"/>
+            <field name="status"/>
+            <field name="source"/>
+            <field name="expires_at"/>
+        </list>
+    </field>
+</record>
+
+<record id="view_violoop_consent_form" model="ir.ui.view">
+    <field name="name">violoop.communication.consent.form</field>
+    <field name="model">violoop.communication.consent</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="partner_id"/>
+                    <field name="company_id"/>
+                    <field name="channel"/>
+                    <field name="purpose"/>
+                    <field name="status"/>
+                    <field name="source"/>
+                    <field name="captured_at"/>
+                    <field name="expires_at"/>
+                    <field name="external_reference"/>
+                </group>
+                <group string="Evidence">
+                    <field name="evidence_note"/>
+                    <field name="metadata_json"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="action_violoop_consents" model="ir.actions.act_window">
+    <field name="name">Communication Consent</field>
+    <field name="res_model">violoop.communication.consent</field>
+    <field name="view_mode">list,form</field>
+</record>
+
+<menuitem id="menu_violoop_consents"
+          name="Consent"
+          parent="menu_violoop_conversation_root"
+          action="action_violoop_consents"
+          sequence="20"
+          groups="violoop_conversation.group_violoop_conversation_manager"/>
+</odoo>

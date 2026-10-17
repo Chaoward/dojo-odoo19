@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_violoop_facility_site_list" model="ir.ui.view">
+        <field name="name">violoop.facility.site.list</field>
+        <field name="model">violoop.facility.site</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="timezone"/>
+                <field name="niantic_site_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_violoop_facility_site_form" model="ir.ui.view">
+        <field name="name">violoop.facility.site.form</field>
+        <field name="model">violoop.facility.site</field>
+        <field name="arch" type="xml">
+            <form string="Facility Site">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="timezone"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="altitude_m"/>
+                            <field name="niantic_site_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Spatial">
+                            <field name="niantic_anchor_payload"/>
+                            <field name="metadata_json"/>
+                        </page>
+                        <page string="Edge Nodes">
+                            <field name="edge_node_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="node_uid"/>
+                                    <field name="status"/>
+                                    <field name="last_seen_at"/>
+                                    <field name="software_version"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_violoop_facility_sites" model="ir.actions.act_window">
+        <field name="name">Facility Sites</field>
+        <field name="res_model">violoop.facility.site</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_violoop_root" name="Violoop" sequence="70"
+              groups="violoop_facilities_api.group_violoop_facility_user"/>
+    <menuitem id="menu_violoop_facilities" name="Facility Sites"
+              parent="menu_violoop_root"
+              action="action_violoop_facility_sites"
+              sequence="10"/>
+</odoo>

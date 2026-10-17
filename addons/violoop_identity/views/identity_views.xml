@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_violoop_capability_grant_list" model="ir.ui.view">
+        <field name="name">violoop.capability.grant.list</field>
+        <field name="model">violoop.capability.grant</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <field name="facility_site_id"/>
+                <field name="capability"/>
+                <field name="active"/>
+                <field name="expires_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_violoop_capability_grant_form" model="ir.ui.view">
+        <field name="name">violoop.capability.grant.form</field>
+        <field name="model">violoop.capability.grant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="company_id"/>
+                        <field name="facility_site_id"/>
+                        <field name="capability"/>
+                        <field name="active"/>
+                        <field name="expires_at"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_violoop_capability_grants" model="ir.actions.act_window">
+        <field name="name">Capability Grants</field>
+        <field name="res_model">violoop.capability.grant</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_violoop_identity_root"
+              name="Violoop Identity"
+              sequence="72"
+              groups="violoop_identity.group_violoop_identity_manager"/>
+    <menuitem id="menu_violoop_capability_grants"
+              name="Capability Grants"
+              parent="menu_violoop_identity_root"
+              action="action_violoop_capability_grants"
+              sequence="10"/>
+
+<record id="view_users_form_violoop_identity" model="ir.ui.view">
+    <field name="name">res.users.form.violoop.identity</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+            <page string="Violoop"
+                  groups="violoop_identity.group_violoop_identity_manager">
+                <group string="Communications">
+                    <field name="violoop_telnyx_credential_id"/>
+                </group>
+                <group string="Capability grants">
+                    <field name="violoop_capability_grant_ids"
+                           context="{'default_user_id': id}">
+                        <list editable="bottom">
+                            <field name="company_id"/>
+                            <field name="facility_site_id"/>
+                            <field name="capability"/>
+                            <field name="active"/>
+                            <field name="expires_at"/>
+                        </list>
+                    </field>
+                </group>
+            </page>
+        </xpath>
+    </field>
+</record>
+
+<record id="view_company_form_violoop_identity" model="ir.ui.view">
+    <field name="name">res.company.form.violoop.identity</field>
+    <field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//sheet" position="inside">
+            <group string="Violoop Provider Bindings"
+                   groups="violoop_identity.group_violoop_identity_manager">
+                <field name="violoop_stripe_connected_account_id"
+                       placeholder="acct_..."/>
+            </group>
+        </xpath>
+    </field>
+</record>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_capability_grant_manager,violoop capability grant manager,violoop.capability.grant,violoop_identity.group_violoop_identity_manager,crud,
+access_capability_grant_api,violoop capability grant api,violoop.capability.grant,violoop_facilities_api.group_violoop_api,cru,
+rule_capability_grant_company,Violoop capability grants by company,violoop.capability.grant,,crud,"[('company_id', 'in', company_ids)]"
+access_operator_session_manager,violoop operator session manager,violoop.operator.session,violoop_identity.group_violoop_identity_manager,crud,
+access_operator_session_api,violoop operator session api,violoop.operator.session,violoop_facilities_api.group_violoop_api,cru,
+rule_operator_session_company,Violoop operator sessions by company,violoop.operator.session,,crud,"[('company_id', 'in', company_ids)]"
